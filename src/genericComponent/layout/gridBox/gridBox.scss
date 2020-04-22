@@ -1,0 +1,128 @@
+.grid-box {
+    display: -ms-flexbox;
+    display: flex;
+}
+.hor-two {
+    /*左侧列可收缩时要用到relative*/
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    background:#fff;
+    .left-part {
+        overflow: auto;
+        background:#fff;
+        flex-shrink: 0;
+        border-right: 1px solid #e5e5e5;
+    }
+    .right-part {
+        width: fit-content;
+        flex-grow: 1;
+        overflow: auto;
+        background:#fff;
+    }
+}
+.ver-thr {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    flex-direction:column;
+    background: #fff;
+    > .top-part {
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-sizing: border-box;
+        &.ver-scroll {
+            overflow-y: auto;
+        }
+    }
+    > .middle-part {
+        flex-grow: 1;
+        overflow: auto;
+        width: 100%;
+        box-sizing: border-box;
+        background:#fff;
+        height: stretch;
+    }
+    > .bottom-part {
+        width: 100%;
+        box-sizing: border-box;
+        background: #fff;
+    }
+}
+/*滚动条样式*/
+.ori-small-scrollbar::-webkit-scrollbar{
+background:transparent;
+width:8px;
+height: 10px;
+}
+.ori-small-scrollbar::-webkit-scrollbar-thumb{
+background:transparent;
+// border-radius: 3px;
+}
+.ori-small-scrollbar:hover::-webkit-scrollbar-thumb{
+background:rgba(0, 0, 0, .2);
+}
+.ori-small-scrollbar::-webkit-scrollbar-corner{
+    background: transparent;
+}
+.ori-small-scrollbar{
+    overflow: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+}
+.ori-small-scrollbar:hover{
+    scrollbar-color: rgba(0, 0, 0, .2) transparent;
+}
+/*可收缩列按钮样式*/
+.ori-hortwo-left-collapse,
+.ori-hortwo-left-expand{
+    position: absolute;
+    top: 40%;
+    width:12px;
+    text-align: center;
+    height:32px;
+    font-size: 12px;
+    line-height:28px;
+    color: #fff;
+    background:#79cdfb;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 2;
+    >i{
+        line-height:1;
+       vertical-align: middle;
+       transition: all 0.2s;
+   }
+   &:hover{
+    background-color: #6cb8e0;
+}
+}
+.ori-hortwo-left-collapse{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    opacity: .8;
+    &:hover>i{
+        opacity: 1;
+    }
+}
+.ori-hortwo-left-expand{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 2;
+}
+
+/*小滚动条样式*/
+.small-scrollbar::-webkit-scrollbar {
+    background: transparent;
+    width: 3px;
+    height: 8px;
+}

@@ -1,0 +1,124 @@
+
+.single-conditional-query {
+    width: auto;
+    .ant-input-affix-wrapper .ant-input-suffix {
+        right: 0;
+    }
+}
+.single-conditional-query-small {
+    .ant-input-affix-wrapper .ant-input-suffix {
+        right: 0;
+    }
+    .ant-select-selection__rendered {
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+    .ant-select-selection-selected-value{
+        padding-right: 15px;
+    }
+    .ant-select-arrow{
+        right: 6px;
+    }
+    .ant-btn {
+        padding: 0 4px;
+    }
+}
+
+
+.ori-card {
+    .ant-card-head {
+        padding: 0 16px;
+    }
+    .ori-description-list-index-term,
+    .ori-description-list-index-detail{
+        display: table-cell;
+        line-height: 20px;
+        padding-bottom: 12px;
+    }
+    .ori-description-list-index-term {
+        color: rgba(0, 0, 0, .85);
+        white-space: nowrap;
+        &:after{
+            content:":";
+            margin:0 8px 0 2px;
+            position: relative;
+            top: -0.5px;
+        }
+    }
+    .ori-description-list-index-detail {
+        color: rgba(0, 0, 0, .65);
+       
+
+    }
+    .ori-description-list-row{
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+    .ori-description-list-col{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+
+
+/*多列表单的样式*/
+
+.form-more-col {
+    .form-more-col-layout {
+        padding-right: 12px;
+        height: 46px;
+    }
+    .ant-form-item {
+        margin-bottom: 15px;
+    }
+    .ant-form-item-with-help.ant-form-item {
+        margin-bottom: 0;
+    }
+    .has-error .ant-form-explain,
+    .has-error .ant-form-split {
+        font-size: 12px;
+        line-height: 1;
+    }
+}
+
+
+@media screen and (min-width:1901px) {
+    .form-more-col .form-more-col-layout {
+        width: 25%;
+    }
+}
+
+
+
+.ori-msc-style{
+    .ant-alert{
+        padding-top: 6px;
+        padding-bottom: 6px;
+        .ant-alert-icon{
+            top: 9.5px;
+        }
+    }
+    .ori-alert-message{
+        color: rgba(0,0,0,.65);
+        a{
+            color: #1890ff;
+        }
+    }
+}
+
+
+/*表格无数据样式*/ 
+ /*.ori-table-scroll .ant-table-placeholder{
+     position:absolute;
+     top: 44%;
+     left: 44%;
+ }*/
+
+ .crm-custom-drawer-ct-tab{
+     height: 100%;
+     >.ant-tabs-content{
+height:calc(100% - 60px);
+     }
+ }
+

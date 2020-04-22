@@ -1,0 +1,39 @@
+.container{
+    min-height: 600px;
+    display: flex;
+}
+.middle{
+    flex-grow:1;
+    
+}
+.left{
+    background-color: rgba(0,255,0,0.7);
+    text-align: center;
+    width:500px;
+    border:greensolid 1px;
+    /*order默认为0，越小越靠前*/
+    order: -1;
+    /*项目占据主轴的空间*/
+    flex-basis: 10%;
+}
+.right{
+    background-color: rgba(255,0,0,0.7);
+    text-align: center;
+    /*项目占据主轴的空间*/
+    flex-basis: 10%;
+}
+
+.Carousel{
+    height:'500px'
+}
+.ant-carousel .slick-slide {
+    text-align: center;
+    height: 500 px;
+    line-height: 500px;
+    background: #364d79;
+    overflow: hidden;
+  }
+  
+  .ant-carousel .slick-slide h3 {
+    color: #fff;
+  }

@@ -1,0 +1,20 @@
+.P {
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.ant-carousel .slick-slide {
+    text-align: center;
+    height: 300px;
+    line-height: 160px;
+    background: #364d79;
+    overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+    color: #fff;
+}
