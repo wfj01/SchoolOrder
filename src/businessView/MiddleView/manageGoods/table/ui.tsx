@@ -12,57 +12,49 @@ import { ManageGoodsTableUiAction } from './uiAction';
 export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
     private columns: Array<ColumnProps<ManageGoodsEntity>> = Array<ColumnProps<ManageGoodsEntity>>(
         {
-            dataIndex: 'ID',
-            key: 'ID',
-            title: 'ID',
+            dataIndex: 'dishname',
+            key: 'dishname',
+            title: 'dishname',
             width: "10%",
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: 'Dishname',
-            key: 'Dishname',
-            title: '菜名',
+            dataIndex: 'price',
+            key: 'price',
+            title: 'price',
             width: "10%",
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: 'Price',
-            key: 'Price',
-            title: '价格',
-            width: "10%",
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
-        },
-        {
-            dataIndex: 'Score',
-            key: 'Score',
-            title: '得分',
+            dataIndex: 'practice',
+            key: 'practice',
+            title: 'practice',
             width: '10%',
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: "Time",
-            key: 'Time',
-            title: "时间",
+            dataIndex: "time",
+            key: 'time',
+            title: "time",
             width: '10%',
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: "Windows",
-            key: 'Windows',
-            title: "窗口",
+            dataIndex: "windows",
+            key: 'windows',
+            title: "windows",
             width: "10%",
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: 'Explain',
-            key: 'Explain',
-            title: '说明',
+            dataIndex: 'remarks',
+            key: 'remarks',
+            title: 'remarks',
             width: '10%',
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
@@ -73,6 +65,15 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                 return (
                     <div style={{ display: "inline-block" }}>
                         <div>
+                            <a
+                                href={'javascript:;'}
+                                onClick={this.uiAction.eyeClick}
+                                id={`eye_${record.id}`}
+                                title="查看"
+                            >
+                                <Icon type="eye" title="查看" />
+                            </a>
+                            <Divider type="vertical" />
                             <a
                                 href={'javascript:;'}
                                 onClick={this.uiAction.editClick}
@@ -92,7 +93,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                                     <Icon type="delete" title="删除" />
                                 </a>
                             </Popconfirm>
-                        </div>
+                            </div>
                     </div>
                 );
             },
@@ -108,7 +109,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         this.uiAction = new ManageGoodsTableUiAction(props);
     }
     public componentDidMount() {
-        this.props.GlobalManageGoodsDomainStore!.Loadview()
+        this.props.GlobalManageGoodsDomainStore!.loaddata()
     }
     public render() {
         return (
@@ -116,7 +117,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                 columns={this.columns}
                 pagination={false}
                 dataSource={this.props.GlobalManageGoodsDomainStore!.List.slice()}
-                loading={this.props.GlobalManageGoodsDomainStore!.IsLoading}
+                loading={this.props.GlobalManageGoodsDomainStore!.isLoading}
                 locale={{ emptyText: '暂无 数据' }} />
         )
     }

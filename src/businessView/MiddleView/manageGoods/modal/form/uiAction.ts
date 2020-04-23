@@ -1,6 +1,6 @@
 import { message } from "antd";
-import { ManageGoodsEntity } from "../entity";
 import { IFromViewProps } from "./interface";
+import { ManageGoodsEntity } from "../../entity";
 
 export class FromViewUiAction{
     /**

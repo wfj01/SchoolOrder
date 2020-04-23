@@ -1,17 +1,18 @@
 import { message } from "antd";
 import { action } from "mobx";
+import { IManageGoodsTableProps } from "./interface";
 
 export class ManageGoodsTableUiAction {
 
     /**
      * 数据接口
      */
-    private props: any;
+    private props: IManageGoodsTableProps;
 
     /**
      * 构造方法
      */
-    constructor(props: any) {
+    constructor(props:IManageGoodsTableProps) {
 
         this.props = props;
 
@@ -23,6 +24,8 @@ export class ManageGoodsTableUiAction {
 
         this.deleteClick = this.deleteClick.bind(this);
 
+        this.eyeClick = this.eyeClick.bind(this);
+
         this.getNeighborhoodId = this.getNeighborhoodId.bind(this);
 
     }
@@ -31,7 +34,7 @@ export class ManageGoodsTableUiAction {
      */
     @action
     public loadData() {
-        this.props.GlobalNeighborhoodStore!.LoadData();
+        this.props.GlobalManageGoodsDomainStore!.loaddata();
     }
 
     /**
@@ -46,10 +49,27 @@ export class ManageGoodsTableUiAction {
         const id = this.getNeighborhoodId(e);
 
         if (!id) { return; };
-        // this.domainStore.CurrentEditNeighborhood.FatherId = id;
-        this.props.onAdd(this.props.GlobalNeighborhoodStore!.CurrentEditNeighborhood);
+        this.props.onAdd(this.props.GlobalManageGoodsDomainStore!.currentEditData);
 
 
+    }
+    /**
+     * 查看事件
+     * @param e 
+     */
+    public eyeClick(e:React.SyntheticEvent<HTMLAnchorElement>){
+        e.preventDefault();
+        const id = this.getNeighborhoodId(e);
+        if(!id){return;};
+        if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
+            console.log("Number(id):",Number(id));
+            const ix = this.props.GlobalManageGoodsDomainStore!.List.findIndex(x=>Number(x.id) === Number(id))
+            console.log("ix:",ix);
+            this.props.GlobalManageGoodsDomainStore!.lengths = Number(ix);
+            this.props.onEyeClick(this.props.GlobalManageGoodsDomainStore!.currentEditData);
+        } else {
+            message.info('错误的事件参数');
+        }
     }
     /**
      * 编辑事件
@@ -64,12 +84,8 @@ export class ManageGoodsTableUiAction {
 
         if (!id) { return; };
 
-        if (this.props.GlobalNeighborhoodStore!.SelectNeighborhood(id)) {
-            // if(this.domainStore!.CurrentEditNeighborhood.FatherId.length>0){
-            //     this.domainStore!.CurrentEditNeighborhood.FatherId=await this.domainStore.GetNameByKey(this.domainStore.CurrentEditNeighborhood.FatherId);// +"_"+this.domainStore.CurrentEditNeighborhood.FatherId;
-            // }
-            console.info(this.props.GlobalNeighborhoodStore!.CurrentEditNeighborhood);
-            this.props.onEdit(this.props.GlobalNeighborhoodStore!.CurrentEditNeighborhood);
+        if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
+            this.props.onEdit(this.props.GlobalManageGoodsDomainStore!.currentEditData);
         } else {
             message.info('错误的事件参数');
         }

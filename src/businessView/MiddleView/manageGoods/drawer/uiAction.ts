@@ -1,19 +1,17 @@
-import { IModelViewProps } from "./interface";
-import { FromViewUiAction } from "./form/uiAction";
+import { IDrawerViewProps } from "./interface";
+import { FromViewUiAction } from "../modal/form/uiAction";
 
-export class ModelViewUiAction{
- 
-    private props: IModelViewProps;
+export class DrawerViewUiAction{
     /**
      *  内部表单组件的action
      */
     private sonUiAction: FromViewUiAction;
 
-    constructor(props: IModelViewProps) {
-        this.props = props;
+    constructor(props:IDrawerViewProps){
         this.getSonUiAction = this.getSonUiAction.bind(this);
-        this.handleOk = this.handleOk.bind(this);
     }
+
+    
 
     /**
      * 获取子组件action
@@ -29,6 +27,5 @@ export class ModelViewUiAction{
     public handleOk() {
         const result = this.sonUiAction.validate();
         if (!result.isValidated) { return; };
-        this.props.handleOk(result.formData);
     }
 }
