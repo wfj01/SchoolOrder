@@ -1,7 +1,9 @@
 import { ManageGoodsDomainStore } from "../domainStore";
 
 export interface IModelViewProps {
+
     GlobalManageGoodsDomainStore?: ManageGoodsDomainStore;
+    
     visible?: boolean;
     /**
      * 回调方法  取消

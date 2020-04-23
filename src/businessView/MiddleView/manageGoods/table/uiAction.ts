@@ -85,6 +85,7 @@ export class ManageGoodsTableUiAction {
         if (!id) { return; };
 
         if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
+            console.log("this.props.GlobalManageGoodsDomainStore!.currentEditData:",this.props.GlobalManageGoodsDomainStore!.currentEditData);
             this.props.onEdit(this.props.GlobalManageGoodsDomainStore!.currentEditData);
         } else {
             message.info('错误的事件参数');

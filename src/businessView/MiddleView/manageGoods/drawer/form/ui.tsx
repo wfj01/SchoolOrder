@@ -22,9 +22,6 @@ const formItemLayoutStyle = {
 @observer
 class FormView extends React.Component<IFormViewProps> {
 
-    // public componentDidMount(){
-    //     this.props.GlobalManageGoodsDomainStore!.loaddata();
-    // }
     public render() {
         const form = this.props.form;
         return (
@@ -49,7 +46,7 @@ class FormView extends React.Component<IFormViewProps> {
                         )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item label={"dishname"} {...formItemLayoutStyle} >
+                <Form.Item label={"菜名"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("dishname",
                             {
@@ -69,7 +66,7 @@ class FormView extends React.Component<IFormViewProps> {
                         )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item label={"price"} {...formItemLayoutStyle} >
+                <Form.Item label={"价格"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("price",
                             {
@@ -89,7 +86,7 @@ class FormView extends React.Component<IFormViewProps> {
                         )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item label={"practice"} {...formItemLayoutStyle} >
+                <Form.Item label={"做法"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("practice",
                             {
@@ -109,7 +106,7 @@ class FormView extends React.Component<IFormViewProps> {
                         )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item label={"time"} {...formItemLayoutStyle} >
+                <Form.Item label={"时间"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("time",
                             {
@@ -129,7 +126,7 @@ class FormView extends React.Component<IFormViewProps> {
                         )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item label={"windows"} {...formItemLayoutStyle} >
+                <Form.Item label={"窗口"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("windows",
                             {
@@ -149,7 +146,7 @@ class FormView extends React.Component<IFormViewProps> {
                         )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item label={"remarks"} {...formItemLayoutStyle} >
+                <Form.Item label={"说明"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("remarks",
                             {

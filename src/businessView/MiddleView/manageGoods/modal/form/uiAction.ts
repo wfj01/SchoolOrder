@@ -1,8 +1,10 @@
 import { message } from "antd";
-import { IFromViewProps } from "./interface";
 import { ManageGoodsEntity } from "../../entity";
+import { IFromViewProps } from "./interface";
 
 export class FromViewUiAction{
+ 
+
     /**
      * 表单数据
      */
@@ -34,7 +36,7 @@ export class FromViewUiAction{
         this.validateServer = this.validateServer.bind(this);
 
     }
-
+      
     /**
      * 表单验证
      */
@@ -63,7 +65,10 @@ export class FromViewUiAction{
                 formData: this.formData,
                 isValidated: this.isValidated,
             }
+
+
     }
+
 
 
     /**
@@ -97,7 +102,7 @@ export class FromViewUiAction{
             return;
         }
 
-        const otherError = GlobalManageGoodsDomainStore.validate(values);
+        const otherError = GlobalManageGoodsDomainStore.ValiDate(values);
         if (otherError) {
             message.error(otherError);
             this.isValidated = false;

@@ -1,5 +1,5 @@
-import { IDrawerViewProps } from "./interface";
 import { FromViewUiAction } from "../modal/form/uiAction";
+import { IDrawerViewProps } from "./interface";
 
 export class DrawerViewUiAction{
     /**

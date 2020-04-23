@@ -1,5 +1,5 @@
 import { FormComponentProps } from "antd/lib/form";
-import { ManageGoodsDomainStore } from "../domainStore";
+import { ManageGoodsDomainStore } from "../../domainStore";
 import { FromViewUiAction } from "./uiAction";
 
 export interface IFromViewProps extends FormComponentProps {

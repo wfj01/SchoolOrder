@@ -1,5 +1,5 @@
-import { IModelViewProps } from "./interface";
 import { FromViewUiAction } from "./form/uiAction";
+import { IModelViewProps } from "./interface";
 
 export class ModelViewUiAction{
  

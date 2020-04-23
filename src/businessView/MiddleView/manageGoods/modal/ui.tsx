@@ -1,9 +1,12 @@
 import { Modal } from "antd";
+import { inject, observer } from "mobx-react";
 import React from "react";
 import CompanyForm from './form/ui';
 import { IModelViewProps } from "./interface";
 import { ModelViewUiAction } from "./uiAction";
 
+@inject("GlobalManageGoodsDomainStore")
+@observer
 export class ModelView extends React.Component<IModelViewProps>{
 
     private uiAction: ModelViewUiAction;

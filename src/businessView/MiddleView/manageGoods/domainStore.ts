@@ -1,10 +1,11 @@
 import { message } from "antd";
-import { observable, action } from "mobx";
-import { ManageGoodsEntity } from "./entity";
+import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
+import { ManageGoodsEntity } from "./entity";
 
 export class ManageGoodsDomainStore{
-   /**
+    
+    /**
      * 当前正在编辑的数据
      */
     @observable

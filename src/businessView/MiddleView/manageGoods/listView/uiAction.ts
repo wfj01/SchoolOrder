@@ -1,37 +1,94 @@
-import { observable } from "mobx";
+import { action } from "mobx";
+import { ManageGoodsDomainStore } from "../domainStore";
+import { ManageGoodsEntity } from "../entity";
 import { IManageGoodsViewProps } from "./interface";
 
 export class ManageGoodsViewUiAction{
-
+   
     /**
-     * 管理商品弹窗
+     * 当前操作类型
      */
-    @observable
-    public handleVisible : boolean;
-
+    public opearatorType:"none"|"add"|"edit"|"eye";
+    
+    private props:IManageGoodsViewProps;
+    private domainStore:ManageGoodsDomainStore;
 
     constructor(props:IManageGoodsViewProps){
-        this.handleVisible = false;
-        this.handleCancel = this.handleCancel.bind(this);
-        this.handleOk = this.handleOk.bind(this);
-        this.showModal = this.showModal.bind(this);
+        this.domainStore = props.GlobalManageGoodsDomainStore!;
+        this.addbtn = this.addbtn.bind(this);
+        this.adda = this.adda.bind(this);
+        this.cancel = this.cancel.bind(this);
+        this.edit = this.edit.bind(this);
+        this.save = this.save.bind(this);
+        this.onCloseClick = this.onCloseClick.bind(this);
+        this.eyeClick= this.eyeClick.bind(this);
+        this.props=props;
     }
 
-    public showModal(){
-        this.handleVisible = true;
         
+    /**
+     * 新增按钮点击
+     * @param model 实体类
+     */
+    @action
+    public addbtn(){
+        this.domainStore.currentEditData = new ManageGoodsEntity();
+        this.opearatorType="add";
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
     }
     
- 
     /**
-     *  确定方法 
+     * 新增<a>点击
+     * @param model 实体类
      */
-    public handleOk() {
-        this.handleVisible = false;
+    @action
+    public adda(){
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
+        this.opearatorType = "add";
+        this.domainStore.currentEditData = new ManageGoodsEntity();
     }
 
+    /**
+     * 编辑
+     */
+    @action
+    public edit(){
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
+        this.opearatorType = "edit";
+    }
 
-    public handleCancel(){
-        this.handleVisible = false;
+    /**
+     * 取消
+     */
+    @action
+    public cancel(){
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = false;
+        this.opearatorType = "none";
+    }
+
+   /**
+    * 保存
+    * @param model 实体类
+    */
+    @action
+    public save(model:ManageGoodsEntity){
+
+        if (this.opearatorType==="add") {
+            this.domainStore.Adddate(model);
+            this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = false;
+        }else if (this.opearatorType==="edit") {
+            this.domainStore.Update(model);
+            this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = false;
+        }
+    }
+
+    @action
+    public onCloseClick(){
+        this.props.GlobalManageGoodsDomainStore!.DrawerViewVisible = false;
+    }
+    
+    @action
+    public eyeClick(){
+        this.props.GlobalManageGoodsDomainStore!.DrawerViewVisible = true;
     }
 }

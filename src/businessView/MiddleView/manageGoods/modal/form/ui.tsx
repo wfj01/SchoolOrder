@@ -6,26 +6,26 @@ import { IFromViewProps } from './interface';
 import { FromViewUiAction } from './uiAction';
 
 
-const formItemLayout = {
+const formItemLayoutStyle = {
     labelCol: {
-        xs: 24,
-        sm: 10,
-
+        span: 6
     },
     wrapperCol: {
-        xs: 24,
-        sm: 14,
+        span: 15
     }
-}
+};
 
 @inject("GlobalManageGoodsDomainStore")
 @observer
 class FromView extends React.Component<IFromViewProps>{
+  
     private uiAction: FromViewUiAction;
 
     constructor(props: IFromViewProps) {
         super(props);
+
         this.uiAction = new FromViewUiAction(props);
+
     }
 
     /**
@@ -35,126 +35,163 @@ class FromView extends React.Component<IFromViewProps>{
         this.props.getUiAction(this.uiAction);
 
     }
+
     public render() {
-        const { getFieldDecorator } = this.props.form;
+        const form = this.props.form;
         return (
-
             <Form>
-                <Form.Item
-                    label="菜名："
-                    style={{ width: '300px' }}
-                    {...formItemLayout}
-                >
+                <Form.Item label={"Id"} {...formItemLayoutStyle} >
                     {
-                        getFieldDecorator('dishname', {
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "不能为空"
-                                },
-                                {
-                                    max: 50,
-                                    message: '超出长度限制',
-                                }
-                            ]
-                        })(
-                            <Input placeholder="请输入菜名" />
-                        )
+                        form.getFieldDecorator("id",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 15,
+                                        message: "长度不能大于15"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
                     }
                 </Form.Item>
-                <Form.Item
-                    label="价格"
-                    style={{ width: '300px' }}
-                    {...formItemLayout}
-                >
+                <Form.Item label={"菜名"} {...formItemLayoutStyle} >
                     {
-                        getFieldDecorator('price', {
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "不能为空"
-                                },
-                                {
-                                    max: 12,
-                                    message: '超出长度限制',
-                                }
-                            ]
-                        })(
-                            <Input placeholder="请输入所需要的价格" />
-                        )
+                        form.getFieldDecorator("dishname",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 30,
+                                        message: "长度不能大于30"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
                     }
                 </Form.Item>
-
-                <Form.Item
-                    label="需要时间"
-                    style={{ width: '300px' }}
-                    {...formItemLayout}
-                >
+                <Form.Item label={"价格"} {...formItemLayoutStyle} >
                     {
-                        getFieldDecorator('time', {
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "不能为空"
-                                },
-                            ]
-                        })(
-                            <Input placeholder="请输入需要的时间" />
-                        )
+                        form.getFieldDecorator("price",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 30,
+                                        message: "长度不能大于30"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
                     }
                 </Form.Item>
-
-                <Form.Item
-                    label="购买窗口"
-                    style={{ width: '300px' }}
-                    {...formItemLayout}
-
-                >
+                <Form.Item label={"做法"} {...formItemLayoutStyle} >
                     {
-                        getFieldDecorator('windows', {
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "不能为空"
-                                },
-                            ]
-                        })(
-                            <Input placeholder="请输入你的窗口" />
-                        )}
+                        form.getFieldDecorator("practice",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 15,
+                                        message: "长度不能大于15"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
+                    }
                 </Form.Item>
-                <Form.Item
-                    label="备注"
-                    style={{ width: '300px' }}
-                    {...formItemLayout}
-
-                >
+                <Form.Item label={"时间"} {...formItemLayoutStyle} >
                     {
-                        getFieldDecorator('remarks', {
-                            rules: [
-                                {
-                                    required: true,
-                                    whitespace: true,
-                                    message: "不能为空"
-                                },
-                            ]
-                        })(
-                            <Input />
-                        )}
+                        form.getFieldDecorator("time",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 25,
+                                        message: "长度不能大于25"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
+                    }
+                </Form.Item>
+                <Form.Item label={"窗口"} {...formItemLayoutStyle} >
+                    {
+                        form.getFieldDecorator("windows",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 25,
+                                        message: "长度不能大于25"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
+                    }
+                </Form.Item>
+                <Form.Item label={"说明"} {...formItemLayoutStyle} >
+                    {
+                        form.getFieldDecorator("remarks",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 25,
+                                        message: "长度不能大于25"
+                                    }
+                                ]
+                            }
+                        )(<Input />)
+                    }
                 </Form.Item>
             </Form>
         )
     }
 }
+
+
 /**
  * 表单首选项
  */
 const formCreateOption: FormCreateOption<IFromViewProps> = {
     mapPropsToFields(props) {
-        const item = props.GlobalManageGoodsDomainStore!.currentEditItem;
+        const item = props.GlobalManageGoodsDomainStore!.currentEditData;
         return {
             id: Form.createFormField({
                 value: item.id,
@@ -165,14 +202,17 @@ const formCreateOption: FormCreateOption<IFromViewProps> = {
             price: Form.createFormField({
                 value: item.price,
             }),
-            remarks: Form.createFormField({
-                value: item.remarks,
+            practice: Form.createFormField({
+                value: item.practice,
             }),
             time: Form.createFormField({
                 value: item.time,
             }),
             windows: Form.createFormField({
                 value: item.windows,
+            }),
+            remarks: Form.createFormField({
+                value: item.remarks,
             }),
         }
     }
