@@ -1,7 +1,9 @@
 import { Button } from "antd";
 import { inject, observer } from "mobx-react";
 import React from "react";
+import { FlexAlign } from "../../../../genericComponent/layout/flexAlign/flexAlign";
 import { VerThr } from "../../../../genericComponent/layout/gridBox/verThr/verThr";
+import { PaginationView } from "../pagination";
 import { SellingGoodsTable } from "../table/ui";
 import { ISellingGoodsViewProps } from "./interface";
 import { ListViewUiAction } from "./uiAction";
@@ -18,6 +20,8 @@ export class SellingGoodsView extends React.Component<ISellingGoodsViewProps>{
         super(props);
         this.uiAction = new ListViewUiAction(props);
     }
+
+
     public render() {
         return (
             <VerThr>
@@ -27,6 +31,13 @@ export class SellingGoodsView extends React.Component<ISellingGoodsViewProps>{
                 <VerThr.middle>
                     <SellingGoodsTable />
                 </VerThr.middle>
+                <VerThr.bottom>
+                    <FlexAlign xAlign="between">
+                        <div style={{ textAlign: "right", paddingRight: "12px", width: '450px' }}>
+                            <PaginationView GlobalSellGoodsDoMainStore={this.props.GlobalSellGoodsDoMainStore!} />
+                        </div>
+                    </FlexAlign>
+                </VerThr.bottom>
             </VerThr>
         )
     }

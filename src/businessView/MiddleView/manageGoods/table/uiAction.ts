@@ -85,7 +85,8 @@ export class ManageGoodsTableUiAction {
         if (!id) { return; };
 
         if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
-            console.log("this.props.GlobalManageGoodsDomainStore!.currentEditData:",this.props.GlobalManageGoodsDomainStore!.currentEditData);
+            console.log("this.props.GlobalManageGoodsDomainStore!.currentEditData:",this.props.GlobalManageGoodsDomainStore!.
+            currentEditData);
             this.props.onEdit(this.props.GlobalManageGoodsDomainStore!.currentEditData);
         } else {
             message.info('错误的事件参数');
@@ -113,12 +114,12 @@ export class ManageGoodsTableUiAction {
 
         if (!id) { return; };
 
-        // if (this.domainStore.SelectNeighborhood(id)) {
-        //     console.info(this.domainStore.CurrentEditNeighborhood);
-        //     this.domainStore.DeleteNeighborhood(this.domainStore.CurrentEditNeighborhood);
-        // } else {
-        //     message.info('错误的事件参数');
-        // }
+        if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
+            console.info(this.props.GlobalManageGoodsDomainStore!.currentEditData);
+            this.props.GlobalManageGoodsDomainStore!.Deletedate(this.props.GlobalManageGoodsDomainStore!.currentEditData.id);
+        } else {
+            message.info('错误的事件参数');
+        }
     }
 
     /**

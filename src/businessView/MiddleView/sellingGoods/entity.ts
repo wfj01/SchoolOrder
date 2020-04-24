@@ -1,44 +1,15 @@
 export class SellingGoodsEntity {
+    public  id :string;
+    
+    public dishname:string;
 
-    /**
-     * ID
-     */
-    public ID: string;
+    public price:string;
 
-    /**
-     * 菜名
-     */
-    public Dishname: string;
+    public practice:string;
 
-    /**
-     * 价格
-     */
-    public Price: string;
-    /**
-     * 得分
-     */
-    public Score: string;
+    public time:string;
 
-    /**
-     * 时间
-     */
-    public Time: string;
-    /**
-     * 购买窗口
-     */
-    public Windows: string;
-    /**
-     * 说明
-     */
-    public Explain: string;
+    public windows:string;
 
-    constructor() {
-        this.ID = "";
-        this.Price = "";
-        this.Score = "";
-        this.Windows = "";
-        this.Explain = "";
-        this.Dishname = "";
-        this.Time = "";
-    }
+    public remarks:string;
 }

@@ -136,8 +136,8 @@ export class ManageGoodsDomainStore{
                 if (!this.isLoading) {
                     this.isLoading = true;
                 }
-                
-                const res = await requestJson("/api/Business/deletedate" + id,
+                id=this.currentEditData.id;
+                const res = await requestJson("/api/Business/deletedate?" + id,
                     {
                         method: "POST",
                         headers: { "content-type": "application/json" }

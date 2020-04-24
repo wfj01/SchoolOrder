@@ -1,5 +1,8 @@
 import { message } from "antd";
+import { ClickParam } from "antd/lib/menu";
+import { ColumnProps } from "antd/lib/table";
 import { action, observable } from "mobx";
+import { requestJson } from "../../../genericComponent/requestJson";
 import { SellingGoodsEntity } from "./entity";
 
 export class SellGoodsDoMainStore{
@@ -14,43 +17,101 @@ export class SellGoodsDoMainStore{
      * 集合
      */
     @observable
-    public List:SellingGoodsEntity[]
+    public allReportTableData:SellingGoodsEntity[]
 
-    public tableColumns=[
-        {dataIndex: 'ID',key: 'ID',title: 'ID',width: "10%"},
-        {dataIndex: 'Dishname',key: 'Dishname',title: '菜名',width: "10%"},
-        {dataIndex: 'Price',key: 'Price',title: '价格',width: "10%"},
-        {dataIndex: 'Score',key: 'Score',title: '得分',width: '10%'},
-        {dataIndex: "Time",key: 'Time',title: "时间",width: '10%'},
-        {dataIndex: "Windows",key: 'Windows',title: "窗口",width: "10%"},
-        {dataIndex: 'Explain',key: 'Explain',title: '说明',width: '10%'}
-    ]
+    /**
+     * 展示数据
+     */
+    @observable
+    public showReportTableData: SellingGoodsEntity[];
+
+    /**
+     * 总数
+     */
+    @observable
+    public customerCount: number;
+
+    /**
+     * 当前页下标
+     */
+    @observable
+    public PageIndex: number;
+
+    /**
+     * 每页数据条数
+     */
+    @observable
+    public PageSize: number;
+
+    /**
+     * 已选中的行数
+     */
+    @observable
+    public selectedRow: number = 0;
+
+    /**
+     * 表格需要的列
+     */
+    @observable
+    public tableColumns:Array<ColumnProps<any>>;
+
     constructor(){
+        this.customerCount = 0;
+        this.PageIndex = 1
+        this.PageSize = 20;
         this.IsLoading = false;
-        this.List = new Array<SellingGoodsEntity>();
+        this.showReportTableData = new Array<SellingGoodsEntity>();
+        this.allReportTableData = new Array<SellingGoodsEntity>();
         this.Loadview = this.Loadview.bind(this);
     }
 
     @action
-    public Loadview(){
+    public async Loadview(){
         try{
-            this.IsLoading = true;
-            this.List = new Array <SellingGoodsEntity>();
-            const aaa = new SellingGoodsEntity();
-            aaa.ID = "123";
-            aaa.Price = "123";
-            aaa.Dishname = "123";
-            aaa.Explain = "123";
-            aaa.Score = "123";
-            aaa.Windows = "123";
-            aaa.Time = "1230;"
-            this.List.push(aaa);
+            if(!this.IsLoading){
+                this.IsLoading=true;
+            }
+            if (this.allReportTableData.length>0) {
+                this.allReportTableData.splice(0,this.allReportTableData.length);
+            }
+            const res=await requestJson('/api/Business/loaddata', {
+                method: "GET"
+            });
+            if (res.rtnCode===0) {
+                const data = res.data.table;
+                console.log("data:",data);
+                this.allReportTableData = data;
+                this.setShowTableData();
+                this.IsLoading = false;           
+            } else {
+                message.error(res.rtnMsg);
+                this.IsLoading = false;
+            }
+        } catch (error) {    
+            console.log(error);
             this.IsLoading = false;
         }
-        catch(error){
-            message.error(error);
-            this.IsLoading = false;
-        }
+    }
+
+    public paginationOnChange = (page: number, pageSize?: number | undefined) => {
+        this.PageIndex = page;
+        this.setShowTableData();
+        console.log("显示数据");
+
+    }
+
+    public paginationPageSizeMenuOnClick = (param: ClickParam) => {
+        this.PageSize = parseInt(param.key, 10);
+        this.setShowTableData();
+        console.log("显示数据");
+
+    }
+    /** 根据当前页码和显示数设置展示数据 */
+    public setShowTableData() {
+        this.showReportTableData = this.allReportTableData
+            .slice(this.PageSize * (this.PageIndex - 1), this.PageSize * this.PageIndex)
+        //     .concat(this.showReportTableData.slice(-1));
+        console.log("显示数据");
     }
 
 }

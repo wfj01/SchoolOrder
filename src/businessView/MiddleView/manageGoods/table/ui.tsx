@@ -14,13 +14,13 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         {
             dataIndex: 'dishname',
             key: 'dishname',
-            title: 'dishname',
+            title: '菜名',
             width: "10%",
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: 'price',
+            dataIndex: '价格',
             key: 'price',
             title: 'price',
             width: "10%",
@@ -30,7 +30,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         {
             dataIndex: 'practice',
             key: 'practice',
-            title: 'practice',
+            title: '做法',
             width: '10%',
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
@@ -38,7 +38,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         {
             dataIndex: "time",
             key: 'time',
-            title: "time",
+            title: "时间",
             width: '10%',
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
@@ -46,7 +46,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         {
             dataIndex: "windows",
             key: 'windows',
-            title: "windows",
+            title: "窗口",
             width: "10%",
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
@@ -54,7 +54,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         {
             dataIndex: 'remarks',
             key: 'remarks',
-            title: 'remarks',
+            title: '说明',
             width: '10%',
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
@@ -86,7 +86,6 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                             <Popconfirm placement="top" title={"确定要删除吗？"} onConfirm={this.uiAction.deleteClick.bind(undefined, `delete_${record.id}`)} okText="确定" cancelText="取消">
                                 <a
                                     href={'javascript:;'}
-                                    // onClick = {this.uiAction.deleteClick}
                                     id={`delete_${record.id}`}
                                     title="删除"
                                 >

@@ -1,4 +1,4 @@
-// import { exportExcel } from "../exportExcel";
+import { exportExcel } from "../exportExcel";
 import { ISellingGoodsViewProps } from "./interface";
 
 export class ListViewUiAction{
@@ -12,6 +12,6 @@ export class ListViewUiAction{
 
     public handleOnClick() {
         console.log("导出");
-        // exportExcel(this.props.GlobalSellGoodsDoMainStore!.tableColumns!, this.props.GlobalSellGoodsDoMainStore!.showReportTableData, "在卖商品明细表.xlsx")
+        exportExcel(this.props.GlobalSellGoodsDoMainStore!.tableColumns!, this.props.GlobalSellGoodsDoMainStore!.allReportTableData, "在卖商品明细表.xlsx")
     }
 }

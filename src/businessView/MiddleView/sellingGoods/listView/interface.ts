@@ -1,5 +1,5 @@
 import { SellGoodsDoMainStore } from "../domainStore";
 
 export interface ISellingGoodsViewProps{
-    GlobalSellGoodsDoMainStore?:SellGoodsDoMainStore
+    GlobalSellGoodsDoMainStore?:SellGoodsDoMainStore;
 }
