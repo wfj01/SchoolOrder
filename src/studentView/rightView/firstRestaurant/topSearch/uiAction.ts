@@ -47,6 +47,8 @@ export class TopSearchUiAction{
      * 保存按钮事件
      */
     public onClickSave(){   
+        console.log("this.props.GWWWWWWWW!,",this.props.GlobalListViewDoMainStore!.LoginUsername);
+        this.props.GlobalFirstDoMainStore!.ceshi1  = this.props.GlobalListViewDoMainStore!.LoginUsername;
         this.props.GlobalFirstDoMainStore!.SaveBtn();
     }
 }

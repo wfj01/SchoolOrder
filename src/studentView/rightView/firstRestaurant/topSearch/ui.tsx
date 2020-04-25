@@ -8,7 +8,7 @@ import { TopSearchUiAction } from './uiAction';
 /**
  * 第一餐厅-顶部查询功能
  */
-@inject("GlobalFirstDoMainStore")
+@inject("GlobalFirstDoMainStore","GlobalListViewDoMainStore")
 @observer
 export class TopSearchView extends React.Component<ITopSearchViewProps> {
 

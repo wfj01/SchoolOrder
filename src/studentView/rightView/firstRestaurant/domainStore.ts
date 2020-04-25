@@ -115,8 +115,12 @@ export class FirstRestaurantDoMainStore {
     @observable
     public currentEditCardType:FirstRestaurantEntity;
 
+    @observable
+    public ceshi1:string;
+
     constructor() {
         this.lengths=0;
+        this.ceshi1='';
         this.currentEditCardType = new FirstRestaurantEntity();
         this.Dishname="";
         this.StartPrice="";
@@ -178,7 +182,7 @@ export class FirstRestaurantDoMainStore {
     public async SearchBtn(){
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Firstroom/SearchBtn?dishname="+this.Dishname+"&question1="+this.StartPrice+"&question2="+this.EndPrice,
+            const res = await requestJson("/api/Firstroom/SearchBtn?dishname="+this.Dishname+"&price1="+this.StartPrice+"&price2="+this.EndPrice,
                 {
                     method: "GET"
                 })
@@ -203,9 +207,9 @@ export class FirstRestaurantDoMainStore {
      */
     @action
     public async SaveBtn(): Promise<IResponseJsonResult> {
+        console.log("this.ceshi1",this.ceshi1);
         try {
-            console.log("this.selectRowListData:",this.selectRowListData);
-            const res:any = await requestJson("/api/Firstroom/postUser",
+            const res:any = await requestJson("/api/Firstroom/postUser?studentid="+this.ceshi1,
                 {
                     method: "POST",
                     body: JSON.stringify(this.selectRowListData),

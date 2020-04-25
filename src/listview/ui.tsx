@@ -1,6 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import '../App.css';
+import { BussinessView } from '../businessView/listView/ui';
 import Background from '../image/tu5.jpg';
 import { ForgetPassWordDialog } from '../loginPage/forgetPassword/dialog/ui';
 import LoginPage from '../loginPage/ui';
@@ -24,7 +25,8 @@ interface IListViewState {
 @inject("GlobalListViewDoMainStore")
 @observer
 export class ListView extends React.Component<IListViewProps, IListViewState>{
-
+    
+    
     private uiAction: ListViewUiAction;
 
     // private value: string;
@@ -60,18 +62,22 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
                             Passwordtext = {this.uiAction.PasswordText}
                             RegisterOnClick={this.RegisterOnClick}
                             ForgetBtnonClick={this.ForgetBtnonClick}
-                            Logindisplay={this.state.Logindisplay} />
+                            Logindisplay={this.uiAction.Logindisplay} 
+                            Ifbusiness={this.uiAction.IfbusinessClick}/>
                         <RegisterPageDialog
                             handleCancel={this.uiAction.RegisterPagecancel}
                             handleOk={this.uiAction.RegisterPagesave}
                             RegPagevisiable={this.props.GlobalListViewDoMainStore!.RegisterPageVisiable} />
                     </div>
                 </div>
-                <div className="wrapper" style={{ display: this.state.display3 }}>
+                <div className="wrapper" style={{ display: this.uiAction.ForgetPassWorddisplay }}>
                     <ForgetPassWordDialog
                         handleCancel={this.uiAction.ForgetPassWordcancel}
                         handleOk={this.uiAction.ForgetPassWordsave}
                         RegPagevisiable={this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable} />
+                </div>
+                <div style={{display:this.uiAction.bussinessdisplay}}>
+                    <BussinessView/>
                 </div>
                 <div style={{ display: this.props.GlobalListViewDoMainStore!.display2 }}>
                     < MenuView />

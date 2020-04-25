@@ -16,8 +16,8 @@ export class DrawerView extends React.Component<IDrawerViewProps>{
     public render() {
         return (
             <Drawer
-                title="Create a new account"
-                width={720}
+                title="查看详情"
+                width={450}
                 onClose={this.props.onClose}
                 visible={this.props.visible}
             >

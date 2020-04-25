@@ -1,4 +1,4 @@
-import { action } from "mobx";
+import { action, observable } from "mobx";
 import { ForgetPassWordEntity } from "../loginPage/entity";
 import { RegisterPageFormEntity } from "../registerPage/entity";
 import { IListViewProps } from "./interface";
@@ -7,8 +7,29 @@ export class ListViewUiAction {
 
      public props: IListViewProps;
 
+     /**
+      * 商家页面是否显示
+      */
+     @observable
+     public bussinessdisplay:string;
+
+     /**
+      * 登录页面是否显示
+      */
+     @observable
+     public Logindisplay:string;
+
+     /**
+      * 忘记密码页面是否显示
+      */
+     @observable
+     public ForgetPassWorddisplay:string;
+
      constructor(props: IListViewProps) {
           this.props = props;
+          this.bussinessdisplay = "none";
+          this.ForgetPassWorddisplay = "none";
+          this.Logindisplay = "block";
           this.SelectOnChange = this.SelectOnChange.bind(this);
           this.RegisterOnClick = this.RegisterOnClick.bind(this);
           this.RegisterPagecancel = this.RegisterPagecancel.bind(this);
@@ -17,6 +38,7 @@ export class ListViewUiAction {
           this.ForgetPassWordsave = this.ForgetPassWordsave.bind(this);
           this.UsernameText = this.UsernameText.bind(this);
           this.PasswordText = this.PasswordText.bind(this);
+          this.IfbusinessClick = this.IfbusinessClick.bind(this);
      }
 
      public RegisterOnClick() {
@@ -66,5 +88,12 @@ export class ListViewUiAction {
      public ForgetPassWordsave(model: ForgetPassWordEntity) {
           this.props.GlobalListViewDoMainStore!.RegisterPageVisiable = false;
           this.props.GlobalListViewDoMainStore!.UpdatePassWord(model);
+     }
+
+     @action
+     public IfbusinessClick(){
+          this.props.GlobalListViewDoMainStore!.display1="none";
+          this.Logindisplay = "none";
+          this.bussinessdisplay = "block";
      }
 }

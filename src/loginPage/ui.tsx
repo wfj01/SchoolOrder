@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { ILoginPageProps } from './interface';
@@ -78,10 +78,10 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                 )(<Input onChange={this.props.Passwordtext} />)
                             }
                         </Form.Item>
-                        <Form.Item {...formItemLayoutStyle}>
-                            <Checkbox>记住账号</Checkbox>
+                        <Form.Item >
+                            <a href="##" onClick={this.props.Ifbusiness}>如果你是商家，请点击这里</a>
                         </Form.Item>
-                        <Form.Item {...formItemLayoutStyle}>
+                        <Form.Item>
                             <Button href="##" type="primary" htmlType="submit" onClick={this.props.LoginOnClick} style={{ marginRight: " 8px" }}>
                                 登录
                             </Button>

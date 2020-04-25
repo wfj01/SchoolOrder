@@ -100,6 +100,7 @@ export class ManageGoodsTableUiAction {
      */
     @action
     public deleteClick(value: string, e: React.SyntheticEvent<HTMLAnchorElement>) {
+        console.log("执行")
         const deleteid = value;
         if (!deleteid) {
             message.info("无效的对象id");
@@ -110,16 +111,12 @@ export class ManageGoodsTableUiAction {
             message.info('无效的对象id');
             return;
         }
-        const id = deleteid.substring(ix + 1);
-
-        if (!id) { return; };
-
-        if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
-            console.info(this.props.GlobalManageGoodsDomainStore!.currentEditData);
-            this.props.GlobalManageGoodsDomainStore!.Deletedate(this.props.GlobalManageGoodsDomainStore!.currentEditData.id);
-        } else {
-            message.info('错误的事件参数');
-        }
+        const id = Number(deleteid.substring(ix + 1));
+        console.log("执行执行",deleteid)
+        console.log("id:",id);
+        if (!id) { return; }
+        console.log("1111");
+        this.props.GlobalManageGoodsDomainStore!.Deletedate(id);
     }
 
     /**

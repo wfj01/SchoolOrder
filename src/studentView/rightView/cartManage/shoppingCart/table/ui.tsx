@@ -10,7 +10,7 @@ import { IShoppingCartTableViewProps } from './interface';
 import { ShoppingCartViewTableUiAction } from './uiAction';
 
 
-@inject("GlobalStepsViewDomainStore")
+@inject("GlobalStepsViewDomainStore","GlobalListViewDoMainStore")
 @observer
 export class ShoppingCartTableView extends React.Component<IShoppingCartTableViewProps> {
 
@@ -84,6 +84,7 @@ export class ShoppingCartTableView extends React.Component<IShoppingCartTableVie
         this.uiAction = new ShoppingCartViewTableUiAction(props);
     }
     public componentDidMount() {
+        this.props.GlobalStepsViewDomainStore!.studentid = this.props.GlobalListViewDoMainStore!.LoginUsername;
         this.props.GlobalStepsViewDomainStore!.LoadData();
     }
     public render() {

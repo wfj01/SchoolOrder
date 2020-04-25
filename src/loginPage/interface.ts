@@ -7,6 +7,7 @@ export interface ILoginPageProps extends FormComponentProps   {
     RegisterOnClick?: () => void;
     LoginOnClick?: () => void;
     ForgetBtnonClick?: () => void;
+    Ifbusiness?:()=>void;
     Usernametext?:(event: React.ChangeEvent<HTMLInputElement>)=>void;
     Passwordtext?:(event: React.ChangeEvent<HTMLInputElement>)=>void;
 }

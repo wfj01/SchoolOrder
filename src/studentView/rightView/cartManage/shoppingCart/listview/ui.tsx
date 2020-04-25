@@ -5,7 +5,7 @@ import { ShoppingCartTableView } from "../table/ui";
 import { IShoppingCartViewProps } from "./interface";
 import { ShoppingCartViewUiAction } from "./uiAction";
 
-@inject("GlobalStepsViewDomainStore")
+@inject("GlobalStepsViewDomainStore","GlobalListViewDoMainStore")
 @observer
 export class ShoppingCartView extends React.Component<IShoppingCartViewProps>{
 

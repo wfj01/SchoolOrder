@@ -1,5 +1,8 @@
+import { ListViewDoMainStore } from "../../../../listview/domainStore";
 import { FirstRestaurantDoMainStore } from "../domainStore";
 
 export interface ITopSearchViewProps {
-    GlobalFirstDoMainStore?: FirstRestaurantDoMainStore
+    GlobalFirstDoMainStore?: FirstRestaurantDoMainStore;
+
+    GlobalListViewDoMainStore?:ListViewDoMainStore;
 }

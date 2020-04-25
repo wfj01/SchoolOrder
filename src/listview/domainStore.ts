@@ -79,6 +79,7 @@ export class ListViewDoMainStore {
             if (res.rtnCode === 0) {
                 this.display1 = "none";
                 this.display2 = "block";
+                console.log("this.LoginPassword:", this.LoginPassword);
             }
             else {
                 message.info(res.rtnMsg);

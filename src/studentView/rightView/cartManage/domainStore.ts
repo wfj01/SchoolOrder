@@ -55,7 +55,14 @@ export class StepsViewDomainStore {
 
     public element: any;
 
+    /**
+     * 学号
+     */
+    @observable
+    public studentid:string;
+
     constructor() {
+        this.studentid = "";
         this.firstnumber = 0;
         this.secondnumber = 0;
         this.calculatednumber = 0;
@@ -92,7 +99,7 @@ export class StepsViewDomainStore {
     public async LoadData() {
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Order/queryUser",
+            const res = await requestJson("/api/Order/queryUser?studentid="+this.studentid,
                 {
                     method: "GET"
                 })

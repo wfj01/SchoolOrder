@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
+import { VerThr } from '../../../../genericComponent/gridBox/verThr/verThr';
 import { DrawerView } from '../drawer/ui';
 import { ModelView } from '../modal/ui';
 import { ManageGoodsTable } from '../table/ui';
@@ -19,11 +20,11 @@ export class ManageGoodsView extends React.Component<IManageGoodsViewProps>{
     }
     public render() {
         return (
-            <>
-                <div>
+            <VerThr>
+                <VerThr.top>
                     <Button onClick={this.uiAction.addbtn} style={{ float: "left", margin: 8 }}>新增</Button>
-                </div>
-                <div>
+                </VerThr.top>
+                <VerThr.middle>
                     <ManageGoodsTable
                         onAdd={this.uiAction.adda}
                         onEdit={this.uiAction.edit}
@@ -36,8 +37,8 @@ export class ManageGoodsView extends React.Component<IManageGoodsViewProps>{
                         handleCancel={this.uiAction.cancel}
                         handleOk={this.uiAction.save}
                         visible={this.props.GlobalManageGoodsDomainStore!.DialogViewVisible} />
-                </div>
-            </>
+                </VerThr.middle>
+            </VerThr>
         )
     }
 }

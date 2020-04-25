@@ -27,6 +27,8 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
 
     // private uiaction :MenuViewuiAction;
 
+    
+
     constructor(props: IMenuViewProps) {
         super(props);
         this.state = {
@@ -47,7 +49,7 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                             onClick={this.handleclick}
                             selectedKeys={[this.state.current]}
                             mode="inline"
-                            defaultOpenKeys={['01','02','03']}
+                            defaultOpenKeys={['01','02','03','04']}
                         >
                             <SubMenu
                                 key="01"
@@ -83,7 +85,18 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                                     </span>
                                 }
                             >
-                                <Menu.Item key="0401">购物车管理</Menu.Item>
+                                <Menu.Item key="0301">购物车管理</Menu.Item>
+                                <Menu.Item key="0302">订单管理</Menu.Item>
+                            </SubMenu>
+                            <SubMenu
+                                key="04"
+                                title={
+                                    <span>
+                                        <span>我的</span>
+                                    </span>
+                                }
+                            >
+                                <Menu.Item key="0401">我的信息</Menu.Item>
                                 <Menu.Item key="0402">订单管理</Menu.Item>
                                 <Menu.Item key="0403">自我管理</Menu.Item>
                             </SubMenu>
