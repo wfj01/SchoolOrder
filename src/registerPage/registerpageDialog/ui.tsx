@@ -25,6 +25,7 @@ export class RegisterPageDialog extends React.Component<IRegisterPageDialogProps
                 visible={this.props.RegPagevisiable}
                 onOk={this.uiAction.handleOk}
                 onCancel={this.props.handleCancel}
+                width={"800px"}
                 okText={"确定"}
                 cancelText={"取消"}
             >

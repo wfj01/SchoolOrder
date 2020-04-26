@@ -4,10 +4,12 @@ import 'orid/lib/style/standStyle/oridFeedbackPC.scss';
 import React from 'react';
 import { VerThr } from '../../../genericComponent/gridBox/verThr/verThr';
 import { FlexAlign } from '../../../genericComponent/layout/flexAlign/flexAlign';
+import { DrawerView } from './drawer/ui';
 import { ISecondRestaurantProps } from './interface';
 import { PaginationView } from './pagination';
 import { SecondRestaurantTable } from './table/ui';
 import { TopSearchView } from './topSearch/ui';
+import { SecondRestaurantUiAction } from './uiAction';
 
 /**
  * 第二餐厅
@@ -15,6 +17,13 @@ import { TopSearchView } from './topSearch/ui';
 @inject("GlobalSecondDoMainStore")
 @observer
 export class SecondRestaurant extends React.Component<ISecondRestaurantProps>{
+
+    private uiAction:SecondRestaurantUiAction;
+
+    constructor(props:ISecondRestaurantProps){
+        super(props);
+        this.uiAction = new SecondRestaurantUiAction(props);
+    }
     public render() {
         return (
             <VerThr>
@@ -22,13 +31,18 @@ export class SecondRestaurant extends React.Component<ISecondRestaurantProps>{
                     <TopSearchView />
                 </VerThr.top>
                 <VerThr.middle style={{ padding: '8px' }}>
-                    < SecondRestaurantTable />
+                    < SecondRestaurantTable 
+                    onEyeClick={this.uiAction.onEyeClick}/>
+                    <DrawerView
+                       visible={this.uiAction.visible}
+                       onClose={this.uiAction.onCloseClick}/>
                 </VerThr.middle>
                 <VerThr.bottom style={{ paddingRight: "8px" }}
                 >
                     <FlexAlign xAlign="between">
                         <Alert
                             message={(
+                                
                                 <span className="ori-alert-message">
                                     已选择
                                     <a href="##">

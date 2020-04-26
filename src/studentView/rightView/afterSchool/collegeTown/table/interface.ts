@@ -1,7 +1,11 @@
 import { CollegeTownDoMainStore } from "../domainStore";
+import { CollegeTownEntity } from "../entity";
 
 export interface ICollegeTownTableProps{
     
-    GlobalCollegeTownDoMainStore?:CollegeTownDoMainStore
+    GlobalCollegeTownDoMainStore?:CollegeTownDoMainStore;
+
+    onEyeClick:(model:CollegeTownEntity)=>void;
+
     
 }

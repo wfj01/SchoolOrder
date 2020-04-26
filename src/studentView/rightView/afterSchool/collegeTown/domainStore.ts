@@ -101,6 +101,19 @@ export class CollegeTownDoMainStore {
      */
     @observable
     public EndPrice:string;
+    
+    
+    /**
+     * data数组的序列
+     */
+    @observable
+    public lengths: number;
+
+    /**
+     * 当前正在编辑的水卡类型
+     */
+    @observable
+    public currentEditCardType:CollegeTownEntity;
 
     constructor() {
         this.Dishname="";
@@ -226,4 +239,31 @@ export class CollegeTownDoMainStore {
             // .concat(this.showReportTableData.slice(-1));
         console.log("显示数据");
     }
+
+    /**
+     * @param id 
+     */
+    @action
+    public SelectedCardType(id:string):boolean{
+        try {     
+            this.recursionSelect(id,this.allReportTableData);
+            return true;
+        } catch (error) {
+            console.log("error:",error);
+            return false;
+        }   
+    }
+    
+    /**
+     * 
+     * 递归找到选中的数据
+     */
+    @action
+    private recursionSelect(itemId:string,CardTypeList:CollegeTownEntity[]){
+        CardTypeList.forEach((entity)=>{
+           if(itemId===entity.id){
+               this.currentEditCardType = entity;
+           }
+       });
+   }
 }

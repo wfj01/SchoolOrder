@@ -3,10 +3,12 @@ import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { VerThr } from '../../../../genericComponent/gridBox/verThr/verThr';
 import { FlexAlign } from '../../../../genericComponent/layout/flexAlign/flexAlign';
+import { DrawerView } from './drawer/ui';
 import { ICollegeTownProps } from './interface';
 import { PaginationView } from './pagination';
 import { CollegeTownTable } from './table/ui';
 import { TopSearchView } from './topSearch/ui';
+import { CollegeTownUiAction } from './uiAction';
 
 /**
  * 大学城
@@ -14,6 +16,13 @@ import { TopSearchView } from './topSearch/ui';
 @inject("GlobalCollegeTownDoMainStore")
 @observer
 export class CollegeTown extends React.Component<ICollegeTownProps> {
+
+    private uiAction: CollegeTownUiAction;
+
+    constructor(props: ICollegeTownProps) {
+        super(props);
+        this.uiAction = new CollegeTownUiAction(props);
+    }
     public render() {
         return (
             <VerThr>
@@ -21,7 +30,11 @@ export class CollegeTown extends React.Component<ICollegeTownProps> {
                     <TopSearchView />
                 </VerThr.top>
                 <VerThr.middle style={{ padding: '8px' }}>
-                    <CollegeTownTable />
+                    <CollegeTownTable
+                        onEyeClick={this.uiAction.onEyeClick} />
+                    <DrawerView
+                        visible={this.uiAction.visible}
+                        onClose={this.uiAction.onCloseClick} />
                 </VerThr.middle>
                 <VerThr.bottom style={{ paddingRight: "8px" }}
                 >

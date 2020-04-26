@@ -12,6 +12,11 @@ const formItemLayoutStyle = {
     }
 };
 
+const tailLayout = {
+    wrapperCol: { offset: 8, span: 16 },
+};
+
+
 /**
  * 登录页面
  */
@@ -78,10 +83,7 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                 )(<Input onChange={this.props.Passwordtext} />)
                             }
                         </Form.Item>
-                        <Form.Item >
-                            <a href="##" onClick={this.props.Ifbusiness}>如果你是商家，请点击这里</a>
-                        </Form.Item>
-                        <Form.Item>
+                        <Form.Item {...tailLayout}>
                             <Button href="##" type="primary" htmlType="submit" onClick={this.props.LoginOnClick} style={{ marginRight: " 8px" }}>
                                 登录
                             </Button>
@@ -89,6 +91,10 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                 注册
                             </Button>
                             <a id="Forgetpassword" href="##" onClick={this.props.ForgetBtnonClick}>忘记密码</a>
+                        </Form.Item>
+
+                        <Form.Item {...tailLayout}>
+                            <a href="##" onClick={this.props.Ifbusiness}>如果你是商家，请点击这里</a>
                         </Form.Item>
                     </Form>
                 </div>

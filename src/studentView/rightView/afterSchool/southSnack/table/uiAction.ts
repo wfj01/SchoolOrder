@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { SouthSnackEntity } from "../entity";
 import { ISouthSnackTableProps } from "./interface";
 
@@ -8,6 +9,7 @@ export class SouthSnackTableUiAction{
     constructor(props:ISouthSnackTableProps){
         this.props = props;
         this.TableOnChaneg = this.TableOnChaneg.bind(this);
+        this.EyeClick = this.EyeClick.bind(this);
     }
 
     /**
@@ -24,6 +26,22 @@ export class SouthSnackTableUiAction{
         // this.props.GlobalSouthSnackDoMainStore!.UpdatainevioceAddress(row);
         
     }
+
+    public EyeClick(e:React.SyntheticEvent<HTMLAnchorElement>){
+        e.preventDefault();
+        const id = this.getMeterTypeId(e);
+        if(!id){return;};
+        if (this.props.GlobalSouthSnackDoMainStore!.SelectedCardType(id)) {
+            console.log("id:",id);
+            const ix = this.props.GlobalSouthSnackDoMainStore!.allReportTableData.findIndex(x=>Number(x.id) === Number(id))
+            console.log("ix:",ix);
+            this.props.GlobalSouthSnackDoMainStore!.lengths = Number(ix);
+            this.props.onEyeClick(this.props.GlobalSouthSnackDoMainStore!.currentEditCardType);
+        } else {
+            message.info('错误的事件参数');
+        }
+    }
+
     /**
      * 表格选中事件
      * @param selectedRowKeys 选中的数量
@@ -42,5 +60,26 @@ export class SouthSnackTableUiAction{
         // console.log("SlectedRowKey:", selectedRowKeys + ",tableKeys:" + this.tableKeys)
         this.props.GlobalSouthSnackDoMainStore!.selectedRow = selectedRowKeys.length;
         console.log("SelecredRowKeys",selectedRowKeys.length);
+    }
+
+    private getMeterTypeId(e: React.SyntheticEvent<HTMLAnchorElement>): (string | undefined) {
+
+        const id = e.currentTarget.getAttribute("id");
+        console.log(id);
+        if (!id) {
+            message.error("无效的对象id")
+            return undefined;
+        }
+        const index = id.indexOf("_");
+        if (index < 0) {
+            message.error("无效的对象id")
+            return undefined;
+        }
+        try {
+            return id.substring(index + 1);
+        } catch (error) {
+            message.error(error.message);
+            return undefined;
+        }
     }
 }

@@ -3,10 +3,12 @@ import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { VerThr } from '../../../../genericComponent/gridBox/verThr/verThr';
 import { FlexAlign } from '../../../../genericComponent/layout/flexAlign/flexAlign';
+import { DrawerView } from './drawer/ui';
 import { ISouthSnackProps } from './interface';
 import { PaginationView } from './pagination';
 import { SouthSnackTable } from './table/ui';
 import { TopSearchView } from './topSearch/ui';
+import { SouthSnackUiAction } from './uiAction';
 
 /**
  * 南门小吃
@@ -14,6 +16,13 @@ import { TopSearchView } from './topSearch/ui';
 @inject("GlobalSouthSnackDoMainStore")
 @observer
 export class SouthSnack extends React.Component<ISouthSnackProps> {
+
+    private uiAction:SouthSnackUiAction;
+
+    constructor(props:ISouthSnackProps){
+        super(props);
+        this.uiAction = new SouthSnackUiAction(props);
+    }
     public render() {
         return (
             <VerThr>
@@ -21,7 +30,11 @@ export class SouthSnack extends React.Component<ISouthSnackProps> {
                     <TopSearchView />
                 </VerThr.top>
                 <VerThr.middle style={{ padding: '8px' }}>
-                    <SouthSnackTable />
+                    <SouthSnackTable 
+                    onEyeClick={this.uiAction.onEyeClick}/>
+                    <DrawerView
+                       visible={this.uiAction.visible}
+                       onClose={this.uiAction.onCloseClick}/>
                 </VerThr.middle>
                 <VerThr.bottom style={{ paddingRight: "8px" }}
                 >
