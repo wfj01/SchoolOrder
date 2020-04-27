@@ -1,7 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import '../App.css';
-import { BussinessView } from '../businessView/listView/ui';
+import { BussinessView } from '../businessView/MiddleView/listView/ui';
 import Background from '../image/tu5.jpg';
 import { ForgetPassWordDialog } from '../loginPage/forgetPassword/dialog/ui';
 import LoginPage from '../loginPage/ui';

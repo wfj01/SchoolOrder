@@ -1,9 +1,9 @@
 import { Provider } from 'mobx-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { BussinessView } from './businessView/listView/ui';
+import { BusinessListView } from './businessView/listview/ui';
 import './index.css';
-import { ListView } from './listview/ui';
+// import { ListView } from './listview/ui';
 import DemoStore from './stores';
 
 /**
@@ -13,7 +13,7 @@ export class Demo extends React.Component{
   public render(){
       return(
           <Provider{...DemoStore}>
-              <ListView/>
+              <BusinessListView/>
           </Provider>
       )
   }
