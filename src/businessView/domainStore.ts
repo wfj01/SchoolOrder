@@ -104,12 +104,12 @@ export class BusinessListViewDoMainStore{
      */
     public async  LoginVerification() {
         // try {
-            // const res = await requestJson("/api/Login/getUser?Studentid=" + this.LoginUsername + "&Password=" + this.LoginPassword,
-            //     {
-            //         method: "GET",
-            //     });
+        //     const res = await requestJson("/api/LoginPage/getUser?Name=" + this.LoginUsername + "&Password=" + this.LoginPassword+"&License="+this.AuthorizationCode,
+        //         {
+        //             method: "GET",
+        //         });
 
-            // if (res.rtnCode === 0) {
+        //     if (res.rtnCode === 0) {
                 this.display1 = "none";
                 this.display2 = "block";
         //         console.log("this.LoginPassword:", this.LoginPassword);

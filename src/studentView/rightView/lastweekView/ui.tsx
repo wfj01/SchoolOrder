@@ -2,7 +2,6 @@ import { Layout } from "antd";
 import { inject, observer } from "mobx-react";
 import React from "react";
 import { VerThr } from "../../../genericComponent/gridBox/verThr/verThr";
-import imgURL from '../../../image/Hongshaorou.jpg';
 import { ILastWeekViewProps } from "./interface";
 import MiddleFromView from "./middleFrom/ui";
 import { TopView } from "./topView/ui";
@@ -29,7 +28,7 @@ export class LastWeekView extends React.Component<ILastWeekViewProps>{
                         <header >菜品信息</header>
                         <Layout>
                             <div style={{ minWidth: "500px" }}>
-                                <Sider ><img alt="##" src={imgURL} /></Sider>
+                                <Sider ><img alt="##" src={this.props.GlobalLastWeekDomainStore!.imageUrl} /></Sider>
                             </div>
                             <Content >
                                 {this.props.GlobalLastWeekDomainStore!.List.length > 0

@@ -1,7 +1,13 @@
 import { message } from "antd";
 import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
+import imgURL2 from '../../../image/fentijin.jpg';
+import imgURL4 from '../../../image/Hongshaorou.jpg';
+import imgURL5 from '../../../image/hongshaozaiji.jpg';
+import imgURL3 from '../../../image/mapodoufu.jpg';
+import imgURL1 from '../../../image/shaozahui.jpg';
 import { LastWeekEntity } from "./entity";
+
 
 export class LastWeekDomainStore{
     
@@ -27,8 +33,15 @@ export class LastWeekDomainStore{
     @observable
     public currentEditItem: LastWeekEntity;
 
+    @observable
+    public imageUrl:string;
+
+    @observable
+    public imageList:string[]
     
     constructor(){
+        this.imageUrl = imgURL1;
+        this.imageList = [imgURL1,imgURL2,imgURL3,imgURL4,imgURL5];
         this.Isloading = false;
         this.List = [];
         this.lengths = 0;

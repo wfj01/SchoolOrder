@@ -1,7 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import '../App.css';
-import { BussinessView } from '../businessView/MiddleView/listView/ui';
+import { BusinessListView } from '../businessView/listView/ui';
 import Background from '../image/tu5.jpg';
 import { ForgetPassWordDialog } from '../loginPage/forgetPassword/dialog/ui';
 import LoginPage from '../loginPage/ui';
@@ -77,7 +77,7 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
                         RegPagevisiable={this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable} />
                 </div>
                 <div style={{display:this.uiAction.bussinessdisplay}}>
-                    <BussinessView/>
+                    <BusinessListView/>
                 </div>
                 <div style={{ display: this.props.GlobalListViewDoMainStore!.display2 }}>
                     < MenuView />

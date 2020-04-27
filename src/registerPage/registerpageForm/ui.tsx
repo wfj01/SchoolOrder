@@ -21,7 +21,7 @@ const formItemLayout = {
 /** 
  * 注册页面弹窗——Form表单
  */
-@inject("GlobalRegisterPageDomainStore","GlobalListViewDoMainStore")
+@inject("GlobalRegisterPageDomainStore", "GlobalListViewDoMainStore")
 @observer
 class RegisterPageForm extends React.Component<IRegisterPageProps> {
 
@@ -91,6 +91,8 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                             )
                         }
                     </Form.Item>
+                </Form>
+                <Form>
 
                     <Form.Item
                         label="登录密码"
@@ -107,7 +109,7 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                                     },
                                 ]
                             })(
-                                <Input placeholder="请输入你的登录密码" onChange={this.uiAction.handlePassWord}/>
+                                <Input placeholder="请输入你的登录密码" onChange={this.uiAction.handlePassWord} />
                             )
                         }
                     </Form.Item>
@@ -128,7 +130,7 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                                     },
                                 ]
                             })(
-                                <Input placeholder="请再一次输入你的密码" onChange={this.uiAction.handleConfirmPassword}/>
+                                <Input placeholder="请再一次输入你的密码" onChange={this.uiAction.handleConfirmPassword} />
                             )}
                     </Form.Item>
 
