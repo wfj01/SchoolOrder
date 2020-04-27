@@ -120,7 +120,12 @@ export class ShoppingCartTableView extends React.Component<IShoppingCartTableVie
                     columns={columns}
                     components={components}
                     className={"ori-table ori-table-fixed"}
-                    loading={this.props.GlobalStepsViewDomainStore!.isLoading}
+                    loading={
+                        {
+                            spinning:this.props.GlobalStepsViewDomainStore!.isLoading,
+                            tip:"正在加载中"
+                        }
+                    }
                     dataSource={this.props.GlobalStepsViewDomainStore!.allReportTableData.slice()}
                     pagination={false}
                     locale={{ emptyText: '暂无 数据' }}

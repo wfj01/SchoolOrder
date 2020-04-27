@@ -115,7 +115,12 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
                 <Table
                     columns={this.columns}
                     className={"ori-table ori-table-fixed"}
-                    loading={this.props.GlobalFirstDoMainStore!.isLoading}
+                    loading={
+                        {
+                            spinning:this.props.GlobalFirstDoMainStore!.isLoading,
+                            tip:"正在加载中"
+                        }
+                    }
                     dataSource={this.props.GlobalFirstDoMainStore!.showReportTableData.slice()}
                     style={{ height: '550px' }}
                     pagination={false}

@@ -217,10 +217,10 @@ export class FirstRestaurantDoMainStore {
                 }
             )
             if (res.rtnCode !== 0) {
-                message.info(res.rtnMsg);
+                message.error(res.rtnMsg);
             }
             this.LoadData();
-            message.info("添加购物车成功");
+            message.success("添加购物车成功");
             return res;
         } catch (error) {
             return { rtnCode: 1, rtnMsg: error.toString() }

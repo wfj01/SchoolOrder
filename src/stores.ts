@@ -1,6 +1,8 @@
 import { BusinessListViewDoMainStore } from "./businessView/domainStore";
 import { ManageGoodsDomainStore } from "./businessView/MiddleView/manageGoods/domainStore";
 import ManabeGoodsStores from "./businessView/MiddleView/manageGoods/store";
+import { OnlineOrderDoMainStore } from "./businessView/MiddleView/onlineOrder/domainStore";
+import OnlineOrderStores from "./businessView/MiddleView/onlineOrder/stores";
 import { SellGoodsDoMainStore } from "./businessView/MiddleView/sellingGoods/domainStore";
 import SellGoodsStores from "./businessView/MiddleView/sellingGoods/stores";
 import BusinessListViewStores from "./businessView/stores";
@@ -39,6 +41,7 @@ interface IDemoProps {
     GlobalSellGoodsDoMainStore:SellGoodsDoMainStore;
     GlobalLastWeekDomainStore:LastWeekDomainStore;
     GlobalBusinessListViewDoMainStore:BusinessListViewDoMainStore;
+    GlobalOnlineOrderDoMainStore:OnlineOrderDoMainStore;
 }
 
 const DemoStore: IDemoProps = {
@@ -55,6 +58,7 @@ const DemoStore: IDemoProps = {
     ...SellGoodsStores,
     ...LastWeekStores,
     ...BusinessListViewStores,
+    ...OnlineOrderStores,
 }
 
 

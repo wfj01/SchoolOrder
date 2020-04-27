@@ -112,7 +112,12 @@ export class SouthSnackTable extends React.Component<ISouthSnackTableProps>{
                 <Table
                     columns={this.columns}
                     className={"ori-table ori-table-fixed"}
-                    loading={this.props.GlobalSouthSnackDoMainStore!.isLoading}
+                    loading={
+                        {
+                            spinning:this.props.GlobalSouthSnackDoMainStore!.isLoading,
+                            tip:"正在加载中"
+                        }
+                    }
                     dataSource={this.props.GlobalSouthSnackDoMainStore!.showReportTableData.slice()}
                     style={{height:'550px'}}
                     pagination={false}

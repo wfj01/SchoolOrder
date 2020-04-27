@@ -3,6 +3,7 @@ import { ClickParam } from 'antd/lib/menu';
 import React from 'react';
 import { VerThr } from '../../../genericComponent/gridBox/verThr/verThr';
 import { ManageGoodsView } from '../manageGoods/listView/ui';
+import { OnlineOrderView } from '../onlineOrder/ui';
 import { RulesView } from '../rules/ui';
 import { SellingGoodsView } from '../sellingGoods/listView/ui';
 
@@ -37,6 +38,9 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
                         <Menu.Item key="02">
                             管理商品
                         </Menu.Item>
+                        <Menu.Item key="03">
+                            在线订单
+                        </Menu.Item>
                         <SubMenu
 
                             title={
@@ -68,6 +72,8 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
                 return<SellingGoodsView/>
             case "02":
                 return<ManageGoodsView/>
+            case "03":
+                return<OnlineOrderView/>
             case "04":
                 return<RulesView/>
             default:

@@ -88,7 +88,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                                     <Icon type="delete" title="删除" />
                                 </a>
                             </Popconfirm>
-                            </div>
+                        </div>
                     </div>
                 );
             },
@@ -112,7 +112,11 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                 columns={this.columns}
                 pagination={false}
                 dataSource={this.props.GlobalManageGoodsDomainStore!.List.slice()}
-                loading={this.props.GlobalManageGoodsDomainStore!.isLoading}
+                loading={
+                    {
+                        spinning: this.props.GlobalManageGoodsDomainStore!.isLoading,
+                        tip:"正在加载中"
+                    }}
                 locale={{ emptyText: '暂无 数据' }} />
         )
     }

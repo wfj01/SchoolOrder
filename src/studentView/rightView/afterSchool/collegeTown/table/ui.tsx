@@ -110,7 +110,12 @@ export class CollegeTownTable extends React.Component<ICollegeTownTableProps>{
                 <Table
                     columns={this.columns}
                     className={"ori-table ori-table-fixed"}
-                    loading={this.props.GlobalCollegeTownDoMainStore!.isLoading}
+                    loading={
+                        {
+                            spinning:this.props.GlobalCollegeTownDoMainStore!.isLoading,
+                            tip:"正在加载中"
+                        }
+                    }
                     dataSource={this.props.GlobalCollegeTownDoMainStore!.showReportTableData.slice()}
                     style={{height:'550px'}}
                     pagination={false}

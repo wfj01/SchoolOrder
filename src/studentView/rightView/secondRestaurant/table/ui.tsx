@@ -114,7 +114,12 @@ export class SecondRestaurantTable extends React.Component<IRestaurantTableProps
             className={"ori-table ori-table-fixed"}
             pagination={false}
             dataSource={this.props.GlobalSecondDoMainStore!.showReportTableData.slice()}
-            loading = {this.props.GlobalSecondDoMainStore!.isLoading}
+            loading={
+                {
+                    spinning:this.props.GlobalSecondDoMainStore!.isLoading,
+                    tip:"正在加载中"
+                }
+            }
             locale={{ emptyText: '暂无 数据' }}
             style={{height:'550px'}}
             rowSelection={{
