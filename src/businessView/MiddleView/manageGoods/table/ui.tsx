@@ -32,7 +32,6 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             key: 'practice',
             title: '做法',
             width: '10%',
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
@@ -40,7 +39,6 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             key: 'time',
             title: "时间",
             width: '10%',
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
@@ -48,7 +46,6 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             key: 'windows',
             title: "窗口",
             width: "10%",
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
@@ -56,7 +53,6 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             key: 'remarks',
             title: '说明',
             width: '10%',
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {

@@ -9,6 +9,7 @@ export class BusinessListViewUiAction {
         this.props = props;
         this.UsernameText = this.UsernameText.bind(this);
         this.PasswordText = this.PasswordText.bind(this);
+        this.AuthorizationCode = this.AuthorizationCode.bind(this);
         this.LoginBtnOnClick = this.LoginBtnOnClick.bind(this);
         this.RegisterOnClick = this.RegisterOnClick.bind(this);
         this.ForgetBtnonClick = this.ForgetBtnonClick.bind(this);
@@ -20,17 +21,26 @@ export class BusinessListViewUiAction {
 
     @action
     public UsernameText(event: React.ChangeEvent<HTMLInputElement>) {
+        this.props.GlobalBusinessListViewDoMainStore!.LoginUsername = event.target.value;
         console.log("UsernameText:", event.target.value);
     }
 
     @action
     public PasswordText(event: React.ChangeEvent<HTMLInputElement>) {
+        this.props.GlobalBusinessListViewDoMainStore!.LoginPassword = event.target.value;
         console.log("PasswordText:", event.target.value);
+    }
+
+    @action
+    public AuthorizationCode(event: React.ChangeEvent<HTMLInputElement>){
+        this.props.GlobalBusinessListViewDoMainStore!.AuthorizationCode = event.target.value;
+        console.log("AuthorizationCode:", event.target.value);
     }
 
     @action
     public LoginBtnOnClick() {
         console.log("登录按钮！！！");
+        this.props.GlobalBusinessListViewDoMainStore!.LoginVerification();
     }
 
     @action

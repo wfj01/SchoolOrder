@@ -33,7 +33,7 @@ export class SellingGoodsTable extends React.Component <ISellingGoodsTableProps>
                 key: 'price',
                 title: '价格',
                 width: "10%",
-                sorter: (a: any, b: any) => a.title.length - b.title.length,
+                sorter: (a: any, b: any) => a - b,
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
             },
             {
@@ -41,7 +41,6 @@ export class SellingGoodsTable extends React.Component <ISellingGoodsTableProps>
                 key: 'practice',
                 title: '做法',
                 width: '10%',
-                sorter: (a: any, b: any) => a.title.length - b.title.length,
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
             },
             {
@@ -49,7 +48,6 @@ export class SellingGoodsTable extends React.Component <ISellingGoodsTableProps>
                 key: 'time',
                 title: "时间",
                 width: '10%',
-                sorter: (a: any, b: any) => a.title.length - b.title.length,
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
             },
             {
@@ -57,7 +55,6 @@ export class SellingGoodsTable extends React.Component <ISellingGoodsTableProps>
                 key: 'windows',
                 title: "窗口",
                 width: "10%",
-                sorter: (a: any, b: any) => a.title.length - b.title.length,
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
             },
             {
@@ -65,7 +62,6 @@ export class SellingGoodsTable extends React.Component <ISellingGoodsTableProps>
                 key: 'remarks',
                 title: '说明',
                 width: '10%',
-                sorter: (a: any, b: any) => a.title.length - b.title.length,
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
             },
         ]

@@ -2,6 +2,7 @@ import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { ForgetPassWordPage } from '../loginpage/forgetPassword/dialog/ui';
 import BudinessLoginPage from '../loginpage/ui';
+import { BussinessView } from '../MiddleView/listView/ui';
 import { BusinessRegisterPage } from '../registerpage/registerPageDialog/ui';
 import { IBusinessListViewProps } from './interface';
 import { BusinessListViewUiAction } from './uiAction';
@@ -18,10 +19,12 @@ export class BusinessListView extends React.Component<IBusinessListViewProps> {
     }
     public render() {
         return (
-            <div>
+            <>
+            <div style={{display:this.props.GlobalBusinessListViewDoMainStore!.display1}}>
                 <BudinessLoginPage
                     Usernametext={this.uiAction.UsernameText}
                     Passwordtext={this.uiAction.PasswordText}
+                    AuthorizationCode={this.uiAction.AuthorizationCode}
                     LoginOnClick={this.uiAction.LoginBtnOnClick}
                     RegisterOnClick={this.uiAction.RegisterOnClick}
                     ForgetBtnonClick={this.uiAction.ForgetBtnonClick}
@@ -37,6 +40,10 @@ export class BusinessListView extends React.Component<IBusinessListViewProps> {
                     forgetPasswordVisible={this.props.GlobalBusinessListViewDoMainStore!.forgetPasswordVisible}
                 />
             </div>
+            <div style={{display:this.props.GlobalBusinessListViewDoMainStore!.display2}}>
+                <BussinessView/>
+            </div>
+            </>
         )
     }
 } 
