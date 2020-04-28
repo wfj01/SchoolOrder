@@ -20,9 +20,9 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
         },
         {
-            dataIndex: '价格',
+            dataIndex: 'price',
             key: 'price',
-            title: 'price',
+            title: '价格',
             width: "10%",
             sorter: (a: any, b: any) => a.title.length - b.title.length,
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>

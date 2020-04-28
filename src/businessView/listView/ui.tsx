@@ -20,7 +20,7 @@ export class BusinessListView extends React.Component<IBusinessListViewProps> {
     public render() {
         return (
             <>
-            <div style={{display:this.props.GlobalBusinessListViewDoMainStore!.display1}}>
+            <div style={{display:this.props.GlobalBusinessListViewDoMainStore!.display1, float: 'right', marginRight: '100px', marginTop: '20%' }}>
                 <BudinessLoginPage
                     Usernametext={this.uiAction.UsernameText}
                     Passwordtext={this.uiAction.PasswordText}

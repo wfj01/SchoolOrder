@@ -3,7 +3,7 @@ import { Button, Layout } from 'antd';
 // import { TadayRecommendUiAction } from './uiAction';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
-import imgURL from '../../../image/Hongshaorou.jpg';
+
 import { ITadayRecommendProps } from './interface';
 import MiddleFromView from './middleFrom/ui';
 import { TadayRecommendUiAction } from './uiAction';
@@ -31,8 +31,8 @@ export class TadayRecommend extends React.Component<ITadayRecommendProps>{
         <header >菜品信息</header>
         <Layout>
           <div style={{ minWidth: "500px" }}>
-            <Sider ><img alt="##" src={imgURL} /></Sider>
-          </div>
+            <Sider ><img alt="##" src={this.props.GlobalTadayRecommendDomainStore!.imageUrl} /></Sider>
+          </div>0
           <Content >
             {this.props.GlobalTadayRecommendDomainStore!.List.length > 0
               ? <MiddleFromView GlobalTadayRecommendDomainStore={this.props.GlobalTadayRecommendDomainStore!} />

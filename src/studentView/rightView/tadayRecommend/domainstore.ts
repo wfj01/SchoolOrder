@@ -1,7 +1,10 @@
 import { message } from "antd";
 import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
+import imgURL2 from '../../../image/fentijin.jpg';
+import imgURL1 from '../../../image/Hongshaorou.jpg';
 import { TadayRecommendEntity } from "./entity";
+
 
 export class TadayRecommendDomainStore{
     
@@ -44,8 +47,16 @@ export class TadayRecommendDomainStore{
     @observable
     public currentEditItem: TadayRecommendEntity;
 
+    @observable
+    public imageUrl:string;
+
+    @observable
+    public imageList:string[]
+    
     
     constructor(){
+        this.imageUrl = imgURL1;
+        this.imageList=[imgURL1,imgURL2]
         this.Isloading = false;
         this.List = [];
         this.customerCount = 0;
@@ -58,11 +69,13 @@ export class TadayRecommendDomainStore{
         console.log("lengths:",this.lengths);
         if ((this.lengths+1)===this.List.length) {
             message.info('最后');
+            this.imageUrl = imgURL2;
             return;
         }
         else {
             console.log("lengths1:",this.lengths);
             this.lengths = this.lengths + 1;
+            this.imageUrl = this.imageList[this.lengths];
             console.log("lengths2:",this.lengths);
             this.Loadate();
         }
@@ -73,10 +86,12 @@ export class TadayRecommendDomainStore{
 
         if ((this.lengths-1) < 0) {
             message.info('第一');
+            this.imageUrl = imgURL1;
             return;
         }
         else {
             this.lengths = this.lengths - 1;
+            this.imageUrl = this.imageList[this.lengths];
             this.Loadate();
         }
     }

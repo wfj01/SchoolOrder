@@ -40,6 +40,7 @@ export class TopView extends React.Component<ITopViewProps> {
         );
     }
     public handleClick = (e: { key: any; }) => {
+        this.props.GlobalLastWeekDomainStore!.imageUrl = this.props.GlobalLastWeekDomainStore!.imageList[e.key];
         this.props.GlobalLastWeekDomainStore!.lengths =e.key;
         this.props.GlobalLastWeekDomainStore!.Loadate();
     };

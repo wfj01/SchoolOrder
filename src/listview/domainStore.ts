@@ -69,23 +69,22 @@ export class ListViewDoMainStore {
      * 验证
      */
     public async  LoginVerification() {
-        console.log("this.LoginUsername:", this.LoginUsername);
-        console.log("this.LoginPassword:", this.LoginPassword);
         try {
             const res = await requestJson("/api/Login/getUser?Studentid=" + this.LoginUsername + "&Password=" + this.LoginPassword,
                 {
                     method: "GET",
                 });
             if (res.rtnCode === 0) {
+                message.success("登录成功")
                 this.display1 = "none";
                 this.display2 = "block";
                 console.log("this.LoginPassword:", this.LoginPassword);
             }
             else {
-                message.info(res.rtnMsg);
+                message.error("登录失败,"+res.rtnMsg);
             }
         } catch (error) {
-            console.log("错误", error)
+            message.error("登录失败",error);
         }
     }
 
@@ -93,7 +92,6 @@ export class ListViewDoMainStore {
      * 注册
      */
     public async Adddata(model: RegisterPageFormEntity) {
-        console.log("model:", model);
         try {
             if (this.handlePassWord !== this.handleConfirmPassword) {
                 message.info("两次密码不一致!");
@@ -108,14 +106,14 @@ export class ListViewDoMainStore {
                     headers: { "content-type": "application/json" }
                 });
             if (res.rtnCode !== 0) {
-                message.error("新增失败：" + res.rtnMsg);
+                message.error("注册失败," + res.rtnMsg);
             } else {
                 this.RegisterPageVisiable = false;
-                message.success("新增成功");
+                message.success("注册成功，正返回登录页面");
             }
         }
         } catch (error) {
-            message.error("新增失败：" + error);
+            message.error("注册失败," + error);
             this.RegisterPageVisiable = false;
         }
     }
@@ -124,7 +122,6 @@ export class ListViewDoMainStore {
      * 修改密码
      */
     public async UpdatePassWord(model: ForgetPassWordEntity) {
-        console.log("model:", model);
         try {
             if (this.ForgetPassWord !== this.ConfirmPassword) {
                 message.info("两次密码不一致!");
@@ -138,14 +135,14 @@ export class ListViewDoMainStore {
                         headers: { "content-type": "application/json" }
                     });
                 if (res.rtnCode !== 0) {
-                    message.error("更新失败：" + res.rtnMsg);
+                    message.error("修改失败," + res.rtnMsg);
                 } else {
                     this.ForgetPassWordVisiable = false;
-                    message.success("更新成功");
+                    message.success("修改成功,请重新登录");
                 }
             }
         } catch (error) {
-            message.error("更新失败：" + error);
+            message.error("修改失败," + error);
             this.RegisterPageVisiable = false;
         }
     }
