@@ -43,7 +43,7 @@ export class OnlineOrderDoMainStore{
     public async Loaddata() {
         try {
             this.Isloading = true;
-            const res = await requestJson("/api/OnlineOrder/queryUser",
+            const res = await requestJson("/api/OnlineOrder/unOrderqueryUser",
                 {
                     method: "GET"
                 })
@@ -69,7 +69,7 @@ export class OnlineOrderDoMainStore{
     public async Loaddataa() {
         try {
             this.Isloading = true;
-            const res = await requestJson("/api/OnlineOrder/queryUsera",
+            const res = await requestJson("/api/OnlineOrder/confirmedOrder",
                 {
                     method: "GET"
                 })
@@ -85,6 +85,7 @@ export class OnlineOrderDoMainStore{
         }
         catch(error){
             message.error(error);
+            this.Isloading = false;
         }
     }
 
@@ -95,7 +96,7 @@ export class OnlineOrderDoMainStore{
     public async Loaddatab() {
         try {
             this.Isloading = true;
-            const res = await requestJson("/api/OnlineOrder/queryUserb",
+            const res = await requestJson("/api/OnlineOrder/completedOrder",
                 {
                     method: "GET"
                 })
@@ -111,6 +112,7 @@ export class OnlineOrderDoMainStore{
         }
         catch(error){
             message.error(error);
+            this.Isloading = false;
         }
     }
 
@@ -131,7 +133,6 @@ export class OnlineOrderDoMainStore{
                 this.Isloading = false;
                 message.error("确认失败：" + res.rtnMsg);
             } else {
-                this.Loaddata();
                 this.Isloading = false;
                 message.success("确认成功");
             }
@@ -142,7 +143,7 @@ export class OnlineOrderDoMainStore{
     }
 
     /**
-     * 确定订单事件
+     * 完成订单事件
      * @param id 当前操作数据下标
      */
     @action
