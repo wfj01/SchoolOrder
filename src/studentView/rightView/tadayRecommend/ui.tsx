@@ -32,7 +32,7 @@ export class TadayRecommend extends React.Component<ITadayRecommendProps>{
         <Layout>
           <div style={{ minWidth: "500px" }}>
             <Sider ><img alt="##" src={this.props.GlobalTadayRecommendDomainStore!.imageUrl} /></Sider>
-          </div>0
+          </div>
           <Content >
             {this.props.GlobalTadayRecommendDomainStore!.List.length > 0
               ? <MiddleFromView GlobalTadayRecommendDomainStore={this.props.GlobalTadayRecommendDomainStore!} />

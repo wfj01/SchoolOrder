@@ -14,4 +14,9 @@ export interface IModelViewProps {
      *  回调方法  确定
      */
     handleOk: (formData: any) => void;
+
+    /**
+     * 弹窗标题
+     */
+    modelTitle:string;
 }

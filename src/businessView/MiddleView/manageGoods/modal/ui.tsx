@@ -18,7 +18,7 @@ export class ModelView extends React.Component<IModelViewProps>{
     public render() {
         return (
             <Modal
-                title={"添加数据"}
+                title={this.props.modelTitle}
                 visible={this.props.visible}
                 okText={"确定"}
                 cancelText={"取消"}

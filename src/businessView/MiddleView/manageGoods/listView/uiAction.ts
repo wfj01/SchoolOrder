@@ -9,6 +9,11 @@ export class ManageGoodsViewUiAction{
      * 当前操作类型
      */
     public opearatorType:"none"|"add"|"edit"|"eye";
+
+    /**
+     * 当前的弹窗标题
+     */
+    public modelTitle:string;
     
     private props:IManageGoodsViewProps;
     private domainStore:ManageGoodsDomainStore;
@@ -32,8 +37,9 @@ export class ManageGoodsViewUiAction{
      */
     @action
     public addbtn(){
-        this.domainStore.currentEditData = new ManageGoodsEntity();
         this.opearatorType="add";
+        this.modelTitle = "新增数据";
+        this.domainStore.currentEditData = new ManageGoodsEntity();
         this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
     }
     
@@ -43,9 +49,10 @@ export class ManageGoodsViewUiAction{
      */
     @action
     public adda(){
-        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
+        this.modelTitle = "新增数据";
         this.opearatorType = "add";
         this.domainStore.currentEditData = new ManageGoodsEntity();
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
     }
 
     /**
@@ -53,8 +60,9 @@ export class ManageGoodsViewUiAction{
      */
     @action
     public edit(){
-        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
+        this.modelTitle = "编辑数据";
         this.opearatorType = "edit";
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
     }
 
     /**

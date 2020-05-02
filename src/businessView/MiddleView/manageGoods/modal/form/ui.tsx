@@ -191,6 +191,7 @@ class FromView extends React.Component<IFromViewProps>{
  */
 const formCreateOption: FormCreateOption<IFromViewProps> = {
     mapPropsToFields(props) {
+        console.log("props.GlobalManageGoodsDomainStore!.currentEditDataprops.GlobalManageGoodsDomainStore!.currentEditData:",props.GlobalManageGoodsDomainStore!.currentEditData);
         const item = props.GlobalManageGoodsDomainStore!.currentEditData;
         return {
             id: Form.createFormField({

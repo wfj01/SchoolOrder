@@ -77,16 +77,11 @@ export class ManageGoodsTableUiAction {
      */
     @action
     public async editClick(e: React.SyntheticEvent<HTMLAnchorElement>) {
-
         e.preventDefault();
-
         const id = this.getNeighborhoodId(e);
-
         if (!id) { return; };
-
+        console.log("id:",id);
         if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
-            console.log("this.props.GlobalManageGoodsDomainStore!.currentEditData:",this.props.GlobalManageGoodsDomainStore!.
-            currentEditData);
             this.props.onEdit(this.props.GlobalManageGoodsDomainStore!.currentEditData);
         } else {
             message.info('错误的事件参数');

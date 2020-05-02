@@ -3,6 +3,7 @@ import { FormComponentProps } from "antd/lib/form";
 export interface IBudinessLoginPageProps extends FormComponentProps{
     RegisterOnClick?: () => void;
     LoginOnClick?: () => void;
+    Logindisplay?: string;
     ForgetBtnonClick?: () => void;
     Usernametext?:(event: React.ChangeEvent<HTMLInputElement>)=>void;
     Passwordtext?:(event: React.ChangeEvent<HTMLInputElement>)=>void;

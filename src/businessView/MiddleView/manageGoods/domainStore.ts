@@ -61,8 +61,6 @@ export class ManageGoodsDomainStore {
         }
     }
 
-
-
     @action
     public ValiDate(model: ManageGoodsEntity): string | undefined {
         return undefined;
@@ -193,10 +191,13 @@ export class ManageGoodsDomainStore {
      * 递归找到选中的数据
      */
     @action
-    private recursionSelect(itemId: string, CardTypeList: ManageGoodsEntity[]) {
-        CardTypeList.forEach((entity) => {
+    private recursionSelect(itemId: string, List: ManageGoodsEntity[]) {
+        if (!List) {
+            return;
+        }
+        List.forEach((entity) => {
             if (itemId === entity.id) {
-                this.currentEditData = entity;
+                this.currentEditData = entity!;
             }
         });
     }

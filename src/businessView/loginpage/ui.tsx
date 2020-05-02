@@ -20,87 +20,92 @@ class BudinessLoginPage extends React.Component<IBudinessLoginPageProps>{
     public render() {
         const form = this.props.form;
         return (
-            <Form>
-                <Form.Item
-                    label={"账号"}
-                    {...formItemLayoutStyle}
-                >
-                    {
-                        form.getFieldDecorator("studentid",
-                            {
-                                rules: [
-                                    {
-                                        required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
-                                    },
-                                    {
-                                        required: true,
-                                        max: 15,
-                                        message: "长度不能大于12"
-                                    }
-                                ]
-                            }
-                        )(<Input onChange={this.props.Usernametext}  style={{width:"120px"}} />)
-                    }
-                </Form.Item>
+            <>
+                <div style={{ width: "400px", display: this.props.Logindisplay }}>
 
-                <Form.Item
-                    label={"密码"}
-                    {...formItemLayoutStyle}
-                >
-                    {
-                        form.getFieldDecorator("Password",
+                    <Form>
+                        <Form.Item
+                            label={"账号"}
+                            {...formItemLayoutStyle}
+                        >
                             {
-                                rules: [
+                                form.getFieldDecorator("studentid",
                                     {
-                                        required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
-                                    },
-                                    {
-                                        required: true,
-                                        max: 64,
-                                        message: "长度过长"
+                                        rules: [
+                                            {
+                                                required: true,
+                                                whitespace: true,
+                                                message: "不能为空"
+                                            },
+                                            {
+                                                required: true,
+                                                max: 15,
+                                                message: "长度不能大于12"
+                                            }
+                                        ]
                                     }
-                                ]
+                                )(<Input onChange={this.props.Usernametext} />)
                             }
-                        )(<Input onChange={this.props.Passwordtext}  style={{width:"120px"}} />)
-                    }
-                </Form.Item>
-                <Form.Item
-                    label={"授权码"}
-                    {...formItemLayoutStyle}
-                >
-                    {
-                        form.getFieldDecorator("AuthorizationCode ",
+                        </Form.Item>
+
+                        <Form.Item
+                            label={"密码"}
+                            {...formItemLayoutStyle}
+                        >
                             {
-                                rules: [
+                                form.getFieldDecorator("Password",
                                     {
-                                        required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
-                                    },
-                                    {
-                                        required: true,
-                                        max: 64,
-                                        message: "长度过长"
+                                        rules: [
+                                            {
+                                                required: true,
+                                                whitespace: true,
+                                                message: "不能为空"
+                                            },
+                                            {
+                                                required: true,
+                                                max: 64,
+                                                message: "长度过长"
+                                            }
+                                        ]
                                     }
-                                ]
+                                )(<Input onChange={this.props.Passwordtext} />)
                             }
-                        )(<Input onChange={this.props.AuthorizationCode}  style={{width:"120px"}} />)
-                    }
-                </Form.Item>
-                <Form.Item {...tailLayout}>
-                    <Button href="##" type="primary" htmlType="submit" onClick={this.props.LoginOnClick} style={{ marginRight: " 8px" }}>
-                        登录
+                        </Form.Item>
+                        <Form.Item
+                            label={"授权码"}
+                            {...formItemLayoutStyle}
+                        >
+                            {
+                                form.getFieldDecorator("AuthorizationCode ",
+                                    {
+                                        rules: [
+                                            {
+                                                required: true,
+                                                whitespace: true,
+                                                message: "不能为空"
+                                            },
+                                            {
+                                                required: true,
+                                                max: 64,
+                                                message: "长度过长"
+                                            }
+                                        ]
+                                    }
+                                )(<Input onChange={this.props.AuthorizationCode} />)
+                            }
+                        </Form.Item>
+                        <Form.Item {...tailLayout}>
+                            <Button href="##" type="primary" htmlType="submit" onClick={this.props.LoginOnClick} style={{ marginRight: " 8px" }}>
+                                登录
                             </Button>
-                    <Button href="##" type="primary" htmlType="submit" onClick={this.props.RegisterOnClick} style={{ marginRight: " 8px" }}>
-                        注册
+                            <Button href="##" type="primary" htmlType="submit" onClick={this.props.RegisterOnClick} style={{ marginRight: " 8px" }}>
+                                注册
                             </Button>
-                    <a id="Forgetpassword" href="##" onClick={this.props.ForgetBtnonClick}>忘记密码</a>
-                </Form.Item>
-            </Form>
+                            <a id="Forgetpassword" href="##" onClick={this.props.ForgetBtnonClick}>忘记密码</a>
+                        </Form.Item>
+                    </Form>
+                </div>
+            </>
         )
     }
 }

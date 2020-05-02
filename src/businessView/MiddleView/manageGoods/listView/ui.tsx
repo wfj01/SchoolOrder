@@ -34,6 +34,7 @@ export class ManageGoodsView extends React.Component<IManageGoodsViewProps>{
                         visible={this.props.GlobalManageGoodsDomainStore!.DrawerViewVisible}
                         onClose={this.uiAction.onCloseClick} />
                     <ModelView
+                        modelTitle = {this.uiAction.modelTitle}
                         handleCancel={this.uiAction.cancel}
                         handleOk={this.uiAction.save}
                         visible={this.props.GlobalManageGoodsDomainStore!.DialogViewVisible} />
