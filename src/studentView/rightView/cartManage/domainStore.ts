@@ -132,19 +132,26 @@ export class StepsViewDomainStore {
                     method: "GET"
                 })
             if (res.rtnCode !== 0) {
-                message.info('暂无数据');
+                console.log("res.date:", res.data.table);
+                message.error('暂无数据');
                 this.isLoading = false;
                 return;
             }
-            console.log("res.date:", res.data.table);
-            const data = res.data.table as any[];
-            this.allReportTableData = data;
-            data.forEach(element => {
-                this.firstnumber = Number(element.price);
-                this.secondnumber = Number(element.number);
-                this.calculatednumber = (this.firstnumber) * (this.secondnumber)
-                this.List.push(this.calculatednumber);
-            });
+            this.allReportTableData = res.data.table as any[];
+            if(this.allReportTableData.length>0)
+            {
+                this.allReportTableData.forEach(element => {
+                    this.firstnumber = Number(element.price);
+                    this.secondnumber = Number(element.number);
+                    this.calculatednumber = (this.firstnumber) * (this.secondnumber)
+                    this.List.push(this.calculatednumber);
+                });
+            }
+            else
+            {   
+                this.isLoading = true;
+                message.error("暂无数据");
+            }
             this.isLoading = false;
         }
 
@@ -169,7 +176,7 @@ export class StepsViewDomainStore {
                 }
             )
             if (res.rtnCode !== 0) {
-                message.info(res.rtnMsg);
+                message.error(res.rtnMsg);
             }
             this.LoadData();
             return res;
@@ -232,5 +239,7 @@ export class StepsViewDomainStore {
             return { rtnCode: 1, rtnMsg: error.toString() }
         }
     }
+
+    
 
 }

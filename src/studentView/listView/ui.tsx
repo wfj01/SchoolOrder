@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import React from "react";
 import { CollegeTown } from '../rightView/afterSchool/collegeTown/ui';
 import { SouthSnack } from '../rightView/afterSchool/southSnack/ui';
+import { OrderManagement } from '../rightView/cartManage/ordermanage/listview/ui';
 import { CartManageView } from '../rightView/cartManage/ui';
 import { FirstRestaurant } from '../rightView/firstRestaurant/ui';
 import { LastWeekView } from '../rightView/lastweekView/ui';
@@ -135,6 +136,8 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                 return <SouthSnack />
             case "0301":
                 return<CartManageView/>
+            case "0302":
+                return<OrderManagement/>
             default:
                 return <div />
         }

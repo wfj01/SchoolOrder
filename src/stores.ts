@@ -17,6 +17,8 @@ import CollegeTownStores from "./studentView/rightView/afterSchool/collegeTown/s
 import { SouthSnackDoMainStore } from "./studentView/rightView/afterSchool/southSnack/domainStore";
 import SouthSnackStores from "./studentView/rightView/afterSchool/southSnack/stores";
 import { StepsViewDomainStore } from "./studentView/rightView/cartManage/domainStore";
+import { OrderManagementDoMainStore } from "./studentView/rightView/cartManage/ordermanage/domainStore";
+import OrderManagementStore from "./studentView/rightView/cartManage/ordermanage/stores";
 import StepsViewStore from "./studentView/rightView/cartManage/stores";
 import { FirstRestaurantDoMainStore } from "./studentView/rightView/firstRestaurant/domainStore";
 import FirstRestaurant from "./studentView/rightView/firstRestaurant/stores";
@@ -42,6 +44,7 @@ interface IDemoProps {
     GlobalLastWeekDomainStore:LastWeekDomainStore;
     GlobalBusinessListViewDoMainStore:BusinessListViewDoMainStore;
     GlobalOnlineOrderDoMainStore:OnlineOrderDoMainStore;
+    GlobalOrderManagementDoMainStore:OrderManagementDoMainStore;
 }
 
 const DemoStore: IDemoProps = {
@@ -59,6 +62,7 @@ const DemoStore: IDemoProps = {
     ...LastWeekStores,
     ...BusinessListViewStores,
     ...OnlineOrderStores,
+    ...OrderManagementStore,
 }
 
 
