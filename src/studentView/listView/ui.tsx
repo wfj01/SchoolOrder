@@ -133,7 +133,7 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                 return <CollegeTown />
             case "020302":
                 return <SouthSnack />
-            case "0401":
+            case "0301":
                 return<CartManageView/>
             default:
                 return <div />

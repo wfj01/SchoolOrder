@@ -61,8 +61,35 @@ export class StepsViewDomainStore {
     @observable
     public studentid:string;
 
+    /**
+     * 顾客姓名
+     */
+    @observable
+    public studentName:string;
+
+    /**
+     * 顾客地址
+     */
+    @observable
+    public studentAddress:string;
+
+    /**
+     * 顾客电话
+     */
+    @observable
+    public studentPhone:string;
+
+    /**
+     * 确认订餐弹窗是否显示
+     */
+    @observable
+    public ShoppingModelvisible:boolean;
+
     constructor() {
         this.studentid = "";
+        this.studentName="";
+        this.studentAddress = "";
+        this.studentPhone ="";
         this.firstnumber = 0;
         this.secondnumber = 0;
         this.calculatednumber = 0;
@@ -72,6 +99,7 @@ export class StepsViewDomainStore {
         this.tableKeys = [];
         this.isLoading = false;
         this.selectRowListData = [];
+        this.ShoppingModelvisible = false;
     }
 
     /**
@@ -173,6 +201,35 @@ export class StepsViewDomainStore {
         } catch (error) {
             message.error("删除失败：" + error);
             this.isLoading = false;
+        }
+    }
+
+    /**
+     * 提交订单事件
+     */
+    @action
+    public async Confirmorder(){
+        try{
+        console.log("this.List:",this.allReportTableData);
+        this.isLoading = true;
+        const res: any = await requestJson("/api/Order/confirmorder?studentid="+this.studentid+"&StudentName="+this.studentName
+        +"&StudentAddress="+this.studentAddress+"&StudentPhone="+this.studentPhone,
+                {
+                    method: "POST",
+                    body: JSON.stringify(this.allReportTableData),
+                    headers: { "content-type": "application/json" }
+                }
+            )
+            if (res.rtnCode !== 0) {
+                message.info(res.rtnMsg);
+                this.isLoading = false;
+            }
+            this.LoadData();
+            this.isLoading = false; 
+            return res;
+        } catch (error) {
+            this.isLoading = false;
+            return { rtnCode: 1, rtnMsg: error.toString() }
         }
     }
 
