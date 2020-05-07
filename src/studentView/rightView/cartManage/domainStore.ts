@@ -239,7 +239,7 @@ export class StepsViewDomainStore {
             return { rtnCode: 1, rtnMsg: error.toString() }
         }
     }
-
-    
-
+    public ClearData(){
+        this.allReportTableData = [];
+    }
 }

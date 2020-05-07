@@ -67,6 +67,10 @@ export class OrderManagementTable extends React.Component<IOrderManagementTablep
         this.props.GlobalOrderManagementDoMainStore!.studentid = this.props.GlobalListViewDoMainStore!.LoginUsername;
         this.uiAction.loaddata();
     }
+
+    public componentWillUnmount(){
+        this.props.GlobalOrderManagementDoMainStore!.ClearData();
+    }
     public render() {
         return (
             <>

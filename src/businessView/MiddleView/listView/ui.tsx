@@ -4,6 +4,7 @@ import React from 'react';
 import { VerThr } from '../../../genericComponent/gridBox/verThr/verThr';
 import { ManageGoodsView } from '../manageGoods/listView/ui';
 import { OnlineOrderView } from '../onlineOrder/ui';
+import { Personaldata } from '../personaldata/ui';
 import { RulesView } from '../rules/ui';
 import { SellingGoodsView } from '../sellingGoods/listView/ui';
 
@@ -41,6 +42,9 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
                         <Menu.Item key="03">
                             在线订单
                         </Menu.Item>
+                        <Menu.Item key="04">
+                            条例规范
+                        </Menu.Item>
                         <SubMenu
 
                             title={
@@ -49,13 +53,10 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
                         </span>
                             }>
                             <Menu.ItemGroup title="Item 1">
-                                <Menu.Item key="0301">Option 1</Menu.Item>
-                                <Menu.Item key="0302">Option 2</Menu.Item>
+                                <Menu.Item key="0501">查看个人信息</Menu.Item>
+                                <Menu.Item key="0502">Option 2</Menu.Item>
                             </Menu.ItemGroup>
                         </SubMenu>
-                        <Menu.Item key="04">
-                            条例规范
-                        </Menu.Item>
                     </Menu>
                 </VerThr.top>
                 <VerThr.middle>
@@ -76,6 +77,8 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
                 return<OnlineOrderView/>
             case "04":
                 return<RulesView/>
+            case '0501':
+                return<Personaldata/>
             default:
                 return<div/>
         }

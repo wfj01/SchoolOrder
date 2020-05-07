@@ -3,6 +3,8 @@ import { ManageGoodsDomainStore } from "./businessView/MiddleView/manageGoods/do
 import ManabeGoodsStores from "./businessView/MiddleView/manageGoods/store";
 import { OnlineOrderDoMainStore } from "./businessView/MiddleView/onlineOrder/domainStore";
 import OnlineOrderStores from "./businessView/MiddleView/onlineOrder/stores";
+import { PersonaldataDoMainStore } from "./businessView/MiddleView/personaldata/domainStore";
+import PersonaldataStore from "./businessView/MiddleView/personaldata/stores";
 import { SellGoodsDoMainStore } from "./businessView/MiddleView/sellingGoods/domainStore";
 import SellGoodsStores from "./businessView/MiddleView/sellingGoods/stores";
 import BusinessListViewStores from "./businessView/stores";
@@ -37,14 +39,15 @@ interface IDemoProps {
     GlobalLoginPageStore: LoginPageStore;
     GlobalStepsViewDomainStore: StepsViewDomainStore;
     GlobalTadayRecommendDomainStore: TadayRecommendDomainStore;
-    GlobalListViewDoMainStore:ListViewDoMainStore;
-    GlobalRegisterPageDomainStore:RegisterPageDomainStore;
+    GlobalListViewDoMainStore: ListViewDoMainStore;
+    GlobalRegisterPageDomainStore: RegisterPageDomainStore;
     GlobalManageGoodsDomainStore: ManageGoodsDomainStore;
-    GlobalSellGoodsDoMainStore:SellGoodsDoMainStore;
-    GlobalLastWeekDomainStore:LastWeekDomainStore;
-    GlobalBusinessListViewDoMainStore:BusinessListViewDoMainStore;
-    GlobalOnlineOrderDoMainStore:OnlineOrderDoMainStore;
-    GlobalOrderManagementDoMainStore:OrderManagementDoMainStore;
+    GlobalSellGoodsDoMainStore: SellGoodsDoMainStore;
+    GlobalLastWeekDomainStore: LastWeekDomainStore;
+    GlobalBusinessListViewDoMainStore: BusinessListViewDoMainStore;
+    GlobalOnlineOrderDoMainStore: OnlineOrderDoMainStore;
+    GlobalOrderManagementDoMainStore: OrderManagementDoMainStore;
+    GlobalPersonaldataDoMainStore: PersonaldataDoMainStore;
 }
 
 const DemoStore: IDemoProps = {
@@ -63,6 +66,7 @@ const DemoStore: IDemoProps = {
     ...BusinessListViewStores,
     ...OnlineOrderStores,
     ...OrderManagementStore,
+    ...PersonaldataStore,
 }
 
 

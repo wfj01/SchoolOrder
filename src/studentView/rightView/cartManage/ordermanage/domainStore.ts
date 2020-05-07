@@ -47,8 +47,6 @@ export class OrderManagementDoMainStore {
             console.log("res.date:", res.data.table);
             this.allReportTableData = res.data.table as any[];
             this.allReportTableData.map((element: OrderManagementEntity) => {
-                console.log("element.isConfirm：",element.isConfirm);
-                console.log("element.isComplete:",element.isComplete);
                 if (element.isConfirm === false && element.isComplete === false) {
                     element.state = "未确认";
                 }
@@ -75,5 +73,9 @@ export class OrderManagementDoMainStore {
      */
     public getRowIndex(record: OrderManagementEntity): string {
         return record.id;
+    }
+
+    public ClearData(){
+        this.allReportTableData = [];
     }
 }

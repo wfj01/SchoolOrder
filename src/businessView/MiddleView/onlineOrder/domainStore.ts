@@ -135,6 +135,7 @@ export class OnlineOrderDoMainStore{
             } else {
                 this.Isloading = false;
                 message.success("确认成功");
+                this.Loaddata();
             }
         } catch (error) {
             message.error("确认失败：" + error);
