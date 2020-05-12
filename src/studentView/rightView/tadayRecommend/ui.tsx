@@ -28,6 +28,8 @@ export class TadayRecommend extends React.Component<ITadayRecommendProps>{
   public render() {
     return (
       <Layout >
+          <img src={require("../../../image/tu5.jpg")}/>
+
         <header >菜品信息</header>
         <Layout>
           <div style={{ minWidth: "500px" }}>

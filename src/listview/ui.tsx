@@ -1,15 +1,13 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
-import '../App.css';
 import { BusinessListView } from '../businessView/listView/ui';
-import Background from '../image/tu5.jpg';
 import { ForgetPassWordDialog } from '../loginPage/forgetPassword/dialog/ui';
 import LoginPage from '../loginPage/ui';
 import { RegisterPageDialog } from '../registerPage/registerpageDialog/ui';
 import { MenuView } from '../studentView/listView/ui';
+import './index.css';
 import { IListViewProps } from './interface';
 import { ListViewUiAction } from './uiAction';
-
 interface IListViewState {
     display1: string
     display2: string
@@ -54,7 +52,7 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
         return (
             <>
                 <div
-                    className="web_bg" style={{ backgroundImage: `url(${Background})`, display: this.props.GlobalListViewDoMainStore!.display1 }}>
+                    className="web_bg" style={{display: this.props.GlobalListViewDoMainStore!.display1 }}>
                     <div style={{ float: 'right', marginRight: '100px', marginTop: '20%' }}>
                         <LoginPage
                             LoginOnClick={this.LoginBtnOnClick}
@@ -68,6 +66,7 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
                             handleCancel={this.uiAction.RegisterPagecancel}
                             handleOk={this.uiAction.RegisterPagesave}
                             RegPagevisiable={this.props.GlobalListViewDoMainStore!.RegisterPageVisiable} />
+                    
                     </div>
                 </div>
                 <div className="wrapper" style={{ display: this.uiAction.ForgetPassWorddisplay }}>

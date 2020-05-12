@@ -7,6 +7,9 @@ import { BusinessRegisterPage } from '../registerpage/registerPageDialog/ui';
 import { IBusinessListViewProps } from './interface';
 import { BusinessListViewUiAction } from './uiAction';
 
+/**
+ * 商家页面
+ */
 @inject("GlobalBusinessListViewDoMainStore")
 @observer
 export class BusinessListView extends React.Component<IBusinessListViewProps> {
