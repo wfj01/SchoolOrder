@@ -11,5 +11,5 @@ export class MenuViewStore{
     constructor(){
         this.currentPage = "";
         this.commentvisible = false;
-    }
+    }  
 }
