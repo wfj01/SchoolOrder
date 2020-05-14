@@ -1,6 +1,7 @@
 import { Provider } from 'mobx-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import { ListView } from './listview/ui';
 import DemoStore from './stores';
@@ -19,7 +20,7 @@ export class Demo extends React.Component{
 }
 
 ReactDOM.render(
-  <div>   
+  <BrowserRouter>   
       <Demo />
-  </div>,
+  </BrowserRouter>,
   document.getElementById('root'));

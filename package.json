@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "cloud-bdt",
   "version": "1.0.85",
   "title": "cloud-bdt",
@@ -100,7 +101,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:33527/api/",
+      "target": "http://129.204.77.134:5000/api/",
       "changeOrigin": true,
       "pathRewrite": {
         "^/api": ""

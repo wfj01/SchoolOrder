@@ -1,6 +1,7 @@
 import { Button, Form, Input } from 'antd';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
+import './index.css';
 import { ILoginPageProps } from './interface';
 // import { LoginpageUiAction } from './uiAction';
 const formItemLayoutStyle = {
@@ -34,7 +35,7 @@ class LoginPage extends React.Component<ILoginPageProps>{
         const form = this.props.form;
         return (
             <>
-                <div style={{ width: "400px", display: this.props.Logindisplay }}>
+                <div className="bbb" style={{ display: this.props.Logindisplay }}>
                     <Form>
                         <Form.Item
                             label={"账号"}

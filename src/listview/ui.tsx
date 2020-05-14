@@ -53,7 +53,7 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
             <>
                 <div
                     className="web_bg" style={{display: this.props.GlobalListViewDoMainStore!.display1 }}>
-                    <div style={{ float: 'right', marginRight: '100px', marginTop: '20%' }}>
+                    <div className='aaaa' >
                         <LoginPage
                             LoginOnClick={this.LoginBtnOnClick}
                             Usernametext = {this.uiAction.UsernameText}
