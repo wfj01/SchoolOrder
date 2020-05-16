@@ -85,7 +85,6 @@ export class ShoppingCartTableView extends React.Component<IShoppingCartTableVie
     }
     public componentDidMount() {
         this.props.GlobalStepsViewDomainStore!.studentid = this.props.GlobalListViewDoMainStore!.LoginUsername;
-        this.props.GlobalStepsViewDomainStore!.LoadData();
     }
 
     public componentWillUnmount(){

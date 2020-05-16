@@ -38,7 +38,7 @@ export class SouthSnackTableUiAction{
             this.props.GlobalSouthSnackDoMainStore!.lengths = Number(ix);
             this.props.onEyeClick(this.props.GlobalSouthSnackDoMainStore!.currentEditCardType);
         } else {
-            message.info('错误的事件参数');
+            message.error('错误的事件参数');
         }
     }
 

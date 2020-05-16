@@ -1,7 +1,7 @@
 import { Layout } from "antd";
 import { inject, observer } from "mobx-react";
 import React from "react";
-import { VerThr } from "../../../genericComponent/gridBox/verThr/verThr";
+import { VerThr } from "../../../../genericComponent/gridBox/verThr/verThr";
 import { ILastWeekViewProps } from "./interface";
 import MiddleFromView from "./middleFrom/ui";
 import { TopView } from "./topView/ui";

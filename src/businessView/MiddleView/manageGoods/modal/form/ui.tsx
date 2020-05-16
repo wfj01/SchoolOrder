@@ -2,6 +2,7 @@ import { Form, Input } from 'antd';
 import { FormCreateOption } from 'antd/lib/form';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
+import { Avatarview } from '../../../../upload/ui';
 import { IFromViewProps } from './interface';
 import { FromViewUiAction } from './uiAction';
 
@@ -58,6 +59,21 @@ class FromView extends React.Component<IFromViewProps>{
                                 ]
                             }
                         )(<Input />)
+                    }
+                </Form.Item>
+                <Form.Item label={"菜品照片"} {...formItemLayoutStyle} >
+                    {
+                        form.getFieldDecorator("picture",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                ]
+                            }
+                        )(<Avatarview />)
                     }
                 </Form.Item>
                 <Form.Item label={"菜名"} {...formItemLayoutStyle} >

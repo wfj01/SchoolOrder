@@ -159,7 +159,7 @@ export class FirstRestaurantDoMainStore {
                     method: "GET"
                 })
                 if (res.rtnCode !== 0) {
-                    message.info('暂无数据');
+                    message.error('暂无数据');
                     this.isLoading = false;
                     return;
                 }
@@ -187,7 +187,7 @@ export class FirstRestaurantDoMainStore {
                     method: "GET"
                 })
                 if (res.rtnCode !== 0) {
-                    message.info('暂无数据');
+                    message.error('暂无数据');
                     this.isLoading = false;
                     return;
                 }

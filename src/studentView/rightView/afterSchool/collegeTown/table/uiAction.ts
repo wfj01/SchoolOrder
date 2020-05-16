@@ -38,7 +38,7 @@ export class CollegeTownTableUiAction {
             this.props.GlobalCollegeTownDoMainStore!.lengths = Number(ix);
             this.props.onEyeClick(this.props.GlobalCollegeTownDoMainStore!.currentEditCardType);
         } else {
-            message.info('错误的事件参数');
+            message.error('错误的事件参数');
         }
     }
 

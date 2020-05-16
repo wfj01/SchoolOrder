@@ -24,11 +24,11 @@ import OrderManagementStore from "./studentView/rightView/cartManage/ordermanage
 import StepsViewStore from "./studentView/rightView/cartManage/stores";
 import { FirstRestaurantDoMainStore } from "./studentView/rightView/firstRestaurant/domainStore";
 import FirstRestaurant from "./studentView/rightView/firstRestaurant/stores";
-import { LastWeekDomainStore } from "./studentView/rightView/lastweekView/domainstore";
-import LastWeekStores from "./studentView/rightView/lastweekView/store";
 import { SecondRestaurantDomainStore } from "./studentView/rightView/secondRestaurant/domainStore";
 import SecondRestaurant from "./studentView/rightView/secondRestaurant/stores";
 import { TadayRecommendDomainStore } from "./studentView/rightView/tadayRecommend/domainstore";
+import { LastWeekDomainStore } from "./studentView/rightView/tadayRecommend/lastweekView/domainstore";
+import LastWeekStores from "./studentView/rightView/tadayRecommend/lastweekView/store";
 import TadayRecommendStores from "./studentView/rightView/tadayRecommend/store";
 
 interface IDemoProps {

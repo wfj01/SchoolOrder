@@ -25,11 +25,11 @@ export class SouthSnack extends React.Component<ISouthSnackProps> {
     }
     public render() {
         return (
-            <VerThr>
+            <VerThr style={{ paddingTop: '15px' }}>
                 <VerThr.top>
                     <TopSearchView />
                 </VerThr.top>
-                <VerThr.middle style={{ padding: '8px' }}>
+                <VerThr.middle style={{ padding: '15px 8px 8px 0px' }}>
                     <SouthSnackTable 
                     onEyeClick={this.uiAction.onEyeClick}/>
                     <DrawerView

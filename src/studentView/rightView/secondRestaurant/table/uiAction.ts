@@ -38,7 +38,7 @@ export class SecondRestaurantTableUiAction{
             this.props.GlobalSecondDoMainStore!.lengths = Number(ix);
             this.props.onEyeClick(this.props.GlobalSecondDoMainStore!.currentEditCardType);
         } else {
-            message.info('错误的事件参数');
+            message.error('错误的事件参数');
         }
     }
 

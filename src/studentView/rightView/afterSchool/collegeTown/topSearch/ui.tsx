@@ -13,7 +13,7 @@ import { TopSearchUiAction } from './uiAction';
 @observer
 export class TopSearchView extends React.Component<ITopSearchViewProps> {
 
-    private uiAction:TopSearchUiAction;
+    private uiAction: TopSearchUiAction;
     constructor(props: ITopSearchViewProps) {
         super(props);
         this.uiAction = new TopSearchUiAction(props);
@@ -22,8 +22,8 @@ export class TopSearchView extends React.Component<ITopSearchViewProps> {
         return (
             <>
                 <div style={{ float: "left" }}>
-                    <label style={{ float: 'left', textAlign: 'center', marginTop: '3px', fontSize: '15px' }}>价格:</label>
-                    <Input.Group style={{ float: 'left', width: '250px' }}>
+                    <label style={{ float: 'left', textAlign: 'center', marginTop: '3px', fontSize: '15px' }}>价格：</label>
+                    <Input.Group style={{ float: 'left', width: '250px', marginLeft: "5px" }}>
                         <Input
                             style={{ width: 110, textAlign: 'center', float: "left" }}
                             placeholder="开始"
@@ -41,20 +41,20 @@ export class TopSearchView extends React.Component<ITopSearchViewProps> {
                         />
                         <Input
                             style={{ width: 110, textAlign: 'center', borderLeft: 0, float: "left" }}
-                            placeholder="结束" 
+                            placeholder="结束"
                             onChange={this.uiAction.handleEndPrice}
-                            />
+                        />
                     </Input.Group>
                 </div>
                 <div style={{ float: "left", marginLeft: '20px' }}>
-                    <label style={{ float: 'left', textAlign: 'center', marginTop: '3px', fontSize: '15px' }}>菜名:</label>
-                    <Input style={{ width: 110, float: "left" }} onChange={this.uiAction.handleDishname} />
+                    <label style={{ float: 'left', textAlign: 'center', marginTop: '3px', fontSize: '15px' }}>菜名：</label>
+                    <Input style={{ width: 110, float: "left", marginLeft: "5px" }} onChange={this.uiAction.handleDishname} />
                 </div>
                 <div style={{ float: "left", marginLeft: '20px' }}>
                     <Button type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSearch}>查询</Button>
                 </div>
                 <div style={{ float: "right", marginRight: '20px' }}>
-                    <Button type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSave}>保存</Button>
+                    <Button type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSave}>保存所选</Button>
                 </div>
             </>
         )

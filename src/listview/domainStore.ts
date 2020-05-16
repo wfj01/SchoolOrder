@@ -94,7 +94,7 @@ export class ListViewDoMainStore {
     public async Adddata(model: RegisterPageFormEntity) {
         try {
             if (this.handlePassWord !== this.handleConfirmPassword) {
-                message.info("两次密码不一致!");
+                message.error("两次密码不一致!");
                 return;
             }
             else
@@ -124,7 +124,7 @@ export class ListViewDoMainStore {
     public async UpdatePassWord(model: ForgetPassWordEntity) {
         try {
             if (this.ForgetPassWord !== this.ConfirmPassword) {
-                message.info("两次密码不一致!");
+                message.error("两次密码不一致!");
                 return;
             }
             else {

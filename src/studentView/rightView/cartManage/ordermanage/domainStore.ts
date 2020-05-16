@@ -1,4 +1,5 @@
 import { message } from "antd";
+import { ClickParam } from "antd/lib/menu";
 import { observable } from "mobx";
 import { requestJson } from "../../../../genericComponent/requestJson";
 import { OrderManagementEntity } from "./entity";
@@ -23,11 +24,66 @@ export class OrderManagementDoMainStore {
     @observable
     public allReportTableData: OrderManagementEntity[];
 
+    /**
+     * 展示数据
+     */
+    @observable
+    public showReportTableData: OrderManagementEntity[];
+    /**
+     * 结束号码
+     */
+    @observable
+    public endNo: string;
+
+    /**
+     * 总数
+     */
+    @observable
+    public customerCount: number;
+
+    /**
+     * 当前页下标
+     */
+    @observable
+    public PageIndex: number;
+
+    /**
+     * 每页数据条数
+     */
+    @observable
+    public PageSize: number;
+
     constructor() {
         this.studentid = "";
         this.isloading = false;
+        this.customerCount = 0;
+        this.PageIndex = 1
+        this.PageSize = 20;
         this.allReportTableData = [];
     }
+
+    
+    public paginationOnChange = (page: number, pageSize?: number | undefined) => {
+        this.PageIndex = page;
+        this.setShowTableData();
+        console.log("显示数据");
+
+    }
+
+    public paginationPageSizeMenuOnClick = (param: ClickParam) => {
+        this.PageSize = parseInt(param.key, 10);
+        this.setShowTableData();
+        console.log("显示数据");
+
+    }
+    /** 根据当前页码和显示数设置展示数据 */
+    public setShowTableData() {
+        this.showReportTableData = this.allReportTableData.slice(0, -1)
+            .slice(this.PageSize * (this.PageIndex - 1), this.PageSize * this.PageIndex)
+            // .concat(this.showReportTableData.slice(-1));
+        console.log("显示数据");
+    }
+
 
     /**
      * 加载数据
@@ -46,6 +102,7 @@ export class OrderManagementDoMainStore {
             }
             console.log("res.date:", res.data.table);
             this.allReportTableData = res.data.table as any[];
+            this.showReportTableData = this.allReportTableData;
             this.allReportTableData.map((element: OrderManagementEntity) => {
                 if (element.isConfirm === false && element.isComplete === false) {
                     element.state = "未确认";

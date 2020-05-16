@@ -85,6 +85,7 @@ export class OrderManagementTable extends React.Component<IOrderManagementTablep
                     }
                     dataSource={this.props.GlobalOrderManagementDoMainStore!.allReportTableData}
                     pagination={false}
+                    style={{ height: '550px' }}
                     locale={{ emptyText: '暂无 数据' }}
                     rowKey={this.props.GlobalOrderManagementDoMainStore!.getRowIndex}
                 />

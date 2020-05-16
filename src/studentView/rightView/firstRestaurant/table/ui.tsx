@@ -25,6 +25,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: 'dishname',
             title: '菜名',
             width: "12%",
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -32,6 +33,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: 'price',
             title: '价格(元/500g)',
             width: "13%",
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
 
@@ -40,6 +42,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: 'score',
             title: '得分',
             width: '7%',
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -47,6 +50,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: 'time',
             title: "时间",
             width: '10%',
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -54,6 +58,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: "practice",
             title: '做法',
             width: '18%',
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -61,6 +66,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: "windows",
             title: '窗口',
             width: '10%',
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -68,6 +74,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: 'remarks',
             title: '备注',
             width: '5%',
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -75,10 +82,12 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             key: "number",
             title: '数量',
             width: '5%',
+            height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
             key: "action",
+            height:40,
             render: (text: any, record: FirstRestaurantEntity, index: number) => {
                 return (
                     <div style={{ display: "inline-block" }}>

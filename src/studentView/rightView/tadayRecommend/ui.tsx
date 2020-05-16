@@ -1,51 +1,86 @@
-
-import { Button, Layout } from 'antd';
 // import { TadayRecommendUiAction } from './uiAction';
+import { Icon, Menu } from 'antd';
+import { ClickParam } from 'antd/lib/menu';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
+import { VerThr } from '../../../genericComponent/gridBox/verThr/verThr';
+import { LastWeekView } from './lastweekView/ui';
+import { ITadayRecommendProps } from './listview/interface';
+import { TadayRecommend } from './listview/ui';
+// import { TadayRecommendUiAction } from './uiAction';
 
-import { ITadayRecommendProps } from './interface';
-import MiddleFromView from './middleFrom/ui';
-import { TadayRecommendUiAction } from './uiAction';
-const { Footer, Sider, Content } = Layout;
-
-
+interface ITadayRecommendState {
+  count: number,
+  lengths: string,
+  display1: string,
+  display2: string,
+  current: string,
+}
 /**
  * 推荐菜
  */
 @inject("GlobalTadayRecommendDomainStore")
 @observer
-export class TadayRecommend extends React.Component<ITadayRecommendProps>{
-  private uiAction: TadayRecommendUiAction;
- 
+export class Menuselection extends React.Component<ITadayRecommendProps, ITadayRecommendState>{
+  // private uiAction: TadayRecommendUiAction;
+
   constructor(props: ITadayRecommendProps) {
     super(props);
-    this.uiAction = new TadayRecommendUiAction(props);
+    this.state = {
+      count: 1,
+      lengths: "0",
+      display1: 'block',
+      display2: 'none',
+      current: '0'
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.handlepage = this.handlepage.bind(this);
+    // this.uiAction = new TadayRecommendUiAction(props);
   }
   public componentDidMount() {
     this.props.GlobalTadayRecommendDomainStore!.Loadate();
   }
   public render() {
     return (
-      <Layout >
-          <img src={require("../../../image/tu5.jpg")}/>
-
-        <header >菜品信息</header>
-        <Layout>
-          <div style={{ minWidth: "500px" }}>
-            <Sider ><img alt="##" src={this.props.GlobalTadayRecommendDomainStore!.imageUrl} /></Sider>
-          </div>
-          <Content >
-            {this.props.GlobalTadayRecommendDomainStore!.List.length > 0
-              ? <MiddleFromView GlobalTadayRecommendDomainStore={this.props.GlobalTadayRecommendDomainStore!} />
-              : <div>""</div>}
-          </Content>
-        </Layout>
-        <Footer style={{ textAlign: "right", paddingRight: "12px" }}>
-          <Button onClick={this.uiAction.NextClick}>下一页</Button>
-          <Button onClick={this.uiAction.LastClick}>上一页</Button>
-        </Footer>
-      </Layout>
+      <>
+        <VerThr>
+          <VerThr.top>
+            <Menu onClick={this.handleClick} mode="horizontal" defaultSelectedKeys={["0"]}>
+              <Menu.Item key="0">
+                <Icon type="mail" />
+                        今日推荐菜
+                </Menu.Item>
+              <Menu.Item key="1">
+                <Icon type="appstore" />
+                        榜单
+                </Menu.Item>
+            </Menu>
+          </VerThr.top>
+          <VerThr.middle >
+            {this.handlepage()}
+          </VerThr.middle>
+        </VerThr>
+      </>
     )
   }
+
+  private handlepage() {
+    console.log("已执行:", this.state.current);
+    switch (this.state.current) {
+      case "0":
+        return <TadayRecommend />
+      case "1":
+        return <LastWeekView />
+      default:
+        return <div />
+    }
+  }
+
+
+  private handleClick(param: ClickParam) {
+    this.setState({
+      current: param.key,
+    });
+    console.log("CLICK", this.state.current);
+  };
 }

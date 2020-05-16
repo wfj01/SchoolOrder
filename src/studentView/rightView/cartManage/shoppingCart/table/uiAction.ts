@@ -37,12 +37,12 @@ export class ShoppingCartViewTableUiAction{
         console.log("执行")
         const deleteid = value;
         if (!deleteid) {
-            message.info("无效的对象id");
+            message.error("无效的对象id");
             return;
         }
         const ix = deleteid.indexOf('_');
         if (ix < 0) {
-            message.info('无效的对象id');
+            message.error('无效的对象id');
             return;
         }
         const id = Number(deleteid.substring(ix + 1));

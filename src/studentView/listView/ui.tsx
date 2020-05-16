@@ -7,9 +7,9 @@ import { SouthSnack } from '../rightView/afterSchool/southSnack/ui';
 import { OrderManagement } from '../rightView/cartManage/ordermanage/listview/ui';
 import { CartManageView } from '../rightView/cartManage/ui';
 import { FirstRestaurant } from '../rightView/firstRestaurant/ui';
-import { LastWeekView } from '../rightView/lastweekView/ui';
+import { MymessageView } from '../rightView/myMessage/ui';
 import { SecondRestaurant } from '../rightView/secondRestaurant/ui';
-import { TadayRecommend } from '../rightView/tadayRecommend/ui';
+import { Menuselection } from '../rightView/tadayRecommend/ui';
 import './index.css';
 import { IMenuViewProps } from './interface';
 const { SubMenu } = Menu;
@@ -28,12 +28,12 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
 
     // private uiaction :MenuViewuiAction;
 
-    
+
 
     constructor(props: IMenuViewProps) {
         super(props);
         this.state = {
-            current: ""
+            current: "0101"
         }
         // this.uiaction = new MenuViewuiAction(props);
         this.handleclick = this.handleclick.bind(this);
@@ -42,15 +42,24 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
 
     public render() {
         return (
-            <div style={{ padding: '0px 6px 8px 8px', display: this.props.display2 }}>
+            <div style={{ display: this.props.display2 }}>
+                <div style={{ height: 50, backgroundColor: '#000c17', display: "flex", justifyContent: 'space-between' }}>
+                    <div style={{ display: "flex", justifyContent: 'start', width: 300 }}>
+                        <div>
+                            <img style={{ width: 60, height: 50 }} src={require("../../image/chilogo.png")} />
+                        </div>
+                        <div style={{ color: "#FFF", fontSize: '15px', marginLeft: '5px', lineHeight: '50px' }}>在线订餐系统</div>
+                    </div>
+                    <div style={{ color: "#FFF", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }}>联系我们</div>
+                </div>
                 <div>
                     <div style={{ float: "left", width: '12%' }}>
                         <Menu
-                            theme={"dark"}
+                            theme={"light"}
                             onClick={this.handleclick}
                             selectedKeys={[this.state.current]}
                             mode="inline"
-                            defaultOpenKeys={['01','02','03','04']}
+                            defaultOpenKeys={['01', '02', '03', '04']}
                         >
                             <SubMenu
                                 key="01"
@@ -61,7 +70,6 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                                 }
                             >
                                 <Menu.Item key="0101">今日推荐菜</Menu.Item>
-                                <Menu.Item key="0102">上周榜单</Menu.Item>
                             </SubMenu>
                             <SubMenu
                                 key="02"
@@ -73,10 +81,8 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                             >
                                 <Menu.Item key="0201">第一餐厅</Menu.Item>
                                 <Menu.Item key="0202">第二餐厅</Menu.Item>
-                                <SubMenu key="0203" title="校外订餐">
-                                    <Menu.Item key="020301">大学城</Menu.Item>
-                                    <Menu.Item key="020302">南门小吃</Menu.Item>
-                                </SubMenu>
+                                <Menu.Item key="020301">大学城</Menu.Item>
+                                <Menu.Item key="020302">南门小吃</Menu.Item>
                             </SubMenu>
                             <SubMenu
                                 key="03"
@@ -105,6 +111,7 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                     </div>
                 </div>
                 <div style={{ float: 'left', width: '85%', marginLeft: '16px' }}>
+
                     {this.renderPage()}
                 </div>
             </div>
@@ -123,9 +130,7 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
         console.log("已执行:", this.state.current);
         switch (this.state.current) {
             case "0101":
-                return <TadayRecommend />
-            case "0102":
-                return <LastWeekView />
+                return <Menuselection />
             case "0201":
                 return <FirstRestaurant />
             case "0202":
@@ -135,9 +140,11 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
             case "020302":
                 return <SouthSnack />
             case "0301":
-                return<CartManageView/>
+                return <CartManageView />
             case "0302":
-                return<OrderManagement/>
+                return <OrderManagement />
+            case "0401":
+                return<MymessageView/>
             default:
                 return <div />
         }

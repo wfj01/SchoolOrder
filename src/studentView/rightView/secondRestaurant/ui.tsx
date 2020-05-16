@@ -26,11 +26,11 @@ export class SecondRestaurant extends React.Component<ISecondRestaurantProps>{
     }
     public render() {
         return (
-            <VerThr>
+            <VerThr style={{ paddingTop: '15px' }}>
                 <VerThr.top>
                     <TopSearchView />
                 </VerThr.top>
-                <VerThr.middle style={{ padding: '8px' }}>
+                <VerThr.middle style={{ padding: '15px 8px 8px 0px' }}>
                     < SecondRestaurantTable 
                     onEyeClick={this.uiAction.onEyeClick}/>
                     <DrawerView

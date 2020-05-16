@@ -1,53 +1,52 @@
-import { Upload, message } from 'antd';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { Icon, message, Upload } from 'antd';
+import React from 'react';
 
-function getBase64(img, callback) {
+function getBase64(img: Blob, callback: { (imageUrl: any): void; (arg0: string | ArrayBuffer | null): any; }) {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
+  console.log("imgimgimgimgimgimgimgimgimgimg:",img);
 }
 
-function beforeUpload(file) {
+function beforeUpload(file: { type: string; size: number; }) {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
+    message.error('你只能上传照片');
   }
   const isLt2M = file.size / 1024 / 1024 < 2;
   if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
+    message.error('照片大小只能2m');
   }
   return isJpgOrPng && isLt2M;
 }
 
-class Avatar extends React.Component {
-  state = {
-    loading: false,
-  };
+interface IAvatarState {
+  imageUrl: any,
+  loading: boolean,
+}
 
-  handleChange = info => {
-    if (info.file.status === 'uploading') {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, imageUrl =>
-        this.setState({
-          imageUrl,
-          loading: false,
-        }),
-      );
-    }
-  };
+export class Avatarview extends React.Component<any, IAvatarState>{
 
-  render() {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      imageUrl: "",
+      loading: false,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+
+  }
+
+  public render() {
+
     const uploadButton = (
       <div>
-        {this.state.loading ? <LoadingOutlined /> : <PlusOutlined />}
+        {this.state.loading ? <Icon type="loading" /> : <Icon type="plus" />}
         <div className="ant-upload-text">Upload</div>
       </div>
     );
-    const { imageUrl } = this.state;
+
     return (
       <Upload
         name="avatar"
@@ -58,10 +57,28 @@ class Avatar extends React.Component {
         beforeUpload={beforeUpload}
         onChange={this.handleChange}
       >
-        {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+        {this.state.imageUrl ? <img src={this.state.imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
       </Upload>
     );
   }
-}
 
-ReactDOM.render(<Avatar />, mountNode);
+  private handleChange = (info:any) => {
+    console.log("imageurl1111:",this.state.imageUrl);
+
+    if (info.file.status === 'uploading') {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, (imageUrl: any) =>
+        this.setState({
+          imageUrl,
+          loading: false,
+        }
+        ),
+        );
+        console.log("imageurl:",this.state.imageUrl);
+    }
+  };
+}

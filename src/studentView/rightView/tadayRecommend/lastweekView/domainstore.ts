@@ -1,11 +1,11 @@
 import { message } from "antd";
 import { action, observable } from "mobx";
-import { requestJson } from "../../../genericComponent/requestJson";
-import imgURL2 from '../../../image/fentijin.jpg';
-import imgURL4 from '../../../image/Hongshaorou.jpg';
-import imgURL5 from '../../../image/hongshaozaiji.jpg';
-import imgURL3 from '../../../image/mapodoufu.jpg';
-import imgURL1 from '../../../image/shaozahui.jpg';
+import { requestJson } from "../../../../genericComponent/requestJson";
+import imgURL2 from '../../../../image/fentijin.jpg';
+import imgURL4 from '../../../../image/Hongshaorou.jpg';
+import imgURL5 from '../../../../image/hongshaozaiji.jpg';
+import imgURL3 from '../../../../image/mapodoufu.jpg';
+import imgURL1 from '../../../../image/shaozahui.jpg';
 import { LastWeekEntity } from "./entity";
 
 
@@ -58,7 +58,7 @@ export class LastWeekDomainStore{
                 method: "GET"
             })
         if (res.rtnCode !== 0) {
-            message.info('暂无数据');
+            message.error('暂无数据');
             this.Isloading = false;
             return;
         }

@@ -102,7 +102,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://129.204.77.134:5000/api/",
+      "target": "http://localhost:33527/api/",
       "changeOrigin": true,
       "pathRewrite": {
         "^/api": ""

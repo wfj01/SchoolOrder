@@ -14,26 +14,26 @@ import { FirstRestaurantUiAction } from './uiAction';
 @inject("GlobalFirstDoMainStore")
 @observer
 export class FirstRestaurant extends React.Component<IFirstRestaurantProps>{
-    
-    private uiAction:FirstRestaurantUiAction;
 
-    constructor(props:IFirstRestaurantProps){
+    private uiAction: FirstRestaurantUiAction;
+
+    constructor(props: IFirstRestaurantProps) {
         super(props);
         this.uiAction = new FirstRestaurantUiAction(props);
     }
 
     public render() {
         return (
-            <VerThr>
+            <VerThr style={{ paddingTop: '15px' }}>
                 <VerThr.top>
                     <TopSearchView />
                 </VerThr.top>
-                <VerThr.middle style={{ padding: '8px' }}>
-                    <RestaurantTable 
-                    onEyeClick={this.uiAction.onEyeClick}/>
+                <VerThr.middle style={{ padding: '15px 8px 8px 0px' }}>
+                    <RestaurantTable
+                        onEyeClick={this.uiAction.onEyeClick} />
                     <DrawerView
-                       visible={this.uiAction.visible}
-                       onClose={this.uiAction.onCloseClick}/>
+                        visible={this.uiAction.visible}
+                        onClose={this.uiAction.onCloseClick} />
                 </VerThr.middle>
                 <VerThr.bottom style={{ paddingRight: "8px" }}
                 >
@@ -52,7 +52,7 @@ export class FirstRestaurant extends React.Component<IFirstRestaurantProps>{
                             showIcon={true}
                             className=" ori-alert-nocolor"
                         />
-                        <VerThr.bottom style={{ textAlign: "right", paddingRight: "12px",width:'450px' }}>
+                        <VerThr.bottom style={{ textAlign: "right", paddingRight: "12px", width: '450px' }}>
                             <PaginationView GlobalFirstDoMainStore={this.props.GlobalFirstDoMainStore!} />
                         </VerThr.bottom>
                     </FlexAlign>

@@ -68,7 +68,7 @@ export class ManageGoodsTableUiAction {
             this.props.GlobalManageGoodsDomainStore!.lengths = Number(ix);
             this.props.onEyeClick(this.props.GlobalManageGoodsDomainStore!.currentEditData);
         } else {
-            message.info('错误的事件参数');
+            message.error('错误的事件参数');
         }
     }
     /**
@@ -84,7 +84,7 @@ export class ManageGoodsTableUiAction {
         if (this.props.GlobalManageGoodsDomainStore!.SelectedData(id)) {
             this.props.onEdit(this.props.GlobalManageGoodsDomainStore!.currentEditData);
         } else {
-            message.info('错误的事件参数');
+            message.error('错误的事件参数');
         }
 
     }
@@ -98,12 +98,12 @@ export class ManageGoodsTableUiAction {
         console.log("执行")
         const deleteid = value;
         if (!deleteid) {
-            message.info("无效的对象id");
+            message.error("无效的对象id");
             return;
         }
         const ix = deleteid.indexOf('_');
         if (ix < 0) {
-            message.info('无效的对象id');
+            message.error('无效的对象id');
             return;
         }
         const id = Number(deleteid.substring(ix + 1));
@@ -123,18 +123,18 @@ export class ManageGoodsTableUiAction {
         const id = e.currentTarget.getAttribute("id");
 
         if (!id) {
-            message.info("无效的对象id")
+            message.error("无效的对象id")
             return undefined;
         }
         const index = id.indexOf("_");
         if (index < 0) {
-            message.info("无效的对象id")
+            message.error("无效的对象id")
             return undefined;
         }
         try {
             return id.substring(index + 1);
         } catch (error) {
-            message.info(error.message);
+            message.error(error.message);
             return undefined;
         }
 

@@ -1,4 +1,5 @@
 import { message } from "antd";
+import { ClickParam } from "antd/lib/menu";
 import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
 import { ShoppingCartViewEntity } from "./entity";
@@ -10,6 +11,41 @@ export class StepsViewDomainStore {
      */
     @observable
     public allReportTableData: ShoppingCartViewEntity[];
+
+    /**
+     * 选定的行
+     */
+    @observable
+    public selectedRowKeys: string[] | number[];
+
+    /**
+     * 展示数据
+     */
+    @observable
+    public showReportTableData: ShoppingCartViewEntity[];
+    /**
+     * 结束号码
+     */
+    @observable
+    public endNo: string;
+
+    /**
+     * 总数
+     */
+    @observable
+    public customerCount: number;
+
+    /**
+     * 当前页下标
+     */
+    @observable
+    public PageIndex: number;
+
+    /**
+     * 每页数据条数
+     */
+    @observable
+    public PageSize: number;
 
     /**
      * 加载
@@ -41,17 +77,26 @@ export class StepsViewDomainStore {
     @observable
     public secondnumber: number;
 
+    @observable
+    public thirednumber:string;
+
     /**
      * 计算得出的数
      */
     @observable
     public calculatednumber: number;
 
+    @observable
+    public calculatedstring :string;
+
     /**
      * 得到的集合
      */
     @observable
     public List: any[];
+
+    @observable
+    public List1:any[];
 
     public element: any;
 
@@ -93,8 +138,10 @@ export class StepsViewDomainStore {
         this.firstnumber = 0;
         this.secondnumber = 0;
         this.calculatednumber = 0;
+        this.calculatedstring = "";
         this.element = [];
         this.List = [];
+        this.List1 = [];
         this.allReportTableData = [];
         this.tableKeys = [];
         this.isLoading = false;
@@ -115,9 +162,29 @@ export class StepsViewDomainStore {
      * 计算金额
      */
     public CalculationMoney() {
-        this.List.forEach(element => {
-            this.calculatednumber +=element;
-        });
+        
+        console.log("calculatedstring:",this.calculatedstring );
+    }
+
+    public paginationOnChange = (page: number, pageSize?: number | undefined) => {
+        this.PageIndex = page;
+        this.setShowTableData();
+        console.log("显示数据");
+
+    }
+
+    public paginationPageSizeMenuOnClick = (param: ClickParam) => {
+        this.PageSize = parseInt(param.key, 10);
+        this.setShowTableData();
+        console.log("显示数据");
+
+    }
+    /** 根据当前页码和显示数设置展示数据 */
+    public setShowTableData() {
+        this.showReportTableData = this.allReportTableData.slice(0, -1)
+            .slice(this.PageSize * (this.PageIndex - 1), this.PageSize * this.PageIndex)
+            // .concat(this.showReportTableData.slice(-1));
+        console.log("显示数据");
     }
 
     /**
@@ -127,7 +194,7 @@ export class StepsViewDomainStore {
     public async LoadData() {
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Order/queryUser?studentid="+this.studentid,
+            const res = await requestJson("/api/Order/queryUser?studentid="+"201710033092",
                 {
                     method: "GET"
                 })
@@ -138,14 +205,25 @@ export class StepsViewDomainStore {
                 return;
             }
             this.allReportTableData = res.data.table as any[];
+            this.showReportTableData = this.allReportTableData;
             if(this.allReportTableData.length>0)
             {
                 this.allReportTableData.forEach(element => {
                     this.firstnumber = Number(element.price);
                     this.secondnumber = Number(element.number);
+                    this.thirednumber = element.dishname;
                     this.calculatednumber = (this.firstnumber) * (this.secondnumber)
-                    this.List.push(this.calculatednumber);
+                    this.List.push(this.calculatednumber,);
+                    this.List1.push(this.thirednumber);
                 });
+                this.List.forEach(element => {
+                    this.calculatednumber +=element;
+                });
+        
+                this.List1.forEach(element=>{
+                    this.calculatedstring +=element;
+                    this.calculatedstring = (this.calculatedstring)+("*")+(this.secondnumber);
+                })
             }
             else
             {   
@@ -219,7 +297,7 @@ export class StepsViewDomainStore {
         try{
         console.log("this.List:",this.allReportTableData);
         this.isLoading = true;
-        const res: any = await requestJson("/api/Order/confirmorder?studentid="+this.studentid+"&StudentName="+this.studentName
+        const res: any = await requestJson("/api/Order/confirmorder?studentid="+"201710033092"+"&StudentName="+this.studentName
         +"&StudentAddress="+this.studentAddress+"&StudentPhone="+this.studentPhone,
                 {
                     method: "POST",
@@ -228,10 +306,11 @@ export class StepsViewDomainStore {
                 }
             )
             if (res.rtnCode !== 0) {
-                message.info(res.rtnMsg);
+                message.error(res.rtnMsg);
                 this.isLoading = false;
             }
             this.LoadData();
+            this.allReportTableData =[];
             this.isLoading = false; 
             return res;
         } catch (error) {

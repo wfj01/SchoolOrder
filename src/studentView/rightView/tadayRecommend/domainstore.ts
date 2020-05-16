@@ -68,7 +68,7 @@ export class TadayRecommendDomainStore{
     public NextClick() {
         console.log("lengths:",this.lengths);
         if ((this.lengths+1)===this.List.length) {
-            message.info('最后');
+            message.success('最后');
             this.imageUrl = imgURL2;
             return;
         }
@@ -85,7 +85,6 @@ export class TadayRecommendDomainStore{
         console.log("lengths:",this.lengths);
 
         if ((this.lengths-1) < 0) {
-            message.info('第一');
             this.imageUrl = imgURL1;
             return;
         }
@@ -107,7 +106,7 @@ export class TadayRecommendDomainStore{
                 method: "GET"
             })
         if (res.rtnCode !== 0) {
-            message.info('暂无数据');
+            message.error('暂无数据');
             this.Isloading = false;
             return;
         }
