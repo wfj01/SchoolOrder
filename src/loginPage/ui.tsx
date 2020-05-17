@@ -1,12 +1,13 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Icon, Input } from 'antd';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import './index.css';
 import { ILoginPageProps } from './interface';
-// import { LoginpageUiAction } from './uiAction';
+import { LoginpageUiAction } from './uiAction';
 const formItemLayoutStyle = {
+ color:"#40a9ff",
     labelCol: {
-        span: 6
+        span: 6,
     },
     wrapperCol: {
         span: 15
@@ -25,12 +26,12 @@ const tailLayout = {
 @observer
 class LoginPage extends React.Component<ILoginPageProps>{
 
-    // private uiaction: LoginpageUiAction;
+    private uiaction: LoginpageUiAction;
 
-    // constructor(props: ILoginPageProps) {
-    //     super(props);
-    //     this.uiaction = new LoginpageUiAction(props);
-    // }
+    constructor(props: ILoginPageProps) {
+        super(props);
+        this.uiaction = new LoginpageUiAction(props);
+    }
     public render() {
         const form = this.props.form;
         return (
@@ -38,7 +39,7 @@ class LoginPage extends React.Component<ILoginPageProps>{
                 <div className="bbb" style={{ display: this.props.Logindisplay }}>
                     <Form>
                         <Form.Item
-                            label={"账号"}
+                            label={"账号"} 
                             {...formItemLayoutStyle}
                         >
                             {
@@ -46,21 +47,18 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                     {
                                         rules: [
                                             {
-                                                required: true,
                                                 whitespace: true,
                                                 message: "不能为空"
                                             },
                                             {
-                                                required: true,
                                                 max: 15,
                                                 message: "长度不能大于12"
                                             }
                                         ]
                                     }
-                                )(<Input onChange={this.props.Usernametext} />)
+                                )(<Input onChange={this.props.Usernametext} prefix={<Icon type="user" />}/>)
                             }
                         </Form.Item>
-
                         <Form.Item
                             label={"密码"}
                             {...formItemLayoutStyle}
@@ -70,18 +68,16 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                     {
                                         rules: [
                                             {
-                                                required: true,
                                                 whitespace: true,
                                                 message: "不能为空"
                                             },
                                             {
-                                                required: true,
                                                 max: 64,
                                                 message: "长度过长"
                                             }
                                         ]
                                     }
-                                )(<Input onChange={this.props.Passwordtext} />)
+                                )(<Input type="password" onChange={this.props.Passwordtext} prefix={<Icon type="key" />} suffix={<Icon onClick={this.uiaction.eyeClick} className="iconfont+&#xe60e"  type={"&#xe60e"} />}/>)
                             }
                         </Form.Item>
                         <Form.Item {...tailLayout}>

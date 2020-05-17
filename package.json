@@ -1,8 +1,8 @@
 {
-  "homepage": ".",
-  "name": "cloud-bdt",
-  "version": "1.0.85",
-  "title": "cloud-bdt",
+  "license": "ISC",
+  "name": "cloud-yunyi",
+  "version": "1.0.1",
+  "title": "cloud-yunyi",
   "description": "demo",
   "contributors": [
     "wfesoft"

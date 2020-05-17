@@ -91,7 +91,7 @@ export class OrderManagementDoMainStore {
     public async LoadData() {
         try {
             this.isloading = true;
-            const res = await requestJson("/api/Order/ordermanage?studentid=" + this.studentid,
+            const res = await requestJson("/api/Order/ordermanage?studentid=" + "201710033092",
                 {
                     method: "GET"
                 })

@@ -1,4 +1,4 @@
-import { Form, Input } from "antd";
+import { Form, Input, Radio } from "antd";
 import { FormCreateOption } from "antd/lib/form";
 import { inject, observer } from "mobx-react";
 import React from "react";
@@ -42,8 +42,9 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
     public render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <div style={{ width: "400px" }}>
+            <div style={{ width: "600px" }}>
                 <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
                 >
                     <Form.Item
                         label="真实姓名："
@@ -69,7 +70,7 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                         }
                     </Form.Item>
                     <Form.Item
-                        label="登录学号"
+                        label="真实学号"
                         style={{ width: '300px' }}
                         {...formItemLayout}
                     >
@@ -92,8 +93,9 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                         }
                     </Form.Item>
                 </Form>
-                <Form>
-
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
                     <Form.Item
                         label="登录密码"
                         style={{ width: '300px' }}
@@ -133,9 +135,12 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                                 <Input placeholder="请再一次输入你的密码" onChange={this.uiAction.handleConfirmPassword} />
                             )}
                     </Form.Item>
-
+                </Form>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
                     <Form.Item
-                        label="性别"
+                        label="选择性别"
                         style={{ width: '300px' }}
                         {...formItemLayout}
 
@@ -145,12 +150,13 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                                 rules: [
                                     {
                                         required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
                                     },
                                 ]
                             })(
-                                <Input placeholder="请再一次输入你的密码" />
+                                <Radio.Group >
+                                <Radio value={0}>女</Radio>
+                                <Radio value={1}>男</Radio>
+                              </Radio.Group>
                             )}
                     </Form.Item>
                     <Form.Item
@@ -176,13 +182,15 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                                 <Input placeholder="请输入你的联系电话" />
                             )}
                     </Form.Item>
+                </Form>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >                    <Form.Item
+                    label="所在班级"
+                    style={{ width: '300px' }}
+                    {...formItemLayout}
 
-                    <Form.Item
-                        label="所在班级"
-                        style={{ width: '300px' }}
-                        {...formItemLayout}
-
-                    >
+                >
                         {
                             getFieldDecorator('Class', {
                                 rules: [
@@ -225,19 +233,18 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                             )
                         }
                     </Form.Item>
+                </Form>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
                     <Form.Item
-                        label="邮箱"
+                        label="输入邮箱"
                         style={{ width: '300px' }}
                         {...formItemLayout}
                     >
                         {
                             getFieldDecorator('Email', {
                                 rules: [
-                                    {
-                                        required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
-                                    },
                                     {
                                         max: 50,
                                         pattern: new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"),
@@ -247,6 +254,15 @@ class RegisterPageForm extends React.Component<IRegisterPageProps> {
                             })(
                                 <Input placeholder="请输入你的邮箱" />
                             )
+                        }
+                    </Form.Item>
+                    <Form.Item
+                        label="输入昵称"
+                        style={{ width: '300px' }}
+                        {...formItemLayout}
+                    >
+                        {
+                                <Input placeholder="请输入你的邮箱" />
                         }
                     </Form.Item>
                 </Form>

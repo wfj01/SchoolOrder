@@ -39,6 +39,7 @@ export class ListViewUiAction {
           this.UsernameText = this.UsernameText.bind(this);
           this.PasswordText = this.PasswordText.bind(this);
           this.IfbusinessClick = this.IfbusinessClick.bind(this);
+          this.Usernametext = this.Usernametext.bind(this);
      }
 
      public RegisterOnClick() {
@@ -54,7 +55,10 @@ export class ListViewUiAction {
       */
      public UsernameText(event: React.ChangeEvent<HTMLInputElement>) {
           this.props.GlobalListViewDoMainStore!.LoginUsername = event.target.value;
-          console.log("this.props.GlobalListViewDoMainStore!.LoginUsername:", this.props.GlobalListViewDoMainStore!.LoginUsername);
+     }
+
+     public Usernametext(event:React.ChangeEvent<HTMLInputElement>){
+          this.props.GlobalListViewDoMainStore!.Loginstudioname = event.target.value;
      }
 
      /**
@@ -62,7 +66,6 @@ export class ListViewUiAction {
       */
      public PasswordText(event: React.ChangeEvent<HTMLInputElement>) {
           this.props.GlobalListViewDoMainStore!.LoginPassword = event.target.value;
-          console.log("this.props.GlobalListViewDoMainStore!.LoginPassword:", this.props.GlobalListViewDoMainStore!.LoginPassword);
      }
 
      /**

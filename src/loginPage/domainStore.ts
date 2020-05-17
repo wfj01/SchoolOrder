@@ -4,10 +4,16 @@ import { ForgetPassWordEntity } from "./entity";
 export class LoginPageStore {
 
     /**
+     * 学号
+     */
+    @observable
+    public LoginUserid: string;
+
+    /**
      * 用户名
      */
     @observable
-    public LoginUsername: string;
+    public Loginstudioname:string;
 
     /**
      * 密码
@@ -25,7 +31,7 @@ export class LoginPageStore {
     public currentEditItem: ForgetPassWordEntity;
 
     constructor(){
-        this.LoginUsername = "";
+        this.LoginUserid = "";
         this.LoginPassword = "";  
         this.currentEditItem = new ForgetPassWordEntity;
         this.List = new Array <any>();  

@@ -26,6 +26,7 @@ export class ForgetPassWordDialog extends React.Component<IForgetPassWordDialogP
                 onOk={this.uiAction.handleOk}
                 onCancel={this.props.handleCancel}
                 okText={"确定"}
+                width={"400px"}
                 cancelText={"取消"}
             >
                 <ForgetPassWordForm

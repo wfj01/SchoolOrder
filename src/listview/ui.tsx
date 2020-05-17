@@ -1,6 +1,7 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { BusinessListView } from '../businessView/listView/ui';
+import Background from '../image/login_bg03.jpg';
 import { ForgetPassWordDialog } from '../loginPage/forgetPassword/dialog/ui';
 import LoginPage from '../loginPage/ui';
 import { RegisterPageDialog } from '../registerPage/registerpageDialog/ui';
@@ -17,14 +18,24 @@ interface IListViewState {
     Logindisplay: string
 }
 
+
+const sectionStyle = {
+    width: "100%",
+    height: "625px",
+    backgroundSize: "cover",
+    // makesure here is String确保这里是一个字符串，以下是es6写法
+    backgroundImage: `url(${Background})`,
+};
+
 /**
  * 判断登录窗口&注册页面
  */
 @inject("GlobalListViewDoMainStore")
 @observer
 export class ListView extends React.Component<IListViewProps, IListViewState>{
-    
-    
+
+
+
     private uiAction: ListViewUiAction;
 
     // private value: string;
@@ -51,22 +62,25 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
     public render() {
         return (
             <>
-                <div
-                    className="web_bg" style={{display: this.props.GlobalListViewDoMainStore!.display1 }}>
-                    <div className='aaaa' >
-                        <LoginPage
-                            LoginOnClick={this.LoginBtnOnClick}
-                            Usernametext = {this.uiAction.UsernameText}
-                            Passwordtext = {this.uiAction.PasswordText}
-                            RegisterOnClick={this.RegisterOnClick}
-                            ForgetBtnonClick={this.ForgetBtnonClick}
-                            Logindisplay={this.uiAction.Logindisplay} 
-                            Ifbusiness={this.uiAction.IfbusinessClick}/>
-                        <RegisterPageDialog
-                            handleCancel={this.uiAction.RegisterPagecancel}
-                            handleOk={this.uiAction.RegisterPagesave}
-                            RegPagevisiable={this.props.GlobalListViewDoMainStore!.RegisterPageVisiable} />
-                    
+                <div style={{ display: this.props.GlobalListViewDoMainStore!.display1 }}>
+                    <div
+                        className="web_bg" style={sectionStyle}>
+                        <div className='aaaa' style={{}} >
+                            <LoginPage
+                                LoginOnClick={this.LoginBtnOnClick}
+                                Usernametext={this.uiAction.UsernameText}
+                                Passwordtext={this.uiAction.PasswordText}
+                                RegisterOnClick={this.RegisterOnClick}
+                                ForgetBtnonClick={this.ForgetBtnonClick}
+                                Logindisplay={this.uiAction.Logindisplay}
+                                Ifbusiness={this.uiAction.IfbusinessClick} 
+                                UsernameText={this.uiAction.Usernametext}
+                                />
+                            <RegisterPageDialog
+                                handleCancel={this.uiAction.RegisterPagecancel}
+                                handleOk={this.uiAction.RegisterPagesave}
+                                RegPagevisiable={this.props.GlobalListViewDoMainStore!.RegisterPageVisiable} />
+                        </div>
                     </div>
                 </div>
                 <div className="wrapper" style={{ display: this.uiAction.ForgetPassWorddisplay }}>
@@ -75,8 +89,8 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
                         handleOk={this.uiAction.ForgetPassWordsave}
                         RegPagevisiable={this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable} />
                 </div>
-                <div style={{display:this.uiAction.bussinessdisplay}}>
-                    <BusinessListView/>
+                <div style={{ display: this.uiAction.bussinessdisplay }}>
+                    <BusinessListView />
                 </div>
                 <div style={{ display: this.props.GlobalListViewDoMainStore!.display2 }}>
                     < MenuView />
@@ -113,10 +127,10 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
     }
 
     private ForgetBtnonClick() {
-        console.log("this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable：",this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable);
-       this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable = true; 
-       
-       console.log("this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable：",this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable);
+        console.log("this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable：", this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable);
+        this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable = true;
+
+        console.log("this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable：", this.props.GlobalListViewDoMainStore!.ForgetPassWordVisiable);
     }
 
     private CancelBtnClick() {

@@ -41,12 +41,15 @@ export class ListViewDoMainStore {
     public LoginPassword: string;
 
     @observable
+    public Loginstudioname: string;
+
+    @observable
     public ForgetPassWord: string;
 
     @observable
     public ConfirmPassword: string;
 
-    
+
     @observable
     public handlePassWord: string;
 
@@ -59,7 +62,7 @@ export class ListViewDoMainStore {
         this.ForgetPassWord = "";
         this.ConfirmPassword = "";
         this.handlePassWord = "";
-        this.handleConfirmPassword="";
+        this.handleConfirmPassword = "";
         this.display1 = "block";
         this.display2 = "none";
         this.LoginVerification = this.LoginVerification.bind(this);
@@ -75,16 +78,25 @@ export class ListViewDoMainStore {
                     method: "GET",
                 });
             if (res.rtnCode === 0) {
-                message.success("登录成功")
-                this.display1 = "none";
-                this.display2 = "block";
-                console.log("this.LoginPassword:", this.LoginPassword);
+                message.loading("正在登录中 😇", 0.5)
+                const aaa = res.data.table;
+                aaa.forEach((element: any) => {
+                    this.Loginstudioname = element.studentname
+                });
+                message.success("🎉" + "登录成功 😃" + "🎉", 1.2);
+                setTimeout(() => {
+                    const that = this;
+                    const Loginstudioname = this.Loginstudioname;
+                    that.display1 = "none";
+                    that.display2 = "block";
+                    message.success("🎉" + "亲爱的" + Loginstudioname + "," + "欢迎登录订餐系统" + "🎉", 3)
+                }, 1500)
             }
             else {
-                message.error("登录失败,"+res.rtnMsg);
+                message.error("登录失败," + res.rtnMsg + "😓");
             }
         } catch (error) {
-            message.error("登录失败",error);
+            message.error("登录失败," + error + "😓");
         }
     }
 
@@ -97,23 +109,22 @@ export class ListViewDoMainStore {
                 message.error("两次密码不一致!");
                 return;
             }
-            else
-            {
-            const res: any = await requestJson("/api/Register/postUser",
-                {
-                    method: "POST",
-                    body: JSON.stringify(model),
-                    headers: { "content-type": "application/json" }
-                });
-            if (res.rtnCode !== 0) {
-                message.error("注册失败," + res.rtnMsg);
-            } else {
-                this.RegisterPageVisiable = false;
-                message.success("注册成功，正返回登录页面");
+            else {
+                const res: any = await requestJson("/api/Register/postUser",
+                    {
+                        method: "POST",
+                        body: JSON.stringify(model),
+                        headers: { "content-type": "application/json" }
+                    });
+                if (res.rtnCode !== 0) {
+                    message.error("注册失败," + res.rtnMsg + "😓");
+                } else {
+                    this.RegisterPageVisiable = false;
+                    message.success("🎉" + "注册成功，正返回登录页面," + "😄" + "🎉");
+                }
             }
-        }
         } catch (error) {
-            message.error("注册失败," + error);
+            message.error("注册失败," + error + "😓");
             this.RegisterPageVisiable = false;
         }
     }
@@ -135,14 +146,14 @@ export class ListViewDoMainStore {
                         headers: { "content-type": "application/json" }
                     });
                 if (res.rtnCode !== 0) {
-                    message.error("修改失败," + res.rtnMsg);
+                    message.error("修改失败," + res.rtnMsg + "😓");
                 } else {
                     this.ForgetPassWordVisiable = false;
-                    message.success("修改成功,请重新登录");
+                    message.success("🎉" + "修改成功,请重新登录" + "😄" + "🎉");
                 }
             }
         } catch (error) {
-            message.error("修改失败," + error);
+            message.error("修改失败," + error + "😓");
             this.RegisterPageVisiable = false;
         }
     }
