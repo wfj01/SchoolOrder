@@ -23,7 +23,7 @@ export class BusinessRegisterPage extends React.Component<IRegisterPageDialogPro
                 visible={this.props.RegisterPagevisiable}
                 onOk={this.uiAction.handleOk}
                 onCancel={this.props.handleCancel}
-                width={"800px"}
+                width={"700px"}
                 okText={"确定"}
                 cancelText={"取消"}
             >

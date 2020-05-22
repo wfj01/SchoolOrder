@@ -74,7 +74,7 @@ export class SellGoodsDoMainStore{
             if (this.allReportTableData.length>0) {
                 this.allReportTableData.splice(0,this.allReportTableData.length);
             }
-            const res=await requestJson('/api/Business/loaddata', {
+            const res=await requestJson('/api/TotalShopping/queryUser', {
                 method: "GET"
             });
             if (res.rtnCode===0) {

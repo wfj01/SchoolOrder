@@ -53,10 +53,10 @@ export class TopSearchView extends React.Component<ITopSearchViewProps> {
                     <Input style={{ width: 110, float: "left", marginLeft: "5px" }} onChange={this.uiAction.handleDishname} />
                 </div>
                 <div style={{ float: "left", marginLeft: '20px' }}>
-                    <Button type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSearch}>查询</Button>
+                    <Button  href="##" type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSearch}>查询</Button>
                 </div>
                 <div style={{ float: "right", marginRight: '20px' }}>
-                    <Button type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSave}>保存所选</Button>
+                    <Button href="##" type="primary" style={{ float: "left", marginLeft: '10px' }} onClick={this.uiAction.onClickSave}>保存所选</Button>
                 </div>
             </>
         )

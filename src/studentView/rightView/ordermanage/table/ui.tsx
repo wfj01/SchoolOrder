@@ -90,7 +90,8 @@ export class OrderManagementTable extends React.Component<IOrderManagementTablep
                             </a>
                             <Divider type="vertical" />
                             <a
-                                href={'javascript:;'}
+                            
+                                href =''
                                 onClick={this.uiAction.editClick}
                                 id={`edit_${record.id}`}
                                 title="编辑"

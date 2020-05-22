@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Icon, Input } from "antd";
 import React from "react";
 import { IBudinessLoginPageProps } from "./interface";
 
@@ -44,7 +44,7 @@ class BudinessLoginPage extends React.Component<IBudinessLoginPageProps>{
                                             }
                                         ]
                                     }
-                                )(<Input onChange={this.props.Usernametext} />)
+                                )(<Input prefix={<Icon type="user" />} onChange={this.props.Usernametext} />)
                             }
                         </Form.Item>
 
@@ -68,7 +68,7 @@ class BudinessLoginPage extends React.Component<IBudinessLoginPageProps>{
                                             }
                                         ]
                                     }
-                                )(<Input onChange={this.props.Passwordtext} />)
+                                )(<Input type="password" onChange={this.props.Passwordtext} prefix={<Icon type="key" />} />)
                             }
                         </Form.Item>
                         <Form.Item
@@ -91,7 +91,7 @@ class BudinessLoginPage extends React.Component<IBudinessLoginPageProps>{
                                             }
                                         ]
                                     }
-                                )(<Input onChange={this.props.AuthorizationCode} />)
+                                )(<Input prefix={<Icon type="message" />} onChange={this.props.AuthorizationCode} />)
                             }
                         </Form.Item>
                         <Form.Item {...tailLayout}>

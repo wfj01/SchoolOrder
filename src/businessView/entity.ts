@@ -6,6 +6,7 @@ export class RegisterPageViewEntity {
     public Shopaddress: string;
     public Phonenumber: string;
     public Selfintroduction: string;
+    public License:string;
 }
 
 export class ForgetPassWordEntity{

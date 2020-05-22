@@ -1,4 +1,4 @@
-import { ListViewDoMainStore } from "../../../../../listview/domainStore";
+import { ListViewDoMainStore } from "../../../../listview/domainStore";
 import { OrderManagementviewDoMainStore } from "../domainStore";
 import { OrderManagementEntity } from "../entity";
 

@@ -22,7 +22,7 @@ export class ManageGoodsView extends React.Component<IManageGoodsViewProps>{
         return (
             <VerThr>
                 <VerThr.top>
-                    <Button onClick={this.uiAction.addbtn} style={{ float: "left", margin: 8 }}>新增</Button>
+                    <Button href="##" onClick={this.uiAction.addbtn} style={{ float: "left", margin: 8 }}>新增</Button>
                 </VerThr.top>
                 <VerThr.middle>
                     <ManageGoodsTable

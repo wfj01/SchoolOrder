@@ -26,7 +26,7 @@ export class SellingGoodsView extends React.Component<ISellingGoodsViewProps>{
         return (
             <VerThr>
                 <VerThr.top style={{ padding: '8px 6px 8px 8px' }}>
-                    <Button type="primary" onClick={this.uiAction.handleOnClick}>导出</Button>
+                    <Button href="##"  type="primary" onClick={this.uiAction.handleOnClick}>导出</Button>
                 </VerThr.top>
                 <VerThr.middle>
                     <SellingGoodsTable />

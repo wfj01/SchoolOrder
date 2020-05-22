@@ -38,7 +38,7 @@ export class PaginationView extends React.Component<IPaginationViewProps>{
                 </span>
                 <div style={{ float: 'left'}}>
                 <Dropdown overlay={pageSizeMenu}  >
-                    <Button size="small" >
+                    <Button  href="##" size="small" >
                         每页{PageSize}条 <Icon type="caret-up" />
                     </Button>
                 </Dropdown>

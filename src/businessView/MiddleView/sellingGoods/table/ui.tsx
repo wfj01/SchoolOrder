@@ -37,8 +37,8 @@ export class SellingGoodsTable extends React.Component <ISellingGoodsTableProps>
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
             },
             {
-                dataIndex: 'practice',
-                key: 'practice',
+                dataIndex: 'praction',
+                key: 'praction',
                 title: '做法',
                 width: '10%',
                 render: (text:any) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>

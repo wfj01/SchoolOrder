@@ -24,8 +24,10 @@ import OrderManagementStore from "./studentView/rightView/cartManage/ordermanage
 import StepsViewStore from "./studentView/rightView/cartManage/stores";
 import { FirstRestaurantDoMainStore } from "./studentView/rightView/firstRestaurant/domainStore";
 import FirstRestaurant from "./studentView/rightView/firstRestaurant/stores";
-import { OrderManagementviewDoMainStore } from "./studentView/rightView/myMessage/ordermanage/domainStore";
-import OrderManagementviewStore from "./studentView/rightView/myMessage/ordermanage/stores";
+import { MymessageViewDomainStores } from "./studentView/rightView/myMessage/doMainStore";
+import MymessageViewStores from "./studentView/rightView/myMessage/stores";
+import { OrderManagementviewDoMainStore } from "./studentView/rightView/ordermanage/domainStore";
+import OrderManagementviewStore from "./studentView/rightView/ordermanage/stores";
 import { SecondRestaurantDomainStore } from "./studentView/rightView/secondRestaurant/domainStore";
 import SecondRestaurant from "./studentView/rightView/secondRestaurant/stores";
 import { TadayRecommendDomainStore } from "./studentView/rightView/tadayRecommend/domainstore";
@@ -52,6 +54,8 @@ interface IDemoProps {
     GlobalOrderManagementDoMainStore: OrderManagementDoMainStore;
     GlobalPersonaldataDoMainStore: PersonaldataDoMainStore;
     GlobalOrderManagementviewDoMainStore: OrderManagementviewDoMainStore;
+    GlobalMymessageViewStores:MymessageViewDomainStores;
+
 }
 
 const DemoStore: IDemoProps = {
@@ -72,6 +76,7 @@ const DemoStore: IDemoProps = {
     ...OrderManagementStore,
     ...PersonaldataStore,
     ...OrderManagementviewStore,
+    ...MymessageViewStores,
 }
 
 

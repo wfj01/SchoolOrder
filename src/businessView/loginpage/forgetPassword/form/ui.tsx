@@ -47,12 +47,12 @@ class ForgetPassWordForm extends React.Component<IForgetPassWordFormProps>{
         return (
             <Form>
                 <Form.Item
-                    label="真实姓名："
+                    label="账  号："
                     style={{ width: '300px' }}
                     {...formItemLayout}
                 >
                     {
-                        getFieldDecorator('Studentname', {
+                        getFieldDecorator('Name', {
                             rules: [
                                 {
                                     required: true,
@@ -65,7 +65,7 @@ class ForgetPassWordForm extends React.Component<IForgetPassWordFormProps>{
                                 }
                             ]
                         })(
-                            <Input placeholder="请输入你的真实姓名" />
+                            <Input placeholder="请输入你的账号" />
                         )
                     }
                 </Form.Item>
@@ -75,7 +75,7 @@ class ForgetPassWordForm extends React.Component<IForgetPassWordFormProps>{
                     {...formItemLayout}
                 >
                     {
-                        getFieldDecorator('Studentid', {
+                        getFieldDecorator('Shopname', {
                             rules: [
                                 {
                                     required: true,

@@ -1,5 +1,7 @@
 // import { message } from "antd";
+import { message } from "antd";
 import { action, observable } from "mobx";
+import { requestJson } from "../genericComponent/requestJson";
 // import { requestJson } from "../genericComponent/requestJson";
 import { ForgetPassWordEntity, RegisterPageViewEntity } from "./entity";
 
@@ -103,23 +105,62 @@ export class BusinessListViewDoMainStore{
      * 验证
      */
     public async  LoginVerification() {
-        // try {
-        //     const res = await requestJson("/api/LoginPage/getUser?Name=" + this.LoginUsername + "&Password=" + this.LoginPassword+"&License="+this.AuthorizationCode,
-        //         {
-        //             method: "GET",
-        //         });
+        try {
+            if (this.LoginUsername === "") {
+                message.error("账号不能为空😠");
+                return;
+            } else if(this.LoginPassword ===""){
+                message.error("密码不能为空😠");
+                return;
+            }
+            const res = await requestJson("/api/LoginPage/getUser?Name=" + this.LoginUsername + "&Password=" + this.LoginPassword+"&License="+this.AuthorizationCode,
+                {
+                    method: "GET",
+                });
 
-        //     if (res.rtnCode === 0) {
+            if (res.rtnCode === 0) {
                 this.display1 = "none";
                 this.display2 = "block";
-        //         console.log("this.LoginPassword:", this.LoginPassword);
-        //     }
-        //     else {
-        //         message.error(res.rtnMsg);
-        //     }
-        // } catch (error) {
-        //     console.log("错误", error)
-        // }
+                message.success("登录成功👏👏👏")
+                console.log("this.LoginPassword:", this.LoginPassword);
+            }
+            else {
+                message.error(res.rtnMsg+"😏");
+            }
+        } catch (error) {
+            message.error(error+"😏")
+            console.log("错误", error)
+        }
+    }
+
+    
+    /**
+     * 注册
+     */
+    public async Adddata(model: RegisterPageViewEntity) {
+        try {
+            if (this.handlePassWord !== this.handleConfirmPassword) {
+                message.error("两次密码不一致!");
+                return;
+            }
+            else {
+                const res: any = await requestJson("/api/BusinessRegister/postUser",
+                    {
+                        method: "POST",
+                        body: JSON.stringify(model),
+                        headers: { "content-type": "application/json" }
+                    });
+                if (res.rtnCode !== 0) {
+                    message.error("注册失败," + res.rtnMsg + "😓");
+                } else {
+                    this.RegisterPageVisiable = false;
+                    message.success("🎉" + "注册成功，正返回登录页面," + "😄" + "🎉");
+                }
+            }
+        } catch (error) {
+            message.error("注册失败," + error + "😓");
+            this.RegisterPageVisiable = false;
+        }
     }
 
     @action
@@ -141,6 +182,37 @@ export class BusinessListViewDoMainStore{
         return undefined;
     }
 
+
+
+
+    /**
+     * 修改密码
+     */
+    public async UpdatePassWord(model: ForgetPassWordEntity) {
+        try {
+            if (this.ForgetPassWord !== this.ForgetConfirmPassword) {
+                message.error("两次密码不一致!");
+                return;
+            }
+            else {
+                const res: any = await requestJson("/api/BusinessForget/updateForgetPass",
+                    {
+                        method: "POST",
+                        body: JSON.stringify(model),
+                        headers: { "content-type": "application/json" }
+                    });
+                if (res.rtnCode !== 0) {
+                    message.error("修改失败," + res.rtnMsg + "😓");
+                } else {
+                    this.forgetPasswordVisible = false;
+                    message.success("🎉" + "修改成功,请重新登录" + "😄" + "🎉");
+                }
+            }
+        } catch (error) {
+            message.error("修改失败," + error + "😓");
+            this.RegisterPageVisiable = false;
+        }
+    }
 
     @action
     private recursionSelect(id: number, list: RegisterPageViewEntity[]) {

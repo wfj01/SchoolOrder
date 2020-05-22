@@ -25,7 +25,7 @@ export class ShoppingCartView extends React.Component<IShoppingCartViewProps>{
     public render() {
         return (
             <div style={{padding:8}}>
-                <Button type="primary" onClick={this.uiAction.Confirmorder}>提交订单</Button>
+                <Button href="##" type="primary" onClick={this.uiAction.Confirmorder}>提交订单</Button>
                 <div>
                     <div style={{ display: "block" }}>
                         <label style={{width:150,display:"block"}}>总金额：</label>

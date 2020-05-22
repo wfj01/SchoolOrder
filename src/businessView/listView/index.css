@@ -1,0 +1,23 @@
+.web_bg {
+    height: 626px;
+}
+
+@media screen and (min-width: 320px) and (max-width:750px){
+                
+    .web_bg .aaaa {
+        float: right;
+        margin-right: 0; 
+        margin-top: 20%;
+      
+  }
+}
+
+@media screen and (min-width: 751px){
+                
+    .web_bg .aaaa {
+        float: right;
+        margin-right: 100px; 
+        margin-top: 20%;
+       
+  }
+}

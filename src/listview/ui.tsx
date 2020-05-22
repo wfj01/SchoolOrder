@@ -21,8 +21,8 @@ interface IListViewState {
 
 const sectionStyle = {
     width: "100%",
-    height: "625px",
-    backgroundSize: "cover",
+    height: "100vh",
+    backgroundSize: "100% 100%",
     // makesure here is String确保这里是一个字符串，以下是es6写法
     backgroundImage: `url(${Background})`,
 };
@@ -65,7 +65,7 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
                 <div style={{ display: this.props.GlobalListViewDoMainStore!.display1 }}>
                     <div
                         className="web_bg" style={sectionStyle}>
-                        <div className='aaaa' style={{}} >
+                        <div className='aaaa'  >
                             <LoginPage
                                 LoginOnClick={this.LoginBtnOnClick}
                                 Usernametext={this.uiAction.UsernameText}

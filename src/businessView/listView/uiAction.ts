@@ -1,4 +1,5 @@
 import { action } from "mobx";
+import { ForgetPassWordEntity, RegisterPageViewEntity } from "../entity";
 import { IBusinessListViewProps } from "./interface";
 
 export class BusinessListViewUiAction {
@@ -14,7 +15,7 @@ export class BusinessListViewUiAction {
         this.RegisterOnClick = this.RegisterOnClick.bind(this);
         this.ForgetBtnonClick = this.ForgetBtnonClick.bind(this);
         this.RegisterPagecancel = this.RegisterPagecancel.bind(this);
-        this.RegisterPagesave = this.RegisterPagecancel.bind(this);
+        this.RegisterPagesave = this.RegisterPagesave.bind(this);
         this.ForgetPassPagecancel = this.ForgetPassPagecancel.bind(this);
         this.ForgetPassPagesave=this.ForgetPassPagesave.bind(this);
     }
@@ -61,8 +62,10 @@ export class BusinessListViewUiAction {
     }
 
     @action
-    public RegisterPagesave(){
+    public RegisterPagesave(model:RegisterPageViewEntity){
         this.props.GlobalBusinessListViewDoMainStore!.RegisterPageVisiable = false;
+        this.props.GlobalBusinessListViewDoMainStore!.Adddata(model);
+        console.log("dhadjadkl")
     }
 
     @action
@@ -71,7 +74,8 @@ export class BusinessListViewUiAction {
     }
 
     @action
-    public ForgetPassPagesave(){
+    public ForgetPassPagesave(model: ForgetPassWordEntity){
+        this.props.GlobalBusinessListViewDoMainStore!.UpdatePassWord(model);
         this.props.GlobalBusinessListViewDoMainStore!.forgetPasswordVisible = false;
     }
 

@@ -48,20 +48,20 @@ export class CompletedOrderTable extends React.Component<ICompletedOrderTablePro
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
-            dataIndex: "studentName",
-            key: "studentName",
+            dataIndex: "studentname",
+            key: "studentname",
             title: '客户姓名',
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
-            dataIndex: "studentAddress",
-            key: "studentAddress",
+            dataIndex: "studentaddress",
+            key: "studentaddress",
             title: '客户地址',
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
-            dataIndex: "studentPhone",
-            key: "studentPhone",
+            dataIndex: "phone",
+            key: "phone",
             title: '客户号码',
             render: (text: any) => <span title={text}>{text}</span>
         },
@@ -81,7 +81,7 @@ export class CompletedOrderTable extends React.Component<ICompletedOrderTablePro
                                 href={"##"}
                                 title="确认订单"
                             >
-                                <Button>确认订单</Button>
+                                <Button href="##">确认订单</Button>
                             </a>
                         </Popconfirm >
                     </div>

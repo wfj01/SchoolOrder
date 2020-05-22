@@ -1,6 +1,6 @@
 import { Form, Input } from "antd";
 import { FormCreateOption } from "antd/lib/form";
-import { inject,observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import React from "react";
 import { IRegisterPageViewProps } from "./interface";
 import { RegisterPageViewUiAction } from "./uiAction";
@@ -21,9 +21,9 @@ const formItemLayout = {
 @observer
 class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
 
-    private uiAction:RegisterPageViewUiAction;
+    private uiAction: RegisterPageViewUiAction;
 
-    constructor(props:IRegisterPageViewProps){
+    constructor(props: IRegisterPageViewProps) {
         super(props);
         this.uiAction = new RegisterPageViewUiAction(props);
     }
@@ -36,11 +36,14 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
 
     }
 
-    public render(){
+    public render() {
         const { getFieldDecorator } = this.props.form;
-        return(
-            <Form>
-                <Form.Item
+        return (
+            <div style={{ width: "600px" }}>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                    <Form.Item
                         label="真实姓名："
                         style={{ width: '300px' }}
                         {...formItemLayout}
@@ -59,7 +62,7 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     }
                                 ]
                             })(
-                                <Input placeholder="请输入你的真实姓名" style={{width:"120px"}} />
+                                <Input placeholder="请输入你的真实姓名" />
                             )
                         }
                     </Form.Item>
@@ -78,11 +81,14 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     },
                                 ]
                             })(
-                                <Input placeholder="请输入你的登录密码"  style={{width:"120px"}}  onChange={this.uiAction.handlePassWord}/>
+                                <Input placeholder="请输入你的登录密码" onChange={this.uiAction.handlePassWord} />
                             )
                         }
                     </Form.Item>
-
+                </Form>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
                     <Form.Item
                         label="确认密码"
                         style={{ width: '300px' }}
@@ -99,7 +105,7 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     },
                                 ]
                             })(
-                                <Input placeholder="请再一次输入你的密码"  style={{width:"120px"}} onChange={this.uiAction.handleConfirmPassword}/>
+                                <Input placeholder="请再一次输入你的密码" onChange={this.uiAction.handleConfirmPassword} />
                             )}
                     </Form.Item>
                     <Form.Item
@@ -121,10 +127,14 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     }
                                 ]
                             })(
-                                <Input placeholder="请输入你的店铺名称"  style={{width:"120px"}} />
+                                <Input placeholder="请输入你的店铺名称" />
                             )
                         }
                     </Form.Item>
+                </Form>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
                     <Form.Item
                         label="店铺地址："
                         style={{ width: '300px' }}
@@ -144,7 +154,7 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     }
                                 ]
                             })(
-                                <Input placeholder="请输入你的店铺地址"  style={{width:"120px"}} />
+                                <Input placeholder="请输入你的店铺地址" />
                             )
                         }
                     </Form.Item>
@@ -167,10 +177,14 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     }
                                 ]
                             })(
-                                <Input placeholder="请输入你的手机号码"  style={{width:"120px"}} />
+                                <Input placeholder="请输入你的手机号码" />
                             )
                         }
                     </Form.Item>
+                </Form>
+                <Form
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                >
                     <Form.Item
                         label="介绍自己："
                         style={{ width: '300px' }}
@@ -190,11 +204,35 @@ class RegisterPageForm extends React.Component<IRegisterPageViewProps>{
                                     }
                                 ]
                             })(
-                                <Input placeholder="请介绍一下自己的店铺"  style={{width:"120px"}} />
+                                <Input placeholder="请介绍一下自己的店铺" />
                             )
                         }
                     </Form.Item>
-            </Form>
+                    <Form.Item
+                        label="授权码："
+                        style={{ width: '300px' }}
+                        {...formItemLayout}
+                    >
+                        {
+                            getFieldDecorator('License', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        max: 50,
+                                        message: '超出长度限制',
+                                    }
+                                ]
+                            })(
+                                <Input placeholder="请输入授权码" />
+                            )
+                        }
+                    </Form.Item>
+                </Form>
+            </div>
         )
     }
 }

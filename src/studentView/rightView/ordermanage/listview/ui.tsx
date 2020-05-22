@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import { inject, observer } from "mobx-react";
 import React from "react";
-import { VerThr } from "../../../../../genericComponent/gridBox/verThr/verThr";
+import { VerThr } from "../../../../genericComponent/gridBox/verThr/verThr";
 import { DrawerView } from "../drawer/ui";
 import { ModelView } from "../modal/ui";
 import { PaginationView } from "../pagination";
@@ -29,7 +29,7 @@ export class OrderManagementview extends React.Component<IOrderManagementprops>{
             <>
                 <VerThr style={{ padding: 8 }}>
                     <VerThr.top style={{ paddingLeft: 8 }}>
-                        <Button onClick={this.uiAction.RefreshClick}>刷新一下</Button>
+                        <Button href="##" onClick={this.uiAction.RefreshClick}>刷新一下</Button>
                     </VerThr.top>
                     <VerThr.middle style={{ padding: 8 }}>
                         <OrderManagementTable

@@ -5,7 +5,7 @@ export class SellingGoodsEntity {
 
     public price:string;
 
-    public practice:string;
+    public praction:string;
 
     public time:string;
 

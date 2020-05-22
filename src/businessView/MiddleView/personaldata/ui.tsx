@@ -18,9 +18,9 @@ export class Personaldata extends React.Component <IPersonaldataProps>{
     public render() {
         return (
             <>
-            {this.props.GlobalPersonaldataDoMainStore!.List.length>0}
+            {this.props.GlobalPersonaldataDoMainStore!.List.length>0
                 ?<MiddleFromView GlobalPersonaldataDoMainStore={this.props.GlobalPersonaldataDoMainStore!}/>
-                :<>""</>
+                :<>""</>}
             </>
         )
     }

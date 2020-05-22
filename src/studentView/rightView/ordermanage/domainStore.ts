@@ -1,7 +1,7 @@
 import { message } from "antd";
 import { ClickParam } from "antd/lib/menu";
 import { action, observable } from "mobx";
-import { requestJson } from "../../../../genericComponent/requestJson";
+import { requestJson } from "../../../genericComponent/requestJson";
 import { OrderManagementEntity } from "./entity";
 
 export class OrderManagementviewDoMainStore {

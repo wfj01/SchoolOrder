@@ -7,8 +7,8 @@ import { SouthSnack } from '../rightView/afterSchool/southSnack/ui';
 import { OrderManagement } from '../rightView/cartManage/ordermanage/listview/ui';
 import { CartManageView } from '../rightView/cartManage/ui';
 import { FirstRestaurant } from '../rightView/firstRestaurant/ui';
-import { OrderManagementview } from '../rightView/myMessage/ordermanage/listview/ui';
-import { MymessageView } from '../rightView/myMessage/ui';
+import { MymessageViewa } from '../rightView/myMessage';
+import { OrderManagementview } from '../rightView/ordermanage/listview/ui';
 import { SecondRestaurant } from '../rightView/secondRestaurant/ui';
 import { Menuselection } from '../rightView/tadayRecommend/ui';
 import './index.css';
@@ -155,7 +155,7 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
             case "0302":
                 return <OrderManagement />
             case "0401":
-                return <MymessageView />
+                return <MymessageViewa />
             case "0402":
                 return <OrderManagementview />
             default:

@@ -23,7 +23,7 @@ export class OrderManagement extends React.Component<IOrderManagementprops>{
             <>
                 <VerThr style={{ padding: 8 }}>
                     <VerThr.top style={{ paddingLeft    : 8 }}>
-                        <Button onClick={this.uiAction.RefreshClick}>刷新一下</Button>
+                        <Button href="##" onClick={this.uiAction.RefreshClick}>刷新一下</Button>
                     </VerThr.top>
                     <VerThr.middle style={{ padding: 8 }}>
                         <OrderManagementTable />
