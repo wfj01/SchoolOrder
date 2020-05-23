@@ -2,22 +2,24 @@ import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
 import React from 'react';
 import { VerThr } from '../../../genericComponent/gridBox/verThr/verThr';
+import { CustomerList } from '../customerList/ui';
 import { ManageGoodsView } from '../manageGoods/listView/ui';
 import { OnlineOrderView } from '../onlineOrder/ui';
 import { Personaldata } from '../personaldata/ui';
 import { RulesView } from '../rules/ui';
 import { SellingGoodsView } from '../sellingGoods/listView/ui';
+import { ChartView } from '../chartview/ui';
 
 const { SubMenu } = Menu;
 
-interface IBussinessViewState{
-    current:string;
+interface IBussinessViewState {
+    current: string;
 }
 /**
  * 商家视图
  */
-export class BussinessView extends React.Component<any,IBussinessViewState> {
-    constructor(props:any){
+export class BussinessView extends React.Component<any, IBussinessViewState> {
+    constructor(props: any) {
         super(props);
         this.state = {
             current: '01',
@@ -25,7 +27,7 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
         this.MiddleView = this.MiddleView.bind(this);
         this.handleclick = this.handleclick.bind(this);
     }
-    
+
 
     public render() {
         return (
@@ -57,6 +59,12 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
                                 <Menu.Item key="0502">Option 2</Menu.Item>
                             </Menu.ItemGroup>
                         </SubMenu>
+                        <Menu.Item key="06">
+                            客户列表
+                        </Menu.Item>
+                        <Menu.Item key="06">
+                            图表
+                        </Menu.Item>
                     </Menu>
                 </VerThr.top>
                 <VerThr.middle>
@@ -67,20 +75,24 @@ export class BussinessView extends React.Component<any,IBussinessViewState> {
     }
 
     public MiddleView(): JSX.Element {
-        console.log("this.state.current:",this.state.current)
+        console.log("this.state.current:", this.state.current)
         switch (this.state.current) {
             case "01":
-                return<SellingGoodsView/>
+                return <SellingGoodsView />
             case "02":
-                return<ManageGoodsView/>
+                return <ManageGoodsView />
             case "03":
-                return<OnlineOrderView/>
+                return <OnlineOrderView />
             case "04":
-                return<RulesView/>
+                return <RulesView />
             case '0501':
-                return<Personaldata/>
+                return <Personaldata />
+            case "06":
+                return <CustomerList />
+            case "07":
+                return <ChartView />
             default:
-                return<div/>
+                return <div />
         }
     }
 

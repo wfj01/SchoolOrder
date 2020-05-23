@@ -6,43 +6,44 @@ import XLSX from 'xlsx';
  * @param data 表格数据源集合
  * @param fileName 文件名
  */
-function exportExcel(headers:any[], data:any[], fileName = '导出.xlsx') {
-  
+function exportExcel(headers: any[], data: any[], fileName = '导出.xlsx') {
+
   const header = headers
-    .map((item, i) => 
-        Object.assign(
-            {}, {
-                    key: item.key, 
-                    
-                    title: item.title, 
-                    position: i<=25?String.fromCharCode(65 + i) + 1 :String.fromCharCode(65+parseInt((i/25).toString(),10)-1)+String.fromCharCode(65+(i%25))+1
-                },
-                console.log(i<=25?String.fromCharCode(65 + i) + 1 :String.fromCharCode(65+parseInt((i/25).toString(),10)-1)+String.fromCharCode(65+(i%25))+1)
-            )
-    ).reduce((prev, next) => 
-        Object.assign(
-            {}, 
-            prev, { 
-                    [next.position]: { key: next.key, v: next.title } 
-                }
-        ), {}
+    .map((item, i) =>
+      Object.assign(
+        {}, {
+        key: item.key,
+
+        title: item.title,
+        position: i <= 25 ? String.fromCharCode(65 + i) + 1 : String.fromCharCode(65 + parseInt((i / 25).toString(), 10) - 1) + String.fromCharCode(65 + (i % 25)) + 1
+      },
+        console.log(i <= 25 ? String.fromCharCode(65 + i) + 1 : String.fromCharCode(65 + parseInt((i / 25).toString(), 10) - 1) + String.fromCharCode(65 + (i % 25)) + 1)
+      )
+    ).reduce((prev, next) =>
+      Object.assign(
+        {},
+        prev, {
+        [next.position]: { key: next.key, v: next.title }
+      }
+      ), {}
     );
 
 
   const fileData = data
-    .map((item, i) => headers.map((key, j) => 
-                    Object.assign(
-                        {}, {
-                             content: item[key.key],
-                             position:
-                                j<=25?
-                                String.fromCharCode(65 + j) + (i + 2) 
-                                :
-                                String.fromCharCode(65+parseInt((j/25).toString(),10)-1)+String.fromCharCode(65+(j%25))+ (i + 2) })))
+    .map((item, i) => headers.map((key, j) =>
+      Object.assign(
+        {}, {
+        content: item[key.key],
+        position:
+          j <= 25 ?
+            String.fromCharCode(65 + j) + (i + 2)
+            :
+            String.fromCharCode(65 + parseInt((j / 25).toString(), 10) - 1) + String.fromCharCode(65 + (j % 25)) + (i + 2)
+      })))
     // 对刚才的结果进行降维处理（二维数组变成一维数组）
     .reduce((prev, next) => prev.concat(next))
     // 转换成 worksheet 需要的结构
-    .reduce((prev, next) => Object.assign({}, prev, { [next.position]: { v: next.content?next.content:"" } }), {});
+    .reduce((prev, next) => Object.assign({}, prev, { [next.position]: { v: next.content ? next.content : "" } }), {});
 
 
   // 合并 headers 和 data
@@ -66,10 +67,10 @@ function exportExcel(headers:any[], data:any[], fileName = '导出.xlsx') {
       ),
     },
   };
-  
+
   // 导出 Excel
   XLSX.writeFile(wb, fileName);
-  
+
 }
 
-export {exportExcel};
+export { exportExcel };

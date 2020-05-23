@@ -65,13 +65,6 @@ class FromView extends React.Component<IFromViewProps>{
                     {
                         form.getFieldDecorator("picture",
                             {
-                                rules: [
-                                    {
-                                        required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
-                                    },
-                                ]
                             }
                         )(<Avatarview />)
                     }

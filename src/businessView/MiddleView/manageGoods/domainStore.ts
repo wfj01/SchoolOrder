@@ -99,7 +99,7 @@ export class ManageGoodsDomainStore {
     public async Adddate(model: ManageGoodsEntity) {
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Business/adddate",
+            const res = await requestJson("/api/Ceshi/huoqu",
                 {
                     method: "POST",
                     body: JSON.stringify(model),

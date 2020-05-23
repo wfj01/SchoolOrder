@@ -63,8 +63,8 @@ export class Avatarview extends React.Component<any, IAvatarState>{
   }
 
   private handleChange = (info:any) => {
-    console.log("imageurl1111:",this.state.imageUrl);
-
+    console.log("imageurl1111:",info);
+    console.log("    info.file.originFileObj:",    info.file.originFileObj);
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
       return;
@@ -76,9 +76,10 @@ export class Avatarview extends React.Component<any, IAvatarState>{
           imageUrl,
           loading: false,
         }
-        ),
-        );
-        console.log("imageurl:",this.state.imageUrl);
+        ),);
+
+        console.log("imageurl:");
+       
     }
   };
 }

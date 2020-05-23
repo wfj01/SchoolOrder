@@ -1,4 +1,6 @@
 import { BusinessListViewDoMainStore } from "./businessView/domainStore";
+import { CustomerListDomainStores } from "./businessView/MiddleView/customerList/domainStore";
+import CustomerListStores from "./businessView/MiddleView/customerList/stores";
 import { ManageGoodsDomainStore } from "./businessView/MiddleView/manageGoods/domainStore";
 import ManabeGoodsStores from "./businessView/MiddleView/manageGoods/store";
 import { OnlineOrderDoMainStore } from "./businessView/MiddleView/onlineOrder/domainStore";
@@ -55,7 +57,7 @@ interface IDemoProps {
     GlobalPersonaldataDoMainStore: PersonaldataDoMainStore;
     GlobalOrderManagementviewDoMainStore: OrderManagementviewDoMainStore;
     GlobalMymessageViewStores:MymessageViewDomainStores;
-
+    GlobalCustomerListDomainStores: CustomerListDomainStores
 }
 
 const DemoStore: IDemoProps = {
@@ -77,6 +79,7 @@ const DemoStore: IDemoProps = {
     ...PersonaldataStore,
     ...OrderManagementviewStore,
     ...MymessageViewStores,
+    ...CustomerListStores
 }
 
 
