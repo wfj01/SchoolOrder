@@ -8,6 +8,7 @@ export class TadayRecommendUiAction {
         this.props = props;
         this.NextClick = this.NextClick.bind(this);
         this.LastClick = this.LastClick.bind(this);
+        this.handleOnClick = this.handleOnClick.bind(this);
     }
 
     public NextClick(){
@@ -16,5 +17,9 @@ export class TadayRecommendUiAction {
 
     public LastClick(){
         this.props.GlobalTadayRecommendDomainStore!.LastClcik();
+    }
+
+    public handleOnClick(){
+        console.log("44")
     }
 }

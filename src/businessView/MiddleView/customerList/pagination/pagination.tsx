@@ -31,7 +31,7 @@ export class PaginationView extends React.Component<IPaginationViewProps>{
         );
 
         return (
-            <div className="ori-table-pagination">
+            <div className="ori-table-pagination" style={{float:"right",width:500}}>
                 <span style={{ float: 'left', paddingLeft: '2rem' }}>
                     <Icon type="info-circle" style={{ color: '#1890ff' }} />
                     &emsp;共 {allReportTableData.length} 条数据,
@@ -58,6 +58,4 @@ export class PaginationView extends React.Component<IPaginationViewProps>{
             </div>
         );
     }
-
-
 }

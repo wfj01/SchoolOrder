@@ -7,7 +7,7 @@
     .web_bg .aaaa {
         float: right;
         margin-right: 0; 
-        margin-top: 20%;
+        margin-top: 15%;
       
   }
 }
@@ -17,7 +17,15 @@
     .web_bg .aaaa {
         float: right;
         margin-right: 100px; 
-        margin-top: 20%;
+        margin-top: 15%;
        
   }
+}
+
+.title3{
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 35px;
+    text-align: center;
+    margin-left: 40px;
 }

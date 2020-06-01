@@ -5,4 +5,5 @@ export class TadayRecommendEntity {
     public time: string;
     public windows: string;
     public remarks: string;
+    public number:string;
 }

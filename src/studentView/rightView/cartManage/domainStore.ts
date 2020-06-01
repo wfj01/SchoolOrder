@@ -194,7 +194,7 @@ export class StepsViewDomainStore {
     public async LoadData() {
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Order/queryUser?studentid="+"201710033092",
+            const res = await requestJson("/api/Order/queryUser?studentid="+this.studentid,
                 {
                     method: "GET"
                 })
@@ -297,8 +297,8 @@ export class StepsViewDomainStore {
         try{
         console.log("this.List:",this.allReportTableData);
         this.isLoading = true;
-        const res: any = await requestJson("/api/Order/confirmorder?studentid="+"201710033092"+"&StudentName="+this.studentName
-        +"&StudentAddress="+this.studentAddress+"&StudentPhone="+this.studentPhone,
+        const res: any = await requestJson("/api/Order/confirmorder?studentid="+"201710033092"+"&studentname="+this.studentName
+        +"&studentaddress="+this.studentAddress+"&phone="+this.studentPhone,
                 {
                     method: "POST",
                     body: JSON.stringify(this.allReportTableData),
@@ -311,6 +311,8 @@ export class StepsViewDomainStore {
             }
             this.LoadData();
             this.allReportTableData =[];
+            this.calculatednumber=0;
+            this.calculatedstring="";
             this.isLoading = false; 
             return res;
         } catch (error) {
