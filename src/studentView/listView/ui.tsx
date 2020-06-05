@@ -3,6 +3,7 @@ import { ClickParam } from 'antd/lib/menu';
 import { inject, observer } from 'mobx-react';
 import React from "react";
 import { BusinessListView } from '../../businessView/listView/ui';
+import Clock from '../../shizhong';
 import { CollegeTown } from '../rightView/afterSchool/collegeTown/ui';
 import { SouthSnack } from '../rightView/afterSchool/southSnack/ui';
 import { OrderManagement } from '../rightView/cartManage/ordermanage/listview/ui';
@@ -64,6 +65,7 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                             <div style={{ display: "flex", justifyContent: "start" }}>
                                 <div style={{ color: "blue", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }} onClick={this.handleshangjiaclick}>切换为商家模式</div>
                                 <div style={{ color: "#FFF", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }} onClick={this.uiaction.handleclick}>联系我们</div>
+                                <Clock/>
                             </div>
                         </div>
                         <div>

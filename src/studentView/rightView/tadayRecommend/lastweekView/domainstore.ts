@@ -2,7 +2,7 @@ import { message } from "antd";
 import { action, observable } from "mobx";
 import { requestJson } from "../../../../genericComponent/requestJson";
 import imgURL2 from '../../../../image/fentijin.jpg';
-import imgURL4 from '../../../../image/Hongshaorou.jpg';
+import imgURL4 from '../../../../image/hongshaorou.jpg';
 import imgURL5 from '../../../../image/hongshaozaiji.jpg';
 import imgURL3 from '../../../../image/mapodoufu.jpg';
 import imgURL1 from '../../../../image/shaozahui.jpg';
@@ -37,11 +37,15 @@ export class LastWeekDomainStore{
     public imageUrl:string;
 
     @observable
-    public imageList:string[]
+    public imageList:string[];
+
+    @observable
+    public aaa : string[];
     
     constructor(){
         this.imageUrl = imgURL1;
         this.imageList = [imgURL1,imgURL2,imgURL3,imgURL4,imgURL5];
+        this.aaa =[];
         this.Isloading = false;
         this.List = [];
         this.lengths = 0;
@@ -52,7 +56,6 @@ export class LastWeekDomainStore{
      */
     @action
     public async Loadate() {
-        this.Isloading = true;
         const res = await requestJson("/api/Lastweek/queryUser",
             {
                 method: "GET"
@@ -64,6 +67,11 @@ export class LastWeekDomainStore{
         }
         const data = res.data.table;
         this.List = data;
+        console.log("List",this.List);
+        this.List.forEach(element => {
+            this.aaa.push(element.zuofa);
+            console.log("element.zuofa",this.aaa)
+        });
         this.Isloading = false;
     }
 }

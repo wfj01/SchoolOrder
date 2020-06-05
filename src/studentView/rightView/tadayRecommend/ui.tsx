@@ -19,7 +19,7 @@ interface ITadayRecommendState {
 /**
  * 推荐菜
  */
-@inject("GlobalTadayRecommendDomainStore")
+@inject("GlobalTadayRecommendDomainStore","GlobalLastWeekDomainStore")
 @observer
 export class Menuselection extends React.Component<ITadayRecommendProps, ITadayRecommendState>{
   // private uiAction: TadayRecommendUiAction;
@@ -39,6 +39,7 @@ export class Menuselection extends React.Component<ITadayRecommendProps, ITadayR
   }
   public componentDidMount() {
     this.props.GlobalTadayRecommendDomainStore!.Loadate();
+    this.props.GlobalLastWeekDomainStore!.Loadate();
   }
   public render() {
     return (
@@ -51,7 +52,7 @@ export class Menuselection extends React.Component<ITadayRecommendProps, ITadayR
                         今日推荐菜
                 </Menu.Item>
               <Menu.Item key="1">
-                <Icon type="appstore" />
+                <Icon type="appstore" style={{marginLeft:"30px"}}/>
                         榜单
                 </Menu.Item>
             </Menu>
