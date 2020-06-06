@@ -9,16 +9,15 @@ export class OnlineOrderView extends React.Component {
     public render() {
         return (
             <>
-
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="未确认" key="1">
                         <UnidentifiedOrderTable />
                     </TabPane>
                     <TabPane tab="已确认" key="2">
-                        <ConfirmedOrderTable/>
+                        <ConfirmedOrderTable />
                     </TabPane>
                     <TabPane tab="已完成" key="3">
-                        <CompletedOrderTable/>
+                        <CompletedOrderTable />
                     </TabPane>
                 </Tabs>,
             </>

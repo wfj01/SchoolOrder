@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "license": "ISC",
   "name": "cloud-yunyi",
   "version": "1.0.1",
@@ -106,7 +107,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:33527/api/",
+      "target": "http://localhost:5000/api/",
       "changeOrigin": true,
       "pathRewrite": {
         "^/api": ""

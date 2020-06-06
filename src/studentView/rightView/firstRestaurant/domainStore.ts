@@ -209,7 +209,7 @@ export class FirstRestaurantDoMainStore {
     public async SaveBtn(): Promise<IResponseJsonResult> {
         console.log("this.ceshi1",this.ceshi1);
         try {
-            const res:any = await requestJson("/api/Firstroom/postUser?studentid="+"201710033092",
+            const res:any = await requestJson("/api/Firstroom/postUser?studentid="+this.ceshi1,
                 {
                     method: "POST",
                     body: JSON.stringify(this.selectRowListData),

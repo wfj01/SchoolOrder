@@ -2,13 +2,12 @@ import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
 import React from 'react';
 import { VerThr } from '../../../genericComponent/gridBox/verThr/verThr';
+import { ChartView } from '../chartview/ui';
 import { CustomerList } from '../customerList/ui';
 import { ManageGoodsView } from '../manageGoods/listView/ui';
 import { OnlineOrderView } from '../onlineOrder/ui';
 import { Personaldata } from '../personaldata/ui';
 import { RulesView } from '../rules/ui';
-import { SellingGoodsView } from '../sellingGoods/listView/ui';
-import { ChartView } from '../chartview/ui';
 
 const { SubMenu } = Menu;
 
@@ -22,7 +21,7 @@ export class BussinessView extends React.Component<any, IBussinessViewState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            current: '01',
+            current: '06',
         };
         this.MiddleView = this.MiddleView.bind(this);
         this.handleclick = this.handleclick.bind(this);
@@ -31,12 +30,11 @@ export class BussinessView extends React.Component<any, IBussinessViewState> {
 
     public render() {
         return (
-
             <VerThr>
                 <VerThr.top>
                     <Menu selectedKeys={[this.state.current]} mode="horizontal" theme="dark" onClick={this.handleclick}>
-                        <Menu.Item key="01">
-                            在卖商品
+                        <Menu.Item key="06">
+                            客户列表
                         </Menu.Item>
                         <Menu.Item key="02">
                             管理商品
@@ -59,10 +57,8 @@ export class BussinessView extends React.Component<any, IBussinessViewState> {
                                 <Menu.Item key="0502">Option 2</Menu.Item>
                             </Menu.ItemGroup>
                         </SubMenu>
-                        <Menu.Item key="06">
-                            客户列表
-                        </Menu.Item>
-                        <Menu.Item key="06">
+
+                        <Menu.Item key="07">
                             图表
                         </Menu.Item>
                     </Menu>
@@ -77,8 +73,6 @@ export class BussinessView extends React.Component<any, IBussinessViewState> {
     public MiddleView(): JSX.Element {
         console.log("this.state.current:", this.state.current)
         switch (this.state.current) {
-            case "01":
-                return <SellingGoodsView />
             case "02":
                 return <ManageGoodsView />
             case "03":
