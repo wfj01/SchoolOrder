@@ -14,28 +14,30 @@ const { Sider, Content } = Layout;
 @inject("GlobalLastWeekDomainStore")
 @observer
 export class LastWeekView extends React.Component<ILastWeekViewProps>{
-    public componentDidMount() {
-        this.props.GlobalLastWeekDomainStore!.Loadate();
-    }
     public render() {
+        const lengths = this.props.GlobalLastWeekDomainStore!.lengths;
         return (
             <VerThr>
                 <VerThr.top>
                     <TopView />
                 </VerThr.top>
                 <VerThr.middle>
-                    <Layout >
-                        <header >菜品信息</header>
-                        <Layout>
-                            <div style={{ minWidth: "500px" }}>
-                                <Sider ><img alt="##" src={this.props.GlobalLastWeekDomainStore!.imageUrl} /></Sider>
+                    <Layout style={{height:"600px"}}>
+                        <header style={{fontSize:"28px",color:"#000",textAlign:"center",marginBottom:"15px",fontFamily:"KaiTi_GB2312"}}>菜品信息</header>
+                        <Layout style={{height:"350px"}}>
+                            <div style={{ width: "500px",height:"370px"}}>
+                                <Sider style={{ width: "500px",height:"370px"}}><img style={{ width: "500px",height:"370px"}} alt="##" src={this.props.GlobalLastWeekDomainStore!.imageUrl} /></Sider>
                             </div>
-                            <Content >
+                            <Content style={{ height:"400px"}}>
                                 {this.props.GlobalLastWeekDomainStore!.List.length > 0
                                     ? <MiddleFromView GlobalLastWeekDomainStore={this.props.GlobalLastWeekDomainStore!} />
                                     : <div>""</div>
                                 }
                             </Content>
+                        </Layout>
+                        <Layout style={{padding:'20px'}}>
+                            <label style={{fontSize:" 30px",fontWeight: 400,color:" #FFC125",marginTop:"20px"}}>做法：</label>
+                            <div style={{marginTop:"15px",fontSize:'20px',fontFamily:"KaiTi",height:"100px"}}>{this.props.GlobalLastWeekDomainStore!.aaa[lengths]}</div>
                         </Layout>
                     </Layout>
                 </VerThr.middle>

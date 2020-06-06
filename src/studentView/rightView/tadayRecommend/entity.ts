@@ -6,4 +6,5 @@ export class TadayRecommendEntity {
     public windows: string;
     public remarks: string;
     public number:string;
+    public imageSrc:string;
 }

@@ -89,19 +89,19 @@ export class FirstRestaurantDoMainStore {
      * 输入的菜名
      */
     @observable
-    public Dishname:string;
+    public Dishname: string;
 
     /**
      * 输入的开始价格
      */
     @observable
-    public StartPrice:string;
+    public StartPrice: string;
 
     /**
      * 输入的结束价格
      */
     @observable
-    public EndPrice:string;
+    public EndPrice: string;
 
     /**
      * data数组的序列
@@ -113,18 +113,18 @@ export class FirstRestaurantDoMainStore {
      * 当前正在编辑的水卡类型
      */
     @observable
-    public currentEditCardType:FirstRestaurantEntity;
+    public currentEditCardType: FirstRestaurantEntity;
 
     @observable
-    public ceshi1:string;
+    public ceshi1: string;
 
     constructor() {
-        this.lengths=0;
-        this.ceshi1='';
+        this.lengths = 0;
+        this.ceshi1 = '';
         this.currentEditCardType = new FirstRestaurantEntity();
-        this.Dishname="";
-        this.StartPrice="";
-        this.EndPrice="";
+        this.Dishname = "";
+        this.StartPrice = "";
+        this.EndPrice = "";
         this.customerCount = 0;
         this.PageIndex = 1
         this.PageSize = 20;
@@ -147,6 +147,19 @@ export class FirstRestaurantDoMainStore {
     public getRowIndex(record: FirstRestaurantEntity): string {
         return record.id;
     }
+
+    @action
+    public clean() {
+        this.allReportTableData = [];
+        this.tableKeys = [];
+        this.selectedRow = 0;
+        this.selectedRowKeys = [];
+        this.isLoading = false;
+        this.selectRowListData = [];
+        this.Dishname = "";
+        this.StartPrice = "";
+        this.EndPrice = "";
+    }
     /**
      * 加载数据
      */
@@ -158,11 +171,11 @@ export class FirstRestaurantDoMainStore {
                 {
                     method: "GET"
                 })
-                if (res.rtnCode !== 0) {
-                    message.error('暂无数据');
-                    this.isLoading = false;
-                    return;
-                }
+            if (res.rtnCode !== 0) {
+                message.error('暂无数据');
+                this.isLoading = false;
+                return;
+            }
             const data = res.data.table as any[];
             this.allReportTableData = data;
             this.showReportTableData = this.allReportTableData;
@@ -179,22 +192,26 @@ export class FirstRestaurantDoMainStore {
      * 查询条件查询
      */
     @action
-    public async SearchBtn(){
+    public async SearchBtn() {
+        this.allReportTableData=[];
+        this.showReportTableData =[];
+        this.isLoading = true;
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Firstroom/SearchBtn?dishname="+this.Dishname+"&price1="+this.StartPrice+"&price2="+this.EndPrice,
+            const res = await requestJson("/api/Firstroom/SearchBtn?dishname=" + this.Dishname + "&price1=" + this.StartPrice + "&price2=" + this.EndPrice,
                 {
                     method: "GET"
                 })
-                if (res.rtnCode !== 0) {
-                    message.error('暂无数据');
-                    this.isLoading = false;
-                    return;
-                }
-                const data = res.data.table as any[];
-                this.allReportTableData = data;
-                this.showReportTableData = this.allReportTableData;
+            if (res.rtnCode !== 0) {
+                this.allReportTableData = res.data.table as any[];
+                message.error('暂无数据');
                 this.isLoading = false;
+                return;
+            }
+            const data = res.data.table as any[];
+            this.allReportTableData = data;
+            this.showReportTableData = this.allReportTableData;
+            this.isLoading = false;
         }
         catch (error) {
             message.error(error);
@@ -207,9 +224,9 @@ export class FirstRestaurantDoMainStore {
      */
     @action
     public async SaveBtn(): Promise<IResponseJsonResult> {
-        console.log("this.ceshi1",this.ceshi1);
+        console.log("this.ceshi1", this.ceshi1);
         try {
-            const res:any = await requestJson("/api/Firstroom/postUser?studentid="+this.ceshi1,
+            const res: any = await requestJson("/api/Firstroom/postUser?studentid=" + this.ceshi1,
                 {
                     method: "POST",
                     body: JSON.stringify(this.selectRowListData),
@@ -243,7 +260,7 @@ export class FirstRestaurantDoMainStore {
     public setShowTableData() {
         this.showReportTableData = this.allReportTableData.slice(0, -1)
             .slice(this.PageSize * (this.PageIndex - 1), this.PageSize * this.PageIndex)
-            // .concat(this.showReportTableData.slice(-1));
+        // .concat(this.showReportTableData.slice(-1));
         console.log("显示数据");
     }
 
@@ -251,14 +268,14 @@ export class FirstRestaurantDoMainStore {
      * @param id 
      */
     @action
-    public SelectedCardType(id:string):boolean{
-        try {     
-            this.recursionSelect(id,this.allReportTableData);
+    public SelectedCardType(id: string): boolean {
+        try {
+            this.recursionSelect(id, this.allReportTableData);
             return true;
         } catch (error) {
-            console.log("error:",error);
+            console.log("error:", error);
             return false;
-        }   
+        }
     }
     @action
     public SelectedMeterType(id: string): boolean {
@@ -275,11 +292,11 @@ export class FirstRestaurantDoMainStore {
      * 递归找到选中的数据
      */
     @action
-    private recursionSelect(itemId:string,CardTypeList:FirstRestaurantEntity[]){
-        CardTypeList.forEach((entity)=>{
-           if(itemId===entity.id){
-               this.currentEditCardType = entity;
-           }
-       });
-   }
+    private recursionSelect(itemId: string, CardTypeList: FirstRestaurantEntity[]) {
+        CardTypeList.forEach((entity) => {
+            if (itemId === entity.id) {
+                this.currentEditCardType = entity;
+            }
+        });
+    }
 }

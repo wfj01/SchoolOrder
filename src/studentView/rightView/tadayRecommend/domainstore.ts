@@ -2,7 +2,7 @@ import { message } from "antd";
 import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
 import imgURL2 from '../../../image/fentijin.jpg';
-import imgURL1 from '../../../image/Hongshaorou.jpg';
+import imgURL1 from '../../../image/hongshaorou.jpg';
 import { TadayRecommendEntity } from "./entity";
 
 
@@ -113,5 +113,38 @@ export class TadayRecommendDomainStore{
         const data = res.data.table;
         this.List = data;
         this.Isloading = false;
+    }
+    /**
+     * 更新
+     */
+    public async Update(model: TadayRecommendEntity) {
+        try {
+            if (!this.Isloading) {
+                this.Isloading = true;
+            }
+            const res = await requestJson("/api/Business/updatedate",
+                {
+                    method: "POST",
+                    body: JSON.stringify(model),
+                    headers: { "content-type": "application/json" }
+                });
+            if (res.rtnCode !== 0) {
+                message.error("更新失败：" + res.rtnMsg);
+                this.Isloading = false;
+            } else {
+                const jsonList = res.data as TadayRecommendEntity[];
+
+                if (this.List.length > 0) {
+                    this.List.splice(0, this.List.length);
+                }
+                this.List.push(...jsonList);
+
+                this.Isloading = false;
+                message.success("更新成功");
+            }
+        } catch (error) {
+            message.error("更新失败：" + error);
+            this.Isloading = false;
+        }
     }
 }

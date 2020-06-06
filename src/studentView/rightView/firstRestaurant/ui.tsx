@@ -21,7 +21,9 @@ export class FirstRestaurant extends React.Component<IFirstRestaurantProps>{
         super(props);
         this.uiAction = new FirstRestaurantUiAction(props);
     }
-
+    public componentWillUnmount(){
+        this.props.GlobalFirstDoMainStore!.clean();
+    }
     public render() {
         return (
             <VerThr style={{ paddingTop: '15px' }}>
@@ -31,9 +33,12 @@ export class FirstRestaurant extends React.Component<IFirstRestaurantProps>{
                 <VerThr.middle style={{ padding: '15px 8px 8px 0px' }}>
                     <RestaurantTable
                         onEyeClick={this.uiAction.onEyeClick} />
-                    <DrawerView
+                        {this.props.GlobalFirstDoMainStore!.allReportTableData.length >0 
+                        ? <DrawerView
                         visible={this.uiAction.visible}
                         onClose={this.uiAction.onCloseClick} />
+                        :<div/>}
+                    
                 </VerThr.middle>
                 <VerThr.bottom style={{ paddingRight: "8px" }}
                 >

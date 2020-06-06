@@ -5,4 +5,6 @@ export class LastWeekEntity{
     public time: string;
     public windows: string;
     public remarks: string;
+    public zuofa:string;
+
 }

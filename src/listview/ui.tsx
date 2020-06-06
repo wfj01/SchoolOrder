@@ -66,7 +66,7 @@ export class ListView extends React.Component<IListViewProps, IListViewState>{
                     <div
                         className="web_bg" style={sectionStyle}>
                         <div className='aaaa'  >
-                            <div className="title3">学院点餐系统</div>
+                            <div className="title3">学院在线订餐系统</div>
                             <LoginPage
                                 LoginOnClick={this.LoginBtnOnClick}
                                 Usernametext={this.uiAction.UsernameText}

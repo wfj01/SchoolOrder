@@ -28,7 +28,7 @@ export class CollegeTown extends React.Component<ICollegeTownProps> {
             <VerThr style={{ paddingTop: '15px' }}>
                 <VerThr.top>
                     <TopSearchView />
-                </VerThr.top>
+                 </VerThr.top>
                 <VerThr.middle style={{ padding: '15px 8px 8px 0px' }}>
                     <CollegeTownTable
                         onEyeClick={this.uiAction.onEyeClick} />

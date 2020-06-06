@@ -57,7 +57,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
             dataIndex: 'practice',
             key: "practice",
             title: '做法',
-            width: '18%',
+            width: '25%',
             height:40,
             render: (text: any) => <span title={text}>{text}</span>
         },
@@ -72,7 +72,7 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
         {
             dataIndex: 'remarks',
             key: 'remarks',
-            title: '备注',
+            title: '点评',
             width: '5%',
             height:40,
             render: (text: any) => <span title={text}>{text}</span>
@@ -115,8 +115,8 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
 
     public componentDidMount() {
         this.props.GlobalFirstDoMainStore!.LoadData();
-    }
 
+    }
     public render() {
 
         return (

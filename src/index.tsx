@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import { ListView } from './listview/ui';
 import DemoStore from './stores';
+import { MenuView } from './studentView/listView/ui';
 
 /**
  * 程序运行入口
