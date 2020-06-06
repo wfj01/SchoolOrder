@@ -1,5 +1,6 @@
-import { Form, Input } from "antd";
+import { Form, Icon, Input, Rate } from "antd";
 import { FormCreateOption } from "antd/lib/form";
+import TextArea from "antd/lib/input/TextArea";
 // import { FormCreateOption } from "antd/lib/form";
 import { inject, observer } from "mobx-react";
 import React from "react";
@@ -22,7 +23,7 @@ const formItemLayoutStyle = {
 @observer
 class FormView extends React.Component<IFormViewProps> {
 
-    public componentDidMount(){
+    public componentDidMount() {
         this.props.GlobalSouthSnackDoMainStore!.LoadData();
     }
     public render() {
@@ -46,7 +47,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"菜名"} {...formItemLayoutStyle} >
@@ -66,7 +67,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"价格"} {...formItemLayoutStyle} >
@@ -86,7 +87,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"得分"} {...formItemLayoutStyle} >
@@ -106,7 +107,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Rate disabled={true} character={<Icon type="heart" />} allowHalf={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"时间"} {...formItemLayoutStyle} >
@@ -126,7 +127,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"做法"} {...formItemLayoutStyle} >
@@ -146,7 +147,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<TextArea disabled={true} style={{ height: "150px" }} />)
                     }
                 </Form.Item>
                 <Form.Item label={"购买窗口"} {...formItemLayoutStyle} >
@@ -166,10 +167,10 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
-                <Form.Item label={"备注"} {...formItemLayoutStyle} >
+                <Form.Item label={"点评"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("remarks",
                             {
@@ -186,7 +187,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
             </Form>
@@ -200,8 +201,8 @@ class FormView extends React.Component<IFormViewProps> {
  */
 const formCreateOption: FormCreateOption<IFormViewProps> = {
     mapPropsToFields(props) {
-        console.log("props.DemoTableViewDomainSotre!.lengths:",props.GlobalSouthSnackDoMainStore!.lengths);
-        if(props.GlobalSouthSnackDoMainStore!.allReportTableData.length>0){
+        console.log("props.DemoTableViewDomainSotre!.lengths:", props.GlobalSouthSnackDoMainStore!.lengths);
+        if (props.GlobalSouthSnackDoMainStore!.allReportTableData.length > 0) {
             const lengths = props.GlobalSouthSnackDoMainStore!.lengths;
             const item = props.GlobalSouthSnackDoMainStore!.allReportTableData[lengths];
             return {
@@ -230,7 +231,7 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                     value: item.remarks,
                 })
             }
-        }else{
+        } else {
             return {
                 id: Form.createFormField({
                     value: '',
@@ -248,7 +249,7 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                     value: '',
                 }),
                 windows: Form.createFormField({
-                    value:'',
+                    value: '',
                 }),
                 remarks: Form.createFormField({
                     value: '',
@@ -258,8 +259,8 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                 }),
             }
         }
-        }
-       
+    }
+
 }
 
 export default Form.create<IFormViewProps>(formCreateOption)(FormView)

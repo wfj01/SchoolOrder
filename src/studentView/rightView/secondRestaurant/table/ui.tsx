@@ -51,7 +51,7 @@ export class SecondRestaurantTable extends React.Component<IRestaurantTableProps
             dataIndex: 'practice',
             key: "practice",
             title: '做法',
-            width: '18%',
+            width: '25%',
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -64,7 +64,7 @@ export class SecondRestaurantTable extends React.Component<IRestaurantTableProps
         {
             dataIndex: 'remarks',
             key: 'remarks',
-            title: '备注',
+            title: '点评',
             width: '5%',
             render: (text: any) => <span title={text}>{text}</span>
         },

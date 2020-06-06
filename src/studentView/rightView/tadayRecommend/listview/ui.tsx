@@ -40,19 +40,19 @@ export class TadayRecommend extends React.Component<ITadayRecommendProps, ITaday
                             loading={this.props.GlobalTadayRecommendDomainStore!.Isloading}
                             cover={<div style={{marginTop:'10px',display: "flex", justifyContent: "center", alignItems: "center" }}><img style={{ width: "100px", height: "100px" }} alt="example" src={require("../../../../image" + imagrsrc)} /></div>}
                         >
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between",marginBottom:"5px" }}>
                                 <div>{element.dishname}</div>
                                 <div style={{ fontWeight: 400, color: "#0033FF" }}>￥{element.price}</div>
                             </div>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between",marginBottom:"5px"  }}>
                                 <div>菜品评分</div>
                                 <div style={{ fontWeight: 400, color: "#0033FF" }}>{element.score}分</div>
                             </div>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between",marginBottom:"5px"  }}>
                                 <div>选择数量</div>
                                 <div style={{ fontWeight: 400, color: "#0033FF" }}>{element.number}</div>
                             </div>
-                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between" ,marginBottom:"5px" }}>
                                 <div>点评</div>
                                 <div style={{ fontWeight: 400, color: "#0033FF" }}>{element.remarks}</div>
                             </div>

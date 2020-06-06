@@ -147,6 +147,16 @@ export class FirstRestaurantDoMainStore {
     public getRowIndex(record: FirstRestaurantEntity): string {
         return record.id;
     }
+
+    @action
+    public clean(){
+        this.allReportTableData = [];
+        this.tableKeys = [];
+        this.selectedRow = 0;
+        this.selectedRowKeys = [];
+        this.isLoading = false;
+        this.selectRowListData = [];
+    }
     /**
      * 加载数据
      */
@@ -180,6 +190,7 @@ export class FirstRestaurantDoMainStore {
      */
     @action
     public async SearchBtn(){
+        console.log("第一餐厅：：：：",this.Dishname,this.StartPrice,this.EndPrice)
         try {
             this.isLoading = true;
             const res = await requestJson("/api/Firstroom/SearchBtn?dishname="+this.Dishname+"&price1="+this.StartPrice+"&price2="+this.EndPrice,

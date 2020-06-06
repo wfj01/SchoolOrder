@@ -33,13 +33,18 @@ export class TopSearchUiAction{
      * @param event 
      */
     public handleEndPrice(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalFirstDoMainStore!.EndPrice = event.target.value;
+        console.log("this.props.GlobalFirstDoMainStore!.EndPrice",this.props.GlobalFirstDoMainStore!.EndPrice)
+        this.props.GlobalFirstDoMainStore!.EndPrice = event.currentTarget.value;
+        console.log("this.props.GlobalFirstDoMainStore!.EndPrice",this.props.GlobalFirstDoMainStore!.EndPrice)
+
     }
 
     /**
      * 查询按钮事件
      */
     public onClickSearch(){
+        this.props.GlobalFirstDoMainStore!.clean();
+
         this.props.GlobalFirstDoMainStore!.SearchBtn();
     }
 
