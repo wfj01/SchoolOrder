@@ -17,7 +17,7 @@ export class TopSearchUiAction{
      * @param event 
      */
     public handleDishname(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalSecondDoMainStore!.Dishname = event.target.value;
+        this.props.GlobalSecondDoMainStore!.Dishname = event.currentTarget.value;
     }
 
     /**
@@ -25,7 +25,7 @@ export class TopSearchUiAction{
      * @param event 
      */
     public handleStartPrice(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalSecondDoMainStore!.StartPrice = event.target.value;
+        this.props.GlobalSecondDoMainStore!.StartPrice = event.currentTarget.value;
     }
 
     /**
@@ -33,7 +33,7 @@ export class TopSearchUiAction{
      * @param event 
      */
     public handleEndPrice(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalSecondDoMainStore!.EndPrice = event.target.value;
+        this.props.GlobalSecondDoMainStore!.EndPrice = event.currentTarget.value;
     }
 
     /**

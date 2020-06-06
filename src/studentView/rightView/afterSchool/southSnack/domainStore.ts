@@ -172,9 +172,12 @@ export class SouthSnackDoMainStore {
      */
     @action
     public async SearchBtn(){
+        this.allReportTableData=[];
+        this.showReportTableData =[];
+        this.isLoading = true;
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/SouthSnack/SearchBtn?dishname="+this.Dishname+"&question1="+this.StartPrice+"&question2="+this.EndPrice,
+            const res = await requestJson("/api/SouthSnack/SearchBtn?dishname="+this.Dishname+"&price1="+this.StartPrice+"&price2="+this.EndPrice,
                 {
                     method: "GET"
                 })

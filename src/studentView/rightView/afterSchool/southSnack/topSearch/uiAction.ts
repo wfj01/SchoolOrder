@@ -17,7 +17,7 @@ export class TopSearchUiAction {
      * @param event 
      */
     public handleDishname(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalSouthSnackDoMainStore!.Dishname = event.target.value;
+        this.props.GlobalSouthSnackDoMainStore!.Dishname = event.currentTarget.value;
     }
 
     /**
@@ -25,7 +25,7 @@ export class TopSearchUiAction {
      * @param event 
      */
     public handleStartPrice(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalSouthSnackDoMainStore!.StartPrice = event.target.value;
+        this.props.GlobalSouthSnackDoMainStore!.StartPrice = event.currentTarget.value;
     }
 
     /**
@@ -33,7 +33,7 @@ export class TopSearchUiAction {
      * @param event 
      */
     public handleEndPrice(event: React.ChangeEvent<HTMLInputElement>){
-        this.props.GlobalSouthSnackDoMainStore!.EndPrice = event.target.value;
+        this.props.GlobalSouthSnackDoMainStore!.EndPrice = event.currentTarget.value;
     }
 
     /**

@@ -117,12 +117,6 @@ export class RestaurantTable extends React.Component<IRestaurantTableProps> {
         this.props.GlobalFirstDoMainStore!.LoadData();
 
     }
-
-    public componentWillUnmount(){
-        this.props.GlobalFirstDoMainStore!.clean();
-    }
-
-
     public render() {
 
         return (

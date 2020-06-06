@@ -117,7 +117,6 @@ export class CollegeTownTable extends React.Component<ICollegeTownTableProps>{
                         }
                     }
                     dataSource={this.props.GlobalCollegeTownDoMainStore!.showReportTableData.slice()}
-                    style={{height:'550px'}}
                     pagination={false}
                     locale={{ emptyText: '暂无 数据' }}
                     rowSelection={{

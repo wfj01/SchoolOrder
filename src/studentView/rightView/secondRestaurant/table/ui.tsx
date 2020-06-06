@@ -121,7 +121,6 @@ export class SecondRestaurantTable extends React.Component<IRestaurantTableProps
                 }
             }
             locale={{ emptyText: '暂无 数据' }}
-            style={{height:'550px'}}
             rowSelection={{
                 onChange: (selectedRowKeys: string[] | number[], selectedRows: any[]) => {
                     this.uiAction.TableOnChaneg(selectedRowKeys, selectedRows);

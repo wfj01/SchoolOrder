@@ -119,7 +119,6 @@ export class SouthSnackTable extends React.Component<ISouthSnackTableProps>{
                         }
                     }
                     dataSource={this.props.GlobalSouthSnackDoMainStore!.showReportTableData.slice()}
-                    style={{height:'550px'}}
                     pagination={false}
                     locale={{ emptyText: '暂无 数据' }}
                     rowSelection={{
