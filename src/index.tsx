@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
+import { ListView } from './listview/ui';
 import DemoStore from './stores';
 import { MenuView } from './studentView/listView/ui';
 
@@ -13,7 +14,7 @@ export class Demo extends React.Component{
   public render(){
       return(
           <Provider{...DemoStore}>
-              <MenuView/>
+              <ListView/>
           </Provider>
       )
   }
