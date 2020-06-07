@@ -1,6 +1,7 @@
 import { Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
 import { inject, observer } from 'mobx-react';
+import moment from 'moment';
 import React from "react";
 import { BusinessListView } from '../../businessView/listView/ui';
 import Clock from '../../shizhong';
@@ -22,8 +23,8 @@ const { SubMenu } = Menu;
 
 interface IMenuViewState {
     current: string;
-    display1:string;
-    display2:string;
+    display1: string;
+    display2: string;
 }
 
 /**
@@ -41,8 +42,8 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
         super(props);
         this.state = {
             current: "0101",
-            display1:"block",
-            display2:'none'
+            display1: "block",
+            display2: 'none'
         }
         this.uiaction = new MenuViewuiAction(props);
         this.handleclick = this.handleclick.bind(this);
@@ -65,7 +66,9 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                             <div style={{ display: "flex", justifyContent: "start" }}>
                                 <div style={{ color: "blue", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }} onClick={this.handleshangjiaclick}>切换为商家模式</div>
                                 <div style={{ color: "#FFF", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }} onClick={this.uiaction.handleclick}>联系我们</div>
-                                <Clock/>
+                                <div style={{ color: "#FFF", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }} onClick={this.uiaction.handleclick}>{moment().format('YYYY-MM-DD')}</div>
+                                <div style={{ color: "#FFF", fontSize: '15px', marginLeft: '5px', lineHeight: '50px', paddingRight: 20 }} onClick={this.uiaction.handleclick}>{moment().format('dddd')}</div>
+                                <Clock />
                             </div>
                         </div>
                         <div>
@@ -145,7 +148,6 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
         )
     }
 
-
     public handleclick(param: ClickParam) {
         this.setState({
             current: param.key,
@@ -153,10 +155,10 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
         console.log("CLICK", this.state.current);
     }
 
-    private handleshangjiaclick(){
+    private handleshangjiaclick() {
         this.setState({
-            display1:"none",
-            display2:"block"
+            display1: "none",
+            display2: "block"
         })
     }
     private renderPage(): JSX.Element {

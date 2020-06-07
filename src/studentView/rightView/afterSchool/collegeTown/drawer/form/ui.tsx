@@ -201,10 +201,10 @@ class FormView extends React.Component<IFormViewProps> {
  */
 const formCreateOption: FormCreateOption<IFormViewProps> = {
     mapPropsToFields(props) {
-        console.log("props.DemoTableViewDomainSotre!.lengths:", props.GlobalCollegeTownDoMainStore!.lengths);
-        if (props.GlobalCollegeTownDoMainStore!.allReportTableData.length > 0) {
+        console.log("props.DemoTableViewDomainSotre!.lengths:",props.GlobalCollegeTownDoMainStore!.lengths);
+        if(props.GlobalCollegeTownDoMainStore!.allReportTableData!.length>0){
             const lengths = props.GlobalCollegeTownDoMainStore!.lengths;
-            const item = props.GlobalCollegeTownDoMainStore!.allReportTableData[lengths];
+            const item = props.GlobalCollegeTownDoMainStore!.allReportTableData![lengths];
             return {
                 id: Form.createFormField({
                     value: item.id,
@@ -231,7 +231,7 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                     value: item.remarks,
                 })
             }
-        } else {
+        }else{
             return {
                 id: Form.createFormField({
                     value: '',
@@ -249,7 +249,7 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                     value: '',
                 }),
                 windows: Form.createFormField({
-                    value: '',
+                    value:'',
                 }),
                 remarks: Form.createFormField({
                     value: '',
@@ -259,8 +259,8 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                 }),
             }
         }
-    }
-
+        }
+       
 }
 
 export default Form.create<IFormViewProps>(formCreateOption)(FormView)

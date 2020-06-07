@@ -1,17 +1,60 @@
 export class ManageGoodsEntity {
 
-    public  id :string;
+
+    /**
+     * ID
+     */
+    public id: string;
+
+    /**
+     * 菜名
+     */
+    public dishname: string;
+
+    /**
+     * 价格
+     */
+    public price: string;
+
+    /**
+     * 得分
+     */
+    public score: string;
+
     
-    public dishname:string;
+    /**
+     * 时间
+     */
+    public time: string;
 
-    public price:string;
-
+    /**
+     * 做法
+     */
     public practice:string;
 
-    public time:string;
+    /**
+     * 购买窗口
+     */
+    public windows: string;
 
-    public windows:string;
+    /**
+     * 备注
+     */
+    public remarks: string;
 
-    public remarks:string;
-    
+    /**
+     * 数量
+     */
+    public Number: string;
+
+    constructor() {
+        this.id = "";
+        this.Number = "";
+        this.price = "";
+        this.score = "";
+        this.time = "";
+        this.dishname = "";
+        this.remarks = "";
+        this.windows = "";
+    }
 }

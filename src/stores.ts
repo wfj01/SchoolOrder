@@ -23,6 +23,8 @@ import SouthSnackStores from "./studentView/rightView/afterSchool/southSnack/sto
 import { StepsViewDomainStore } from "./studentView/rightView/cartManage/domainStore";
 import { OrderManagementDoMainStore } from "./studentView/rightView/cartManage/ordermanage/domainStore";
 import OrderManagementStore from "./studentView/rightView/cartManage/ordermanage/stores";
+import { MymessageViewDomainStoress } from "./studentView/rightView/cartManage/shoppingCart/myMessage/doMainStore";
+import MymessageViewStoress from "./studentView/rightView/cartManage/shoppingCart/myMessage/stores";
 import StepsViewStore from "./studentView/rightView/cartManage/stores";
 import { FirstRestaurantDoMainStore } from "./studentView/rightView/firstRestaurant/domainStore";
 import FirstRestaurant from "./studentView/rightView/firstRestaurant/stores";
@@ -57,6 +59,7 @@ interface IDemoProps {
     GlobalPersonaldataDoMainStore: PersonaldataDoMainStore;
     GlobalOrderManagementviewDoMainStore: OrderManagementviewDoMainStore;
     GlobalMymessageViewStores:MymessageViewDomainStores;
+    GlobalMymessageViewStoress:MymessageViewDomainStoress;
     GlobalCustomerListDomainStores: CustomerListDomainStores
 }
 
@@ -79,7 +82,9 @@ const DemoStore: IDemoProps = {
     ...PersonaldataStore,
     ...OrderManagementviewStore,
     ...MymessageViewStores,
-    ...CustomerListStores
+    ...CustomerListStores,
+    ...MymessageViewStoress,
+
 }
 
 

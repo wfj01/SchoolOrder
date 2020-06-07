@@ -36,7 +36,7 @@ export class OrderManagementTable extends React.Component<IOrderManagementTablep
         {
             dataIndex: 'remarks',
             key: 'remarks',
-            title: '备注',
+            title: '点评',
             width: '10%',
             editable: true,
             render: (text: any) => <span title={text}>{text}</span>
@@ -83,7 +83,7 @@ export class OrderManagementTable extends React.Component<IOrderManagementTablep
                             tip: "正在加载中"
                         }
                     }
-                    dataSource={this.props.GlobalOrderManagementDoMainStore!.allReportTableData}
+                    dataSource={this.props.GlobalOrderManagementDoMainStore!.showReportTableData}
                     pagination={false}
                     style={{ height: '550px' }}
                     locale={{ emptyText: '暂无 数据' }}

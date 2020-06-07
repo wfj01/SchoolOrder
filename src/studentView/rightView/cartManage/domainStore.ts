@@ -2,7 +2,7 @@ import { message } from "antd";
 import { ClickParam } from "antd/lib/menu";
 import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
-import { ShoppingCartViewEntity } from "./entity";
+import { PageFormEntity, ShoppingCartViewEntity } from "./entity";
 
 export class StepsViewDomainStore {
 
@@ -11,6 +11,9 @@ export class StepsViewDomainStore {
      */
     @observable
     public allReportTableData: ShoppingCartViewEntity[];
+
+    @observable
+    public allReportTableDatauser:PageFormEntity[];
 
     /**
      * 选定的行
@@ -89,6 +92,13 @@ export class StepsViewDomainStore {
     @observable
     public calculatedstring :string;
 
+    @observable
+    public calculatedTime:number;
+    @observable
+    public calculatedTimeNum:string;
+    @observable
+    public calculatedTimeNumtext:string;
+    
     /**
      * 得到的集合
      */
@@ -97,6 +107,9 @@ export class StepsViewDomainStore {
 
     @observable
     public List1:any[];
+
+    @observable
+    public List2:any[];
 
     public element: any;
 
@@ -130,6 +143,9 @@ export class StepsViewDomainStore {
     @observable
     public ShoppingModelvisible:boolean;
 
+    @observable
+    public showdata:PageFormEntity[];
+
     constructor() {
         this.studentid = "";
         this.studentName="";
@@ -139,9 +155,11 @@ export class StepsViewDomainStore {
         this.secondnumber = 0;
         this.calculatednumber = 0;
         this.calculatedstring = "";
+        this.calculatedTime = 0;
         this.element = [];
         this.List = [];
         this.List1 = [];
+        this.List2 =[];
         this.allReportTableData = [];
         this.tableKeys = [];
         this.isLoading = false;
@@ -191,16 +209,54 @@ export class StepsViewDomainStore {
      * 加载数据
      */
     @action
-    public async LoadData() {
+    public async Loaddata() {
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Order/queryUser?studentid="+this.studentid,
+            const res = await requestJson("/api/MyMessage/queryUser?studentid=" + "201710033092",
+                {
+                    method: "GET"
+                })
+            if (res.rtnCode !== 0) {
+                message.error('暂无数据');
+                this.isLoading = false;
+                return;
+            }
+            const data = res.data.table as any[];
+            this.showdata = data;
+            this.allReportTableDatauser = this.showdata;
+            this.studentid = this.allReportTableDatauser[0].studentid;
+            this.studentName =  this.allReportTableDatauser[0].studentname;
+            this.studentAddress = this.allReportTableDatauser[0].address;
+            this.studentPhone = this.allReportTableDatauser[0].telephone;
+            this.isLoading = false;
+        }
+        catch (error) {
+            message.error(error);
+            this.isLoading = false;
+        }
+    }
+
+    /**
+     * 加载数据
+     */
+    @action
+    public async LoadData() {
+        this.calculatedstring="";
+        this.calculatednumber = 0;
+        this.calculatedTime = 0;
+        this.calculatedTimeNum= "";
+        this.calculatedTimeNumtext = "";
+        this.List = [];
+        this.List1 = []; 
+        try {
+            this.isLoading = true;
+            const res = await requestJson("/api/Order/queryUser?studentid="+"201710033092",
                 {
                     method: "GET"
                 })
             if (res.rtnCode !== 0) {
                 console.log("res.date:", res.data.table);
-                message.error('暂无数据');
+                message.error('当前页面暂无数据，请继续订餐吧'+'😊');
                 this.isLoading = false;
                 return;
             }
@@ -212,14 +268,39 @@ export class StepsViewDomainStore {
                     this.firstnumber = Number(element.price);
                     this.secondnumber = Number(element.number);
                     this.thirednumber = element.dishname;
+                    this.calculatedTime = parseInt(element.time,10);
                     this.calculatednumber = (this.firstnumber) * (this.secondnumber)
                     this.List.push(this.calculatednumber,);
                     this.List1.push(this.thirednumber);
+                    this.List2.push(this.calculatedTime);
                 });
                 this.List.forEach(element => {
                     this.calculatednumber +=element;
+                    console.log("calculatednumber",this.calculatednumber)
                 });
-        
+                if(this.List2.length<3){
+                    this.calculatednumber = this.calculatednumber;
+                }
+                else{
+                    this.calculatednumber =this.calculatednumber *0.8;
+                }
+                this.calculatedTimeNumtext = ((this.calculatednumber)).toString()+"元";
+
+                console.log("this.List2",this.List2);
+                this.List2.forEach(element=>{
+                    this.calculatedTime += element;
+                    console.log("thiscalculatedTimeNum",this.calculatedTime)
+                })
+                if(this.List2.length<3){
+                    this.calculatedTime = this.calculatedTime;
+                }
+                else{
+                    this.calculatedTime =this.calculatedTime *0.8;
+                }
+                this.calculatedTimeNum = ((this.calculatedTime)).toString()+"分钟";
+    
+
+                console.log("this.calculatedTimeNum",this.calculatedTimeNum)
                 this.List1.forEach(element=>{
                     this.calculatedstring +=element;
                     this.calculatedstring = (this.calculatedstring)+("*")+(this.secondnumber);
@@ -297,7 +378,7 @@ export class StepsViewDomainStore {
         try{
         console.log("this.List:",this.allReportTableData);
         this.isLoading = true;
-        const res: any = await requestJson("/api/Order/confirmorder?studentid="+"201710033092"+"&studentname="+this.studentName
+        const res: any = await requestJson("/api/Order/confirmorder?studentid="+this.studentid+"&studentname="+this.studentName
         +"&studentaddress="+this.studentAddress+"&phone="+this.studentPhone,
                 {
                     method: "POST",
@@ -309,6 +390,7 @@ export class StepsViewDomainStore {
                 message.error(res.rtnMsg);
                 this.isLoading = false;
             }
+            message.success("提交订单成功，请耐心等待"+"✈✈")
             this.LoadData();
             this.allReportTableData =[];
             this.calculatednumber=0;

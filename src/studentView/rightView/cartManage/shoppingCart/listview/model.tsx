@@ -1,19 +1,19 @@
-import { Form, Input, Modal } from "antd";
-import { FormComponentProps } from "antd/lib/form";
+import { Modal } from "antd";
 import { inject, observer } from "mobx-react";
 import React from "react";
 import { StepsViewDomainStore } from "../../domainStore";
+import { MymessageViewa } from "../myMessage";
 
 
-const formItemLayoutStyle = {
-    labelCol: {
-        span: 6
-    },
-    wrapperCol: {
-        span: 15
-    }
-};
-export interface IShoppingCartViewModelProps extends FormComponentProps{
+// const formItemLayoutStyle = {
+//     labelCol: {
+//         span: 6
+//     },
+//     wrapperCol: {
+//         span: 15
+//     }
+// };
+export interface IShoppingCartViewModelProps{
     GlobalStepsViewDomainStore?: StepsViewDomainStore;
 
     visible:boolean;
@@ -25,16 +25,13 @@ export interface IShoppingCartViewModelProps extends FormComponentProps{
 
 @inject("GlobalStepsViewDomainStore")
 @observer
-class ShoppingCartViewModel extends React.Component<IShoppingCartViewModelProps> {
+export class ShoppingCartViewModel extends React.Component<IShoppingCartViewModelProps> {
 
     constructor(props:IShoppingCartViewModelProps){
         super(props);
-        this.handlestudentName = this.handlestudentName.bind(this);
-        this.handlestudentaddress = this.handlestudentaddress.bind(this);
-        this.handlestudentphone = this.handlestudentphone.bind(this);
     }
     public render() {
-        const form = this.props.form;
+        // const form = this.props.form;
         return (
             <>
                 <Modal
@@ -45,87 +42,9 @@ class ShoppingCartViewModel extends React.Component<IShoppingCartViewModelProps>
                 onCancel={this.props.handleCancel}
                 onOk={this.props.handleOk}
                 destroyOnClose={true}>
-                    <Form>
-                        <Form.Item label={"您的姓名"} {...formItemLayoutStyle} >
-                            {
-                                form.getFieldDecorator("studentName",
-                                    {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                whitespace: true,
-                                                message: "不能为空"
-                                            },
-                                            {
-                                                required: true,
-                                                max: 25,
-                                                message: "长度不能大于25"
-                                            }
-                                        ]
-                                    }
-                                )(<Input onChange={this.handlestudentName}/>)
-                            }
-                        </Form.Item>
-                        <Form.Item label={"您的收货地址"} {...formItemLayoutStyle} >
-                            {
-                                form.getFieldDecorator("studentaddress",
-                                    {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                whitespace: true,
-                                                message: "不能为空"
-                                            },
-                                            {
-                                                required: true,
-                                                max: 25,
-                                                message: "长度不能大于25"
-                                            }
-                                        ]
-                                    }
-                                )(<Input onChange={this.handlestudentaddress}/>)
-                            }
-                        </Form.Item>
-                        <Form.Item label={"您的电话"} {...formItemLayoutStyle} >
-                            {
-                                form.getFieldDecorator("studentphone",
-                                    {
-                                        rules: [
-                                            {
-                                                required: true,
-                                                whitespace: true,
-                                                message: "不能为空"
-                                            },
-                                            {
-                                                required: true,
-                                                max: 25,
-                                                message: "长度不能大于25"
-                                            }
-                                        ]
-                                    }
-                                )(<Input onChange={this.handlestudentphone}/>)
-                            }
-                        </Form.Item>
-                    </Form>
-                </Modal>
+                  <MymessageViewa/>
+                  </Modal>
             </>
         )
     }
-
-    private handlestudentName(event: React.ChangeEvent<HTMLInputElement>)
-    {
-        this.props.GlobalStepsViewDomainStore!.studentName = event.target.value;
-    }
-    
-    private handlestudentaddress(event: React.ChangeEvent<HTMLInputElement>)
-    {
-        this.props.GlobalStepsViewDomainStore!.studentAddress = event.target.value;
-    }
-    
-    private handlestudentphone(event: React.ChangeEvent<HTMLInputElement>)
-    {
-        this.props.GlobalStepsViewDomainStore!.studentPhone = event.target.value;
-    }
 }
-
-export default Form.create<IShoppingCartViewModelProps>()(ShoppingCartViewModel);

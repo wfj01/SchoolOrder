@@ -16,6 +16,7 @@ const { Sider, Content } = Layout;
 export class LastWeekView extends React.Component<ILastWeekViewProps>{
     public render() {
         const lengths = this.props.GlobalLastWeekDomainStore!.lengths;
+        const text = this.props.GlobalLastWeekDomainStore!.aaa[lengths].replace(/(\s|\r\n|\r|\n)/g, '<br/>');
         return (
             <VerThr>
                 <VerThr.top>
@@ -37,7 +38,7 @@ export class LastWeekView extends React.Component<ILastWeekViewProps>{
                         </Layout>
                         <Layout style={{padding:'20px'}}>
                             <label style={{fontSize:" 30px",fontWeight: 400,color:" #FFC125",marginTop:"20px"}}>做法：</label>
-                            <div style={{marginTop:"15px",fontSize:'20px',fontFamily:"KaiTi",height:"100px"}}>{this.props.GlobalLastWeekDomainStore!.aaa[lengths]}</div>
+                            <div style={{marginTop:"15px",fontSize:'20px',fontFamily:"KaiTi",height:"100px"}} dangerouslySetInnerHTML={{__html:text}}/>
                         </Layout>
                     </Layout>
                 </VerThr.middle>

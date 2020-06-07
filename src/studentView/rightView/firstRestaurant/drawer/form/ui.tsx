@@ -23,7 +23,7 @@ const formItemLayoutStyle = {
 @observer
 class FormView extends React.Component<IFormViewProps> {
 
-    public componentDidMount(){
+    public componentDidMount() {
         this.props.GlobalFirstDoMainStore!.LoadData();
     }
     public render() {
@@ -47,7 +47,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input disabled={true}/>)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"菜名"} {...formItemLayoutStyle} >
@@ -87,7 +87,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input  disabled={true}/>)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"得分"} {...formItemLayoutStyle} >
@@ -107,7 +107,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Rate disabled={true} character={<Icon type="heart" />} allowHalf={true}/>)
+                        )(<Rate defaultValue={3} disabled={true} character={<Icon type="heart" />} allowHalf={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"时间"} {...formItemLayoutStyle} >
@@ -127,7 +127,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input  disabled={true}/>)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"做法"} {...formItemLayoutStyle} >
@@ -147,7 +147,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<TextArea  disabled={true} style={{height:"150px"}}/>)
+                        )(<TextArea disabled={true} style={{ height: "150px" }} />)
                     }
                 </Form.Item>
                 <Form.Item label={"购买窗口"} {...formItemLayoutStyle} >
@@ -167,7 +167,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input  disabled={true}/>)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"点评"} {...formItemLayoutStyle} >
@@ -187,7 +187,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input  disabled={true}/>)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
             </Form>
@@ -201,8 +201,8 @@ class FormView extends React.Component<IFormViewProps> {
  */
 const formCreateOption: FormCreateOption<IFormViewProps> = {
     mapPropsToFields(props) {
-        console.log("props.DemoTableViewDomainSotre!.lengths:",props.GlobalFirstDoMainStore!.lengths);
-        if(props.GlobalFirstDoMainStore!.allReportTableData!.length>0){
+        console.log("props.DemoTableViewDomainSotre!.lengths:", props.GlobalFirstDoMainStore!.lengths);
+        if (props.GlobalFirstDoMainStore!.allReportTableData!.length > 0) {
             const lengths = props.GlobalFirstDoMainStore!.lengths;
             const item = props.GlobalFirstDoMainStore!.allReportTableData![lengths];
             return {
@@ -231,7 +231,7 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                     value: item.remarks,
                 })
             }
-        }else{
+        } else {
             return {
                 id: Form.createFormField({
                     value: '',
@@ -249,7 +249,7 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                     value: '',
                 }),
                 windows: Form.createFormField({
-                    value:'',
+                    value: '',
                 }),
                 remarks: Form.createFormField({
                     value: '',
@@ -259,8 +259,8 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                 }),
             }
         }
-        }
-       
+    }
+
 }
 
 export default Form.create<IFormViewProps>(formCreateOption)(FormView)

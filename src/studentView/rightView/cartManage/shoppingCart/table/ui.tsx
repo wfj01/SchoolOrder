@@ -32,6 +32,13 @@ export class ShoppingCartTableView extends React.Component<IShoppingCartTableVie
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
+            dataIndex: 'time',
+            key: 'time',
+            title: '所需时间(分钟)',
+            width: "10%",
+            render: (text: any) => <span title={text}>{text}</span>
+        },
+        {
             dataIndex: 'windows',
             key: "windows",
             title: '窗口',

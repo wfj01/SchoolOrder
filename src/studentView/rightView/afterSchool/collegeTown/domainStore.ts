@@ -205,7 +205,7 @@ export class CollegeTownDoMainStore {
     public async SaveBtn(): Promise<IResponseJsonResult> {
         try {
             console.log("this.selectRowListData:",this.selectRowListData);
-            const res:any = await requestJson("/api/CollegeTown/postUser?studioid="+"201710033092",
+            const res:any = await requestJson("/api/CollegeTown/postUser?studentid="+"201710033092",
                 {
                     method: "POST",
                     body: JSON.stringify(this.selectRowListData),

@@ -1,5 +1,6 @@
-import { Form, Input } from "antd";
+import { Form, Icon, Input, Rate } from "antd";
 import { FormCreateOption } from "antd/lib/form";
+import TextArea from "antd/lib/input/TextArea";
 // import { FormCreateOption } from "antd/lib/form";
 import { inject, observer } from "mobx-react";
 import React from "react";
@@ -26,7 +27,7 @@ class FormView extends React.Component<IFormViewProps> {
         const form = this.props.form;
         return (
             <Form>
-                <Form.Item label={"Id"} {...formItemLayoutStyle} >
+                <Form.Item label={"序号"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("id",
                             {
@@ -63,7 +64,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"价格"} {...formItemLayoutStyle} >
@@ -83,12 +84,12 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
-                <Form.Item label={"做法"} {...formItemLayoutStyle} >
+                <Form.Item label={"得分"} {...formItemLayoutStyle} >
                     {
-                        form.getFieldDecorator("practice",
+                        form.getFieldDecorator("score",
                             {
                                 rules: [
                                     {
@@ -103,7 +104,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Rate disabled={true} character={<Icon type="heart" />} allowHalf={true} />)
                     }
                 </Form.Item>
                 <Form.Item label={"时间"} {...formItemLayoutStyle} >
@@ -123,10 +124,30 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
-                <Form.Item label={"窗口"} {...formItemLayoutStyle} >
+                <Form.Item label={"做法"} {...formItemLayoutStyle} >
+                    {
+                        form.getFieldDecorator("practice",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                        whitespace: true,
+                                        message: "不能为空"
+                                    },
+                                    {
+                                        required: true,
+                                        max: 25,
+                                        message: "长度不能大于25"
+                                    }
+                                ]
+                            }
+                        )(<TextArea disabled={true} style={{ height: "150px" }} />)
+                    }
+                </Form.Item>
+                <Form.Item label={"购买窗口"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("windows",
                             {
@@ -143,10 +164,10 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
-                <Form.Item label={"说明"} {...formItemLayoutStyle} >
+                <Form.Item label={"点评"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("remarks",
                             {
@@ -163,7 +184,7 @@ class FormView extends React.Component<IFormViewProps> {
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input disabled={true} />)
                     }
                 </Form.Item>
             </Form>
@@ -194,6 +215,9 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                 practice: Form.createFormField({
                     value: item.practice,
                 }),
+                score: Form.createFormField({
+                    value: item.score,
+                }),
                 time: Form.createFormField({
                     value: item.time,
                 }),
@@ -217,6 +241,9 @@ const formCreateOption: FormCreateOption<IFormViewProps> = {
                 }),
                 practice: Form.createFormField({
                     value: ""
+                }),
+                score: Form.createFormField({
+                    value: "",
                 }),
                 time: Form.createFormField({
                     value: ""

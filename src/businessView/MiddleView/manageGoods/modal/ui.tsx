@@ -25,6 +25,7 @@ export class ModelView extends React.Component<IModelViewProps>{
                 onCancel={this.props.handleCancel}
                 onOk={this.uiAction.handleOk}
                 destroyOnClose={true}
+                
             >
                 <CompanyForm
                     getUiAction={this.uiAction.getSonUiAction}

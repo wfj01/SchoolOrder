@@ -1,4 +1,4 @@
-import { Divider, Icon, Popconfirm, Table, Tooltip } from 'antd';
+import { Divider, Icon, Popconfirm, Table } from 'antd';
 import { ColumnProps } from 'antd/lib/table';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
@@ -12,48 +12,67 @@ import { ManageGoodsTableUiAction } from './uiAction';
 export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
     private columns: Array<ColumnProps<ManageGoodsEntity>> = Array<ColumnProps<ManageGoodsEntity>>(
         {
+            dataIndex: 'id',
+            key: 'id',
+            title: '序号',
+            width: "5%",
+            render:(text,record,index)=>`${index+1}`        },
+        {
             dataIndex: 'dishname',
             key: 'dishname',
             title: '菜名',
             width: "10%",
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
+            render: (text: any) => <span title={text}>{text}</span>
         },
         {
             dataIndex: 'price',
             key: 'price',
-            title: '价格',
+            title: '价格(元/500g)',
             width: "10%",
-            sorter: (a: any, b: any) => a.title.length - b.title.length,
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
+            render: (text: any) => <span title={text}>{text}</span>
         },
+
         {
-            dataIndex: 'practice',
-            key: 'practice',
-            title: '做法',
-            width: '10%',
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
+            dataIndex: 'score',
+            key: 'score',
+            title: '得分',
+            width: '5%',
+            render: (text: any) => <span title={text}>{text}</span>
         },
         {
             dataIndex: "time",
             key: 'time',
             title: "时间",
             width: '10%',
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
+            render: (text: any) => <span title={text}>{text}</span>
         },
         {
-            dataIndex: "windows",
-            key: 'windows',
-            title: "窗口",
-            width: "10%",
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
+            dataIndex: 'practice',
+            key: "practice",
+            title: '做法',
+            width: '22%',
+            render: (text: any) => <span title={text}>{text}</span>
+        },
+        {
+            dataIndex: 'windows',
+            key: "windows",
+            title: '窗口',
+            width: '10%',
+            render: (text: any) => <span title={text}>{text}</span>
         },
         {
             dataIndex: 'remarks',
             key: 'remarks',
-            title: '说明',
-            width: '10%',
-            render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>
+            title: '点评',
+            width: '5%',
+            render: (text: any) => <span title={text}>{text}</span>
+        },
+        {
+            dataIndex: 'number',
+            key: "number",
+            title: '数量',
+            width: '5%',
+            render: (text: any) => <span title={text}>{text}</span>
         },
         {
             key: "action",
@@ -103,14 +122,13 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
         super(props);
         this.uiAction = new ManageGoodsTableUiAction(props);
     }
-    public componentDidMount() {
-        this.props.GlobalManageGoodsDomainStore!.loaddata()
-    }
+
     public render() {
         return (
             <Table
                 columns={this.columns}
                 pagination={false}
+                className={"ori-table ori-table-fixed"}
                 dataSource={this.props.GlobalManageGoodsDomainStore!.List.slice()}
                 loading={
                     {

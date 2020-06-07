@@ -204,7 +204,7 @@ export class SouthSnackDoMainStore {
     public async SaveBtn(): Promise<IResponseJsonResult> {
         try {
             console.log("this.selectRowListData:",this.selectRowListData);
-            const res:any = await requestJson("/api/SouthSnack/postUser?studioid="+"201710033092",
+            const res:any = await requestJson("/api/SouthSnack/postUser?studentid="+"201710033092",
                 {
                     method: "POST",
                     body: JSON.stringify(this.selectRowListData),

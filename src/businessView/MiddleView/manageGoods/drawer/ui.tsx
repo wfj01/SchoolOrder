@@ -13,15 +13,12 @@ export class DrawerView extends React.Component<IDrawerViewProps>{
         super(props);
     }
 
-    public componentDidMount() {
-        this.props.GlobalManageGoodsDomainStore!.loaddata();
-    }
     public render() {
         console.log("this.props.GlobalManageGoodsDomainStore!.List.length：", this.props.GlobalManageGoodsDomainStore!.List.length)
         return (
             <Drawer
-                title="Create a new account"
-                width={720}
+                title="菜品详情"
+                width={450}
                 onClose={this.props.onClose}
                 visible={this.props.visible}
             >

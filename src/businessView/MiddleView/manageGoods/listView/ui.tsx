@@ -18,6 +18,9 @@ export class ManageGoodsView extends React.Component<IManageGoodsViewProps>{
         super(props);
         this.uiAction = new ManageGoodsViewUiAction(props);
     }
+    public componentDidMount() {
+        this.props.GlobalManageGoodsDomainStore!.loaddata()
+    }
     public render() {
         return (
             <VerThr>
