@@ -95,6 +95,7 @@ export class CompletedOrderTable extends React.Component<ICompletedOrderTablePro
     }
 
     public componentDidMount() {
+        this.props.GlobalOnlineOrderDoMainStore!.allReportTableData3= [];
         this.props.GlobalOnlineOrderDoMainStore!.Loaddatab();
     }
 

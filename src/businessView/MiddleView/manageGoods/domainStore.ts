@@ -30,6 +30,15 @@ export class ManageGoodsDomainStore {
     public lengths: number;
 
     /**
+     * 获取到数据的下标
+     */
+    @observable
+    public valueText: string;
+
+
+    @observable
+    public idtext:number;
+    /**
      * 抽屉是否显示
      */
     @observable
@@ -40,6 +49,12 @@ export class ManageGoodsDomainStore {
      */
     @observable
     public DialogViewVisible: boolean = false;
+
+    /**
+     * 弹窗是否显示
+     */
+    @observable
+    public DialogViewVisible1: boolean = false;
 
     constructor() {
         this.List = Array<ManageGoodsEntity>();
@@ -54,6 +69,7 @@ export class ManageGoodsDomainStore {
     public SelectedData(id: string): boolean {
         try {
             this.recursionSelect(id, this.List);
+
             return true;
         } catch (error) {
             console.log(error);
@@ -99,21 +115,22 @@ export class ManageGoodsDomainStore {
     public async Adddate(model: ManageGoodsEntity) {
         try {
             this.isLoading = true;
-            const res = await requestJson("/api/Ceshi/huoqu",
+            const res = await requestJson("/api/Business/adddate?valueText="+this.valueText,
                 {
                     method: "POST",
                     body: JSON.stringify(model),
                     headers: { "content-type": "application/json" }
                 });
+            console.log("res.rtnCode",res.rtnCode)
             if (res.rtnCode !== 0) {
                 message.error("新增失败：" + res.rtnMsg);
                 this.isLoading = false;
             } else {
                 const jsonList = res.data.data as ManageGoodsEntity[];
                 this.List.push(...jsonList);
-                this.isLoading = false;
-                message.success("新增成功");
                 this.loaddata();
+                this.isLoading = false;
+                message.success("新增成功"+"👏👏👏");
             }
         } catch (error) {
             message.error("新增失败：" + error);
@@ -197,7 +214,8 @@ export class ManageGoodsDomainStore {
         }
         List.forEach((entity) => {
             if (itemId === entity.id) {
-                this.currentEditData = entity!;
+                this.currentEditData = entity;
+                console.log("this.currentEditDatathis.currentEditDatathis.currentEditData",this.currentEditData)
             }
         });
     }

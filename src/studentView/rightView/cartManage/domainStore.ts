@@ -13,6 +13,12 @@ export class StepsViewDomainStore {
     public allReportTableData: ShoppingCartViewEntity[];
 
     @observable
+    public allReportTableDataa: any[];
+
+    @observable
+    public list1:any[];
+
+    @observable
     public allReportTableDatauser:PageFormEntity[];
 
     /**
@@ -246,6 +252,7 @@ export class StepsViewDomainStore {
         this.calculatedTime = 0;
         this.calculatedTimeNum= "";
         this.calculatedTimeNumtext = "";
+        this.calculatedTimeNum =""
         this.List = [];
         this.List1 = []; 
         try {
@@ -371,15 +378,42 @@ export class StepsViewDomainStore {
     }
 
     /**
+     * 加载数据
+     */
+    public async LoadDataa() {
+        try {
+            const res = await requestJson("/api/Order/ordermanage?studentid=" + "201710033092",
+                {
+                    method: "GET"
+                })
+            if (res.rtnCode !== 0) {
+                message.error('暂无数据');
+                return;
+            }
+            console.log("res.date:", res.data.table);
+            this.allReportTableDataa = res.data.table as any[];
+            this.allReportTableDataa.forEach(element=>{
+                this.list1.push(element.id)
+            })
+
+            console.log("list1list1list1list1list1:",this.list1);
+        }
+        catch (error) {
+            message.error(error);
+            return;
+        }
+    }
+    /**
      * 提交订单事件
      */
     @action
     public async Confirmorder(){
         try{
+        this.LoadDataa();
         console.log("this.List:",this.allReportTableData);
         this.isLoading = true;
-        const res: any = await requestJson("/api/Order/confirmorder?studentid="+this.studentid+"&studentname="+this.studentName
-        +"&studentaddress="+this.studentAddress+"&phone="+this.studentPhone,
+        const res: any = await requestJson("/api/Order/confirmorder?Studentid="+this.studentid+"&StudentName="+this.studentName
+        +"&StudentAddress="+this.studentAddress+"&StudentPhone="+this.studentPhone,
                 {
                     method: "POST",
                     body: JSON.stringify(this.allReportTableData),

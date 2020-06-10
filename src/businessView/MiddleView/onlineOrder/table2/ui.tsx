@@ -93,6 +93,7 @@ export class ConfirmedOrderTable extends React.Component<IConfirmedOrderTablePro
     }
 
     public componentDidMount(){
+        this.props.GlobalOnlineOrderDoMainStore!.allReportTableData2 = [];
         this.props.GlobalOnlineOrderDoMainStore!.Loaddataa();
     }
     public render() {

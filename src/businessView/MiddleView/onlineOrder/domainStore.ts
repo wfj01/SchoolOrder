@@ -3,33 +3,33 @@ import { action, observable } from "mobx";
 import { requestJson } from "../../../genericComponent/requestJson";
 import { OnlineOrderTableEntity } from "./entity";
 
-export class OnlineOrderDoMainStore{
+export class OnlineOrderDoMainStore {
 
     /**
      * 是否加载表格数据
      */
     @observable
-    public Isloading:boolean;
+    public Isloading: boolean;
 
     /**
      * 未确认订单的数据集合
      */
     @observable
-    public allReportTableData1:OnlineOrderTableEntity[];
+    public allReportTableData1: OnlineOrderTableEntity[];
 
     /**
      * 已确认订单的数据集合
      */
     @observable
-    public allReportTableData2:OnlineOrderTableEntity[];
+    public allReportTableData2: OnlineOrderTableEntity[];
 
     /**
      * 已完成订单的数据集合
      */
     @observable
-    public allReportTableData3:OnlineOrderTableEntity[];
+    public allReportTableData3: OnlineOrderTableEntity[];
 
-    constructor(){
+    constructor() {
         this.Isloading = false;
         this.allReportTableData1 = new Array<OnlineOrderTableEntity>();
         this.allReportTableData2 = new Array<OnlineOrderTableEntity>();
@@ -49,6 +49,9 @@ export class OnlineOrderDoMainStore{
                 })
             if (res.rtnCode !== 0) {
                 message.error('暂无数据');
+                console.log("res.date:", res.data.table);
+                const data1 = res.data.table as any[];
+                this.allReportTableData1 = data1;
                 this.Isloading = false;
                 return;
             }
@@ -57,7 +60,7 @@ export class OnlineOrderDoMainStore{
             this.allReportTableData1 = data;
             this.Isloading = false;
         }
-        catch(error){
+        catch (error) {
             message.error(error);
         }
     }
@@ -75,6 +78,9 @@ export class OnlineOrderDoMainStore{
                 })
             if (res.rtnCode !== 0) {
                 message.error('暂无数据');
+                console.log("res.date:", res.data.table);
+                const data2 = res.data.table as any[];
+                this.allReportTableData2 = data2;
                 this.Isloading = false;
                 return;
             }
@@ -83,7 +89,7 @@ export class OnlineOrderDoMainStore{
             this.allReportTableData2 = data;
             this.Isloading = false;
         }
-        catch(error){
+        catch (error) {
             message.error(error);
             this.Isloading = false;
         }
@@ -102,6 +108,9 @@ export class OnlineOrderDoMainStore{
                 })
             if (res.rtnCode !== 0) {
                 message.error('暂无数据');
+                console.log("res.date:", res.data.table);
+                const data3 = res.data.table as any[];
+                this.allReportTableData3 = data3;
                 this.Isloading = false;
                 return;
             }
@@ -110,7 +119,7 @@ export class OnlineOrderDoMainStore{
             this.allReportTableData3 = data;
             this.Isloading = false;
         }
-        catch(error){
+        catch (error) {
             message.error(error);
             this.Isloading = false;
         }
@@ -121,14 +130,13 @@ export class OnlineOrderDoMainStore{
      * @param id 当前操作数据下标
      */
     @action
-    public async Confirmorder(id:string){
-        try
-        {
+    public async Confirmorder(id: string) {
+        try {
             this.Isloading = true;
-            const res = await requestJson("/api/OnlineOrder/confirmorder?id="+id,
-            {
-                method:"GET",
-            });
+            const res = await requestJson("/api/OnlineOrder/confirmorder?id=" + id,
+                {
+                    method: "GET",
+                });
             if (res.rtnCode !== 0) {
                 this.Isloading = false;
                 message.error("确认失败：" + res.rtnMsg);
@@ -148,14 +156,13 @@ export class OnlineOrderDoMainStore{
      * @param id 当前操作数据下标
      */
     @action
-    public async Completedmorder(id:string){
-        try
-        {
+    public async Completedmorder(id: string) {
+        try {
             this.Isloading = true;
-            const res = await requestJson("/api/OnlineOrder/Completemorder?id="+id,
-            {
-                method:"GET",
-            });
+            const res = await requestJson("/api/OnlineOrder/Completemorder?id=" + id,
+                {
+                    method: "GET",
+                });
             if (res.rtnCode !== 0) {
                 this.Isloading = false;
                 message.error("确认失败：" + res.rtnMsg);

@@ -95,6 +95,7 @@ export class UnidentifiedOrderTable extends React.Component<IUnidentifiedOrderTa
     }
 
     public componentDidMount() {
+        this.props.GlobalOnlineOrderDoMainStore!.allReportTableData1 = [];
         this.props.GlobalOnlineOrderDoMainStore!.Loaddata();
     }
 

@@ -105,7 +105,8 @@ export class MymessageViewDomainStores {
                     this.allReportTableData.splice(0, this.allReportTableData.length);
                 }
                 this.allReportTableData.push(...jsonList);
-                message.success("更新成功");
+                message.success("评价成功", 1.2);
+                message.success("十分感谢您本次的订餐，祝您生活愉快"+"❤❤❤", 1.5)
             }
         } catch (error) {
             message.error("更新失败：" + error);

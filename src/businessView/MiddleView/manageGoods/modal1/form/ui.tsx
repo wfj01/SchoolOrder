@@ -1,4 +1,4 @@
-import { Form, Input } from 'antd';
+import { Cascader, Form, Input } from 'antd';
 import { FormCreateOption } from 'antd/lib/form';
 import TextArea from 'antd/lib/input/TextArea';
 import { inject, observer } from 'mobx-react';
@@ -16,15 +16,76 @@ const formItemLayoutStyle = {
     }
 };
 
+const options = [
+    {
+        value: '第一餐厅',
+        label: '第一餐厅',
+        children: [
+            {
+                value: '一窗口',
+                label: '一窗口',
+            },
+            {
+                value: '二窗口',
+                label: '二窗口',
+            },
+            {
+                value: '三窗口',
+                label: '三窗口',
+            },
+        ],
+    },
+    {
+        value: '第二餐厅',
+        label: '第二餐厅',
+        children: [
+            {
+                value: '一窗口',
+                label: '一窗口',
+            },
+            {
+                value: '二窗口',
+                label: '二窗口',
+            },
+            {
+                value: '三窗口',
+                label: '三窗口',
+            },
+        ],
+    },
+    {
+        value: '南门',
+        label: '南门',
+        children: [
+            {
+                value: '王家饭店',
+                label: '王家饭店',
+            },
+        ],
+    },
+    {
+        value: '大学城',
+        label: '大学城',
+        children: [
+            {
+                value: '饭店',
+                label: '饭店',
+            },
+        ],
+    },
+];
+
 @inject("GlobalManageGoodsDomainStore")
 @observer
 class FromView extends React.Component<IFromViewProps>{
-  
+
     private uiAction: FromViewUiAction;
 
     constructor(props: IFromViewProps) {
         super(props);
-
+        this.handleChange = this.handleChange.bind(this);
+        this.handleChange1 = this.handleChange1.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.uiAction = new FromViewUiAction(props);
 
     }
@@ -46,9 +107,12 @@ class FromView extends React.Component<IFromViewProps>{
                         form.getFieldDecorator("id",
                             {
                                 rules: [
+                                    {
+                                        required: true,
+                                    }
                                 ]
                             }
-                        )(<Input disabled = {true} />)
+                        )(<Input disabled={true} value="1" defaultValue="1" />)
                     }
                 </Form.Item>
                 <Form.Item label={"菜名"} {...formItemLayoutStyle} >
@@ -68,7 +132,7 @@ class FromView extends React.Component<IFromViewProps>{
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input placeholder="请输入菜名" />)
                     }
                 </Form.Item>
                 <Form.Item label={"价格"} {...formItemLayoutStyle} >
@@ -88,7 +152,7 @@ class FromView extends React.Component<IFromViewProps>{
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input placeholder="请输入价格" />)
                     }
                 </Form.Item>
                 <Form.Item label={"做法"} {...formItemLayoutStyle} >
@@ -103,7 +167,20 @@ class FromView extends React.Component<IFromViewProps>{
                                     },
                                 ]
                             }
-                        )(<TextArea />)
+                        )(<TextArea placeholder="请输入做法" />)
+                    }
+                </Form.Item>
+                <Form.Item label={"评分"} {...formItemLayoutStyle} >
+                    {
+                        form.getFieldDecorator("score",
+                            {
+                                rules: [
+                                    {
+                                        required: true,
+                                    },
+                                ]
+                            }
+                        )(<Input disabled={true}  />)
                     }
                 </Form.Item>
                 <Form.Item label={"时间"} {...formItemLayoutStyle} >
@@ -123,29 +200,10 @@ class FromView extends React.Component<IFromViewProps>{
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input placeholder="请输入时间" />)
                     }
                 </Form.Item>
-                <Form.Item label={"窗口"} {...formItemLayoutStyle} >
-                    {
-                        form.getFieldDecorator("windows",
-                            {
-                                rules: [
-                                    {
-                                        required: true,
-                                        whitespace: true,
-                                        message: "不能为空"
-                                    },
-                                    {
-                                        required: true,
-                                        max: 25,
-                                        message: "长度不能大于25"
-                                    }
-                                ]
-                            }
-                        )(<Input />)
-                    }
-                </Form.Item>
+
                 <Form.Item label={"说明"} {...formItemLayoutStyle} >
                     {
                         form.getFieldDecorator("remarks",
@@ -163,47 +221,41 @@ class FromView extends React.Component<IFromViewProps>{
                                     }
                                 ]
                             }
-                        )(<Input />)
+                        )(<Input placeholder="请输入说明" />)
                     }
+                </Form.Item>
+                <Form.Item label={"窗口"} {...formItemLayoutStyle} >
+                    <Cascader placeholder="请选择窗口" options={options} onChange={this.onChange} changeOnSelect={true} />
                 </Form.Item>
             </Form>
         )
     }
+
+    private handleChange(value: any) {
+        console.log(`selected ${value}`);
+    }
+
+    private handleChange1(value: any) {
+        console.log(`selected ${value}`);
+    }
+
+    private onChange(value: any) {
+        this.props.GlobalManageGoodsDomainStore!.valueText = value.join("")
+        console.log("value.tostring()", value.join(""));
+    }
 }
 
-
-/**
- * 表单首选项
- */
 const formCreateOption: FormCreateOption<IFromViewProps> = {
     mapPropsToFields(props) {
-        console.log("props.GlobalManageGoodsDomainStore!.currentEditDataprops.GlobalManageGoodsDomainStore!.currentEditData:",props.GlobalManageGoodsDomainStore!.currentEditData);
-        const lengths = props.GlobalManageGoodsDomainStore!.lengths;
-        const item = props.GlobalManageGoodsDomainStore!.List[lengths];        
         return {
             id: Form.createFormField({
-                value: item.id,
+                value: (props.GlobalManageGoodsDomainStore!.List.length) + 4
             }),
-            dishname: Form.createFormField({
-                value: item.dishname,
-            }),
-            price: Form.createFormField({
-                value: item.price,
-            }),
-            practice: Form.createFormField({
-                value: item.practice,
-            }),
-            time: Form.createFormField({
-                value: item.time,
-            }),
-            windows: Form.createFormField({
-                value: item.windows,
-            }),
-            remarks: Form.createFormField({
-                value: item.remarks,
-            }),
+            score: Form.createFormField({
+                value: "0"
+            })
         }
     }
 }
 
-export default Form.create<IFromViewProps>(formCreateOption)(FromView);
+export default Form.create<IFromViewProps>(formCreateOption)(FromView)

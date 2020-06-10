@@ -124,7 +124,6 @@ export class MenuView extends React.Component<IMenuViewProps, IMenuViewState> {
                                     >
                                         <Menu.Item key="0401">我的信息</Menu.Item>
                                         <Menu.Item key="0402">订单评价</Menu.Item>
-                                        <Menu.Item key="0403">自我管理</Menu.Item>
                                     </SubMenu>
                                 </Menu>
                             </div>

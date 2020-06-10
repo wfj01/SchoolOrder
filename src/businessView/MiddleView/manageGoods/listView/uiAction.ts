@@ -23,8 +23,11 @@ export class ManageGoodsViewUiAction{
         this.addbtn = this.addbtn.bind(this);
         this.adda = this.adda.bind(this);
         this.cancel = this.cancel.bind(this);
+        this.cancel1 = this.cancel1.bind(this);
         this.edit = this.edit.bind(this);
         this.save = this.save.bind(this);
+        this.save1 = this.save1.bind(this);
+
         this.onCloseClick = this.onCloseClick.bind(this);
         this.eyeClick= this.eyeClick.bind(this);
         this.props=props;
@@ -40,7 +43,7 @@ export class ManageGoodsViewUiAction{
         this.opearatorType="add";
         this.modelTitle = "新增数据";
         this.domainStore.currentEditData = new ManageGoodsEntity();
-        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = true;
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible1 = true;
     }
     
     /**
@@ -74,20 +77,33 @@ export class ManageGoodsViewUiAction{
         this.opearatorType = "none";
     }
 
+    /**
+     * 取消
+     */
+    @action
+    public cancel1(){
+        this.props.GlobalManageGoodsDomainStore!.DialogViewVisible1 = false;
+        this.opearatorType = "none";
+    }
+
+   /**
+    * 保存
+    * @param model 实体类
+    */
+   @action
+   public save1(model:ManageGoodsEntity){
+           this.domainStore.Adddate(model);
+           this.props.GlobalManageGoodsDomainStore!.DialogViewVisible1 = false;
+   }
+   
    /**
     * 保存
     * @param model 实体类
     */
     @action
     public save(model:ManageGoodsEntity){
-
-        if (this.opearatorType==="add") {
-            this.domainStore.Adddate(model);
-            this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = false;
-        }else if (this.opearatorType==="edit") {
             this.domainStore.Update(model);
             this.props.GlobalManageGoodsDomainStore!.DialogViewVisible = false;
-        }
     }
 
     @action

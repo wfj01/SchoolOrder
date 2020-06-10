@@ -16,7 +16,9 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             key: 'id',
             title: '序号',
             width: "5%",
-            render:(text,record,index)=>`${index+1}`        },
+            sorter: true,
+            render: (text: any) => <span title={text}>{text}</span>
+        },
         {
             dataIndex: 'dishname',
             key: 'dishname',
@@ -58,6 +60,24 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
             key: "windows",
             title: '窗口',
             width: '10%',
+            filters: [
+                {
+                    text: '第一餐厅一窗口',
+                    value: '第一餐厅一窗口',
+                },
+                {
+                    text: '第二餐厅一窗口',
+                    value: '第二餐厅一窗口',
+                },
+                {
+                    text: '南门王家饭店',
+                    value: '南门王家饭店',
+                },
+                {
+                    text: '大学城百味坊',
+                    value: '大学城百味坊',
+                },
+            ],
             render: (text: any) => <span title={text}>{text}</span>
         },
         {
@@ -133,7 +153,7 @@ export class ManageGoodsTable extends React.Component<IManageGoodsTableProps>{
                 loading={
                     {
                         spinning: this.props.GlobalManageGoodsDomainStore!.isLoading,
-                        tip:"正在加载中"
+                        tip: "正在加载中,✍"
                     }}
                 locale={{ emptyText: '暂无 数据' }} />
         )

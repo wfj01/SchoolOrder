@@ -4,6 +4,7 @@ import React from 'react';
 import { VerThr } from '../../../../genericComponent/gridBox/verThr/verThr';
 import { DrawerView } from '../drawer/ui';
 import { ModelView } from '../modal/ui';
+import { ModelView1 } from '../modal1/ui';
 import { ManageGoodsTable } from '../table/ui';
 import { IManageGoodsViewProps } from './interface';
 import { ManageGoodsViewUiAction } from './uiAction';
@@ -41,6 +42,10 @@ export class ManageGoodsView extends React.Component<IManageGoodsViewProps>{
                         handleCancel={this.uiAction.cancel}
                         handleOk={this.uiAction.save}
                         visible={this.props.GlobalManageGoodsDomainStore!.DialogViewVisible} />
+                    <ModelView1
+                        handleCancel={this.uiAction.cancel1}
+                        handleOk={this.uiAction.save1}
+                        visible={this.props.GlobalManageGoodsDomainStore!.DialogViewVisible1} />
                 </VerThr.middle>
             </VerThr>
         )
