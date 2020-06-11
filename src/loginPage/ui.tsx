@@ -1,4 +1,5 @@
 import { Button, Form, Icon, Input } from 'antd';
+import { FormCreateOption } from 'antd/lib/form';
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import './index.css';
@@ -56,7 +57,7 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                             }
                                         ]
                                     }
-                                )(<Input onChange={this.props.Usernametext} prefix={<Icon type="user" />}/>)
+                                )(<Input  onChange={this.props.Usernametext} prefix={<Icon type="user" />}/>)
                             }
                         </Form.Item>
                         <Form.Item
@@ -77,7 +78,7 @@ class LoginPage extends React.Component<ILoginPageProps>{
                                             }
                                         ]
                                     }
-                                )(<Input type="password" onChange={this.props.Passwordtext} prefix={<Icon type="key" />} suffix={<Icon onClick={this.uiaction.eyeClick} className="iconfont+&#xe60e"  type={"&#xe60e"} />}/>)
+                                )(<Input value="123456" type="password" onChange={this.props.Passwordtext} prefix={<Icon type="key" />} suffix={<Icon onClick={this.uiaction.eyeClick} className="iconfont+&#xe60e"  type={"&#xe60e"} />}/>)
                             }
                         </Form.Item>
                         <Form.Item {...tailLayout}>
@@ -99,4 +100,19 @@ class LoginPage extends React.Component<ILoginPageProps>{
         )
     }
 }
-export default Form.create<ILoginPageProps>()(LoginPage);
+/**
+ * 表单首选项
+ */
+const formCreateOption: FormCreateOption<ILoginPageProps> = {
+    mapPropsToFields(props) {
+        return {
+            studentid: Form.createFormField({
+                value: "201710033092",
+            }),
+            Password: Form.createFormField({
+                value: "123456",
+            }),
+        }
+    }
+}
+export default Form.create<ILoginPageProps>(formCreateOption)(LoginPage);

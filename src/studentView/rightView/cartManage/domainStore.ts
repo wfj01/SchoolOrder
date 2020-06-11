@@ -96,10 +96,16 @@ export class StepsViewDomainStore {
     public calculatednumber: number;
 
     @observable
+    public calculatednumber1: number;
+
+    @observable
     public calculatedstring :string;
 
     @observable
     public calculatedTime:number;
+    @observable
+    public calculatedTime1:number;
+
     @observable
     public calculatedTimeNum:string;
     @observable
@@ -275,34 +281,35 @@ export class StepsViewDomainStore {
                     this.firstnumber = Number(element.price);
                     this.secondnumber = Number(element.number);
                     this.thirednumber = element.dishname;
-                    this.calculatedTime = parseInt(element.time,10);
-                    this.calculatednumber = (this.firstnumber) * (this.secondnumber)
-                    this.List.push(this.calculatednumber,);
+                    this.calculatedTime1 = parseInt(element.time,10);
+                    this.calculatednumber1 = (this.firstnumber) * (this.secondnumber);
+                    this.List.push(this.calculatednumber1,);
                     this.List1.push(this.thirednumber);
-                    this.List2.push(this.calculatedTime);
+                    this.List2.push(this.calculatedTime1);
                 });
+                console.log(" this.List", this.List.length)
+                console.log("calculatednumber",this.calculatednumber,)
                 this.List.forEach(element => {
                     this.calculatednumber +=element;
-                    console.log("calculatednumber",this.calculatednumber)
                 });
                 if(this.List2.length<3){
                     this.calculatednumber = this.calculatednumber;
                 }
                 else{
-                    this.calculatednumber =this.calculatednumber *0.8;
+                    this.calculatednumber =this.calculatednumber *0.85;
                 }
                 this.calculatedTimeNumtext = ((this.calculatednumber)).toString()+"元";
 
                 console.log("this.List2",this.List2);
+                console.log("thiscalculatedTimeNum",this.calculatedTime)
                 this.List2.forEach(element=>{
                     this.calculatedTime += element;
-                    console.log("thiscalculatedTimeNum",this.calculatedTime)
                 })
                 if(this.List2.length<3){
                     this.calculatedTime = this.calculatedTime;
                 }
                 else{
-                    this.calculatedTime =this.calculatedTime *0.8;
+                    this.calculatedTime =this.calculatedTime *0.6;
                 }
                 this.calculatedTimeNum = ((this.calculatedTime)).toString()+"分钟";
     

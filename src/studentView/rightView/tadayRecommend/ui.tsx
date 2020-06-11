@@ -38,6 +38,7 @@ export class Menuselection extends React.Component<ITadayRecommendProps, ITadayR
     // this.uiAction = new TadayRecommendUiAction(props);
   }
   public componentDidMount() {
+    this.props.GlobalLastWeekDomainStore!.aaa=[];
     this.props.GlobalTadayRecommendDomainStore!.Loadate();
     this.props.GlobalLastWeekDomainStore!.Loadate();
   }
