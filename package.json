@@ -53,7 +53,7 @@
     "react-app-rewire-mobx": "^1.0.8",
     "react-app-rewired": "^1.4.1",
     "react-data-grid": "^5.0.5",
-    "react-dev-utils": "^5.0.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.4.1",
     "react-dropzone": "^11.0.1",
     "react-fileupload": "^2.4.0",
